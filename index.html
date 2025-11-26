@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Ar que Respiramos | Desigualdade Invisível em Bogotá</title>
+    
+    <!-- Fuentes impactantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Bibliotecas -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-danger: #e63946;
+            --color-warning: #f77f00;
+            --color-safe: #06ffa5;
+            --color-dark: #0a0908;
+            --color-white: #ffffff;
+            --gradient-toxic: linear-gradient(135deg, #e63946 0%, #f77f00 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--color-dark);
+            color: var(--color-white);
+            overflow-x: hidden;
+            cursor: default;
+        }
+        
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+        
+        /* Loader dramático */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-dark);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s;
+        }
+        
+        .loader-text {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        /* Hero impactante */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, rgba(10,9,8,0.9) 0%, rgba(230,57,70,0.3) 100%);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background: url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=1920') center/cover;
+            filter: grayscale(100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1000px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: var(--gradient-toxic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        /* Contador dramático */
+        .impact-counter {
+            background: rgba(230, 57, 70, 0.1);
+            border: 2px solid var(--color-danger);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .counter-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--color-danger);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .counter-text {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Navegación elegante */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 9, 8, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        nav.visible {
+            transform: translateY(0);
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--color-warning);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-warning);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Secciones con scroll dramático */
+        .section {
+            min-height: 100vh;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-toxic);
+        }
+        
+        /* Mapa interativo */
+        #mapa-bogota {
+            width: 100%;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.3);
+        }
+        
+        /* Cards informativos */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-toxic);
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-warning);
+        }
+        
+        /* Comparação Brasil */
+        .brasil-section {
+            background: linear-gradient(135deg, rgba(6,255,165,0.05) 0%, transparent 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .comparison-table th {
+            background: rgba(255,255,255,0.05);
+            font-weight: 700;
+            color: var(--color-safe);
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        
+        /* Footer emotivo */
+        footer {
+            background: linear-gradient(180deg, transparent 0%, rgba(230,57,70,0.1) 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-message {
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        /* Animações ScrollyTelling */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .counter-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">Carregando dados de poluição...</div>
+    </div>
+    
+    <!-- Navegação -->
+    <nav id="navbar">
+        <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#problema">O Problema</a></li>
+            <li><a href="#dados">Dados</a></li>
+            <li><a href="#solucoes">Soluções</a></li>
+            <li><a href="#brasil">Brasil</a></li>
+            <li><a href="#modelo">Modelo Preditivo</a></li>
+            <li><a href="#metodologia">Metodologia</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1 data-aos="fade-up">O Ar que Respiramos e as Desigualdades que Não Vemos</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="200">
+                Modelagem Preditiva de PM2,5 em Bogotá
+            </p>
+            
+            <div class="impact-counter" data-aos="fade-up" data-aos-delay="400">
+                <div class="counter-number">
+                    <span id="counter">0</span>
+                </div>
+                <div class="counter-text">
+                    pessoas em zonas vulneráveis respiram ar perigoso AGORA
+                </div>
+            </div>
+            
+            <button onclick="scrollToSection('problema')" class="btn-scroll" data-aos="fade-up" data-aos-delay="600">
+                Entenda o problema ↓
+            </button>
+        </div>
+    </section>
+    
+    <!-- Seção 1: O Problema -->
+    <section id="problema" class="section">
+        <h2 class="section-title reveal">A Geografia da Desigualdade</h2>
+        
+        <div class="container">
+            <div id="mapa-bogota" class="reveal"></div>
+            
+            <div class="cards-grid">
+                <div class="info-card reveal">
+                    <div class="card-icon">🏭</div>
+                    <h3 class="card-title">Kennedy & Carvajal</h3>
+                    <p>39.7 μg/m³ de PM2,5 - O dobro do limite seguro da OMS</p>
+                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 2-3 | 1.2 milhões de pessoas</p>
+                </div>
+                
+                <div class="info-card reveal">
+                    <div class="card-icon">⚠️</div>
+                    <h3 class="card-title">Ciudad Bolívar</h3>
+                    <p>27 μg/m³ de PM2,5 - Zona de alto risco permanente</p>
+                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 1 | 400 mil pessoas</p>
+                </div>
+                
+                <div class="info-card reveal">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Usaquén</h3>
+                    <p>19 μg/m³ de PM2,5 - Ar relativamente limpo</p>
+                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 5-6 | Menor exposição</p>
+                </div>
+            </div>
+            
+            <div class="reveal" style="margin-top: 3rem; padding: 2rem; background: rgba(230,57,70,0.1); border-radius: 20px;">
+                <h3 style="color: var(--color-danger); margin-bottom: 1rem;">A Física que Aprisiona</h3>
+                <p style="font-size: 1.2rem; line-height: 1.8;">
+                    Bogotá está situada a 2.600 metros de altitude, cercada por montanhas que criam uma 
+                    barreira natural. Os ventos fracos e a inversão térmica frequente transformam a cidade 
+                    em uma câmara de acumulação de poluentes. As zonas mais baixas e povoadas - justamente 
+                    onde vivem os mais vulneráveis - se tornam armadilhas mortais de PM2,5.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção 2: Dados -->
+    <section id="dados" class="section">
+        <h2 class="section-title reveal">Os Dados Revelam a Verdade</h2>
+        
+        <div class="container">
+            <div id="grafico-temporal" class="reveal" style="height: 400px;"></div>
+            <div id="grafico-estratos" class="reveal" style="height: 400px; margin-top: 2rem;"></div>
+            
+            <div class="reveal" style="margin-top: 3rem;">
+                <h3 style="color: var(--color-warning); margin-bottom: 1rem;">Vozes da Comunidade</h3>
+                <div id="wordcloud" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px;">
+                    <!-- Word cloud será gerado por JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção 3: Soluções -->
+    <section id="solucoes" class="section">
+        <h2 class="section-title reveal">Três Soluções para Salvar Vidas</h2>
+        
+        <div class="cards-grid">
+            <div class="info-card reveal">
+                <div class="card-icon">🚨</div>
+                <h3 class="card-title">1. Sistema de Alerta Precoce</h3>
+                <p>Modelo SARIMAX que prevê picos de PM2,5 com 24-48h de antecedência.</p>
+                <ul style="margin-top: 1rem; padding-left: 20px;">
+                    <li>Alertas por localidade/UPZ</li>
+                    <li>SMS e notificações push</li>
+                    <li>Mapas de risco em tempo real</li>
+                </ul>
+            </div>
+            
+            <div class="info-card reveal">
+                <div class="card-icon">🚛</div>
+                <h3 class="card-title">2. Janelas Limpas</h3>
+                <p>Gestão inteligente de emissões em corredores prioritários.</p>
+                <ul style="margin-top: 1rem; padding-left: 20px;">
+                    <li>Restrições temporárias para diesel</li>
+                    <li>Rotas alternativas dinâmicas</li>
+                    <li>Incentivos para retrofit</li>
+                </ul>
+            </div>
+            
+            <div class="info-card reveal">
+                <div class="card-icon">🌳</div>
+                <h3 class="card-title">3. Plano de Justiça Ambiental</h3>
+                <p>Transformação estrutural com foco em equidade.</p>
+                <ul style="margin-top: 1rem; padding-left: 20px;">
+                    <li>Corredores verdes estratégicos</li>
+                    <li>Eletrificação do transporte</li>
+                    <li>Orçamento participativo verde</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção 4: Comparação Brasil -->
+    <section id="brasil" class="section">
+        <h2 class="section-title reveal">Aprendendo com o Brasil</h2>
+        
+        <div class="brasil-section reveal">
+            <h3 style="color: var(--color-safe); margin-bottom: 2rem;">
+                O que São Paulo pode ensinar a Bogotá
+            </h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Cidade</th>
+                        <th>PM2,5 Médio (μg/m³)</th>
+                        <th>População Exposta</th>
+                        <th>Política Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bogotá</strong></td>
+                        <td style="color: var(--color-danger);">26-30</td>
+                        <td>7.4 milhões</td>
+                        <td>Pico y Placa (reativa)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>São Paulo</strong></td>
+                        <td style="color: var(--color-warning);">22-25</td>
+                        <td>12.3 milhões</td>
+                        <td>Rodízio + CETESB (preventiva)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rio de Janeiro</strong></td>
+                        <td style="color: var(--color-safe);">18-20</td>
+                        <td>6.7 milhões</td>
+                        <td>MonitorAr-Rio (monitoramento)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 2rem;">
+                <h4 style="color: var(--color-safe); margin-bottom: 1rem;">
+                    Políticas Brasileiras de Sucesso:
+                </h4>
+                <ul style="line-height: 2;">
+                    <li>✅ <strong>Operação Inverno:</strong> Fiscalização intensiva durante períodos críticos</li>
+                    <li>✅ <strong>Rodízio Municipal:</strong> Redução de 20% da frota diariamente</li>
+                    <li>✅ <strong>CETESB:</strong> Sistema de previsão com 48h de antecedência</li>
+                    <li>✅ <strong>ProConve:</strong> Controle rigoroso de emissões veiculares</li>
+                </ul>
+            </div>
+            
+            <div id="grafico-brasil" style="height: 400px; margin-top: 2rem;"></div>
+        </div>
+    </section>
+    
+    <!-- Seção 5: Modelo Preditivo -->
+    <section id="modelo" class="section">
+        <h2 class="section-title reveal">Modelo Preditivo em Ação</h2>
+        
+        <div class="reveal">
+            <div id="modelo-previsao" style="height: 500px;"></div>
+            
+            <div style="margin-top: 2rem; padding: 2rem; background: rgba(6,255,165,0.1); border-radius: 20px;">
+                <h3 style="color: var(--color-safe); margin-bottom: 1rem;">Métricas do Modelo</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <strong>Precisão (R²):</strong> 0.78
+                    </div>
+                    <div>
+                        <strong>Erro Médio (MAE):</strong> 3.2 μg/m³
+                    </div>
+                    <div>
+                        <strong>Antecedência:</strong> 24-48 horas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-message">
+            "A poluição do ar não escolhe suas vítimas, mas a geografia e a economia sim."
+        </div>
+        <p style="opacity: 0.7;">
+            Karen Daniela Marin Baez & Johann Camilo Rincon Real<br>
+            Universidade Nacional da Colômbia - 2024
+        </p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Inicialização AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Remover loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.loader').style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+        
+        // Contador animado
+        function animateCounter() {
+            const counter = document.getElementById('counter');
+            const target = 1600000;
+            const increment = target / 100;
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current).toLocaleString('pt-BR');
+            }, 20);
+        }
+        
+        // Ativar contador quando visível
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && entry.target.id === 'counter') {
+                    animateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        observer.observe(document.getElementById('counter'));
+        
+        // Navegação sticky
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+            
+            // Reveal elements
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    el.classList.add('active');
+                }
+            });
+        });
+        
+        // Scroll suave
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Criar Mapa de Bogotá
+        function createBogotaMap() {
+            const data = [{
+                type: 'scattermapbox',
+                lat: [4.5958, 4.6254, 4.5709, 4.6965],
+                lon: [-74.1489, -74.1475, -74.1761, -74.0323],
+                mode: 'markers+text',
+                marker: {
+                    size: [39.7, 30.6, 27, 19],
+                    color: ['#e63946', '#f77f00', '#f77f00', '#06ffa5'],
+                    opacity: 0.8
+                },
+                text: ['Carvajal: 39.7 μg/m³', 'Kennedy: 30.6 μg/m³', 'C. Bolívar: 27 μg/m³', 'Usaquén: 19 μg/m³'],
+                textposition: 'top center',
+                textfont: {
+                    size: 14,
+                    color: '#ffffff'
+                }
+            }];
+            
+            const layout = {
+                mapbox: {
+                    style: 'dark',
+                    center: {lat: 4.6097, lon: -74.0817},
+                    zoom: 10
+                },
+                margin: {t: 0, b: 0, l: 0, r: 0},
+                paper_bgcolor: 'transparent',
+                font: {color: '#ffffff'}
+            };
+            
+            const config = {
+                mapboxAccessToken: 'pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNrOWJqb2F4djBnMjEzbG50amg0dnJieG4ifQ.Zme1-Uzoi75IaFbieBDl3A',
+                responsive: true
+            };
+            
+            Plotly.newPlot('mapa-bogota', data, layout, config);
+        }
+        
+        // Criar gráficos
+        function createCharts() {
+            // Gráfico temporal
+            const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
+            const pm25Values = [35, 42, 38, 45, 40, 37, 33, 35];
+            
+            const trace1 = {
+                x: months,
+                y: pm25Values,
+                type: 'scatter',
+                mode: 'lines+markers',
+                line: {
+                    color: '#e63946',
+                    width: 3
+                },
+                marker: {
+                    size: 10,
+                    color: '#f77f00'
+                },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(230, 57, 70, 0.2)'
+            };
+            
+            const layout1 = {
+                title: 'Evolução PM2,5 em 2024 - Zona Sul',
+                xaxis: {title: 'Mês'},
+                yaxis: {title: 'PM2,5 (μg/m³)'},
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: {color: '#ffffff'},
+                shapes: [{
+                    type: 'line',
+                    x0: 0,
+                    y0: 25,
+                    x1: 1,
+                    y1: 25,
+                    xref: 'paper',
+                    line: {
+                        color: '#06ffa5',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                }],
+                annotations: [{
+                    x: 0.5,
+                    y: 25,
+                    xref: 'paper',
+                    text: 'Limite OMS',
+                    showarrow: false,
+                    font: {color: '#06ffa5'}
+                }]
+            };
+            
+            Plotly.newPlot('grafico-temporal', [trace1], layout1, {responsive: true});
+            
+            // Gráfico por estratos
+            const trace2 = {
+                x: ['Estrato 1', 'Estrato 2', 'Estrato 3', 'Estrato 4', 'Estrato 5', 'Estrato 6'],
+                y: [35, 32, 28, 22, 19, 18],
+                type: 'bar',
+                marker: {
+                    color: ['#e63946', '#e63946', '#f77f00', '#f77f00', '#06ffa5', '#06ffa5']
+                }
+            };
+            
+            const layout2 = {
+                title: 'Exposição ao PM2,5 por Estrato Socioeconômico',
+                xaxis: {title: 'Estrato'},
+                yaxis: {title: 'PM2,5 Médio (μg/m³)'},
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: {color: '#ffffff'}
+            };
+            
+            Plotly.newPlot('grafico-estratos', [trace2], layout2, {responsive: true});
+            
+            // Gráfico Brasil
+            const trace3 = {
+                x: ['Bogotá', 'São Paulo', 'Rio de Janeiro', 'Belo Horizonte'],
+                y: [30, 25, 20, 18],
+                type: 'bar',
+                marker: {
+                    color: ['#e63946', '#f77f00', '#ffd60a', '#06ffa5']
+                }
+            };
+            
+            const layout3 = {
+                title: 'Comparação PM2,5 - Colômbia vs Brasil (2024)',
+                xaxis: {title: 'Cidade'},
+                yaxis: {title: 'PM2,5 Médio (μg/m³)'},
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: {color: '#ffffff'}
+            };
+            
+            Plotly.newPlot('grafico-brasil', [trace3], layout3, {responsive: true});
+            
+            // Modelo preditivo
+            const hours = Array.from({length: 48}, (_, i) => i);
+            const historical = hours.slice(0, 24).map(h => 25 + Math.random() * 10);
+            const predicted = hours.slice(24).map(h => 28 + Math.sin(h/6) * 8 + Math.random() * 3);
+            
+            const trace4 = {
+                x: hours.slice(0, 24),
+                y: historical,
+                type: 'scatter',
+                mode: 'lines',
+                name: 'Histórico',
+                line: {color: '#06ffa5', width: 2}
+            };
+            
+            const trace5 = {
+                x: hours.slice(23),
+                y: [historical[23], ...predicted],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Previsão',
+                line: {color: '#e63946', width: 2, dash: 'dash'},
+                marker: {size: 6}
+            };
+            
+            const layout4 = {
+                title: 'Modelo SARIMAX - Previsão 24h Kennedy',
+                xaxis: {title: 'Horas'},
+                yaxis: {title: 'PM2,5 (μg/m³)'},
+                paper_bgcolor: 'transparent',
+                plot_bgcolor: 'transparent',
+                font: {color: '#ffffff'},
+                shapes: [{
+                    type: 'line',
+                    x0: 0,
+                    y0: 35,
+                    x1: 48,
+                    y1: 35,
+                    line: {
+                        color: '#f77f00',
+                        width: 2,
+                        dash: 'dash'
+                    }
+                }],
+                annotations: [{
+                    x: 40,
+                    y: 35,
+                    text: 'Limiar de Alerta',
+                    showarrow: false,
+                    font: {color: '#f77f00'}
+                }]
+            };
+            
+            Plotly.newPlot('modelo-previsao', [trace4, trace5], layout4, {responsive: true});
+        }
+        
+        // Word Cloud simples
+        function createWordCloud() {
+            const words = [
+                { text: 'IRRESPIRÁVEL', size: 40 },
+                { text: 'Sufocante', size: 35 },
+                { text: 'Perigoso', size: 30 },
+                { text: 'Injusto', size: 28 },
+                { text: 'Tóxico', size: 32 },
+                { text: 'Preocupante', size: 25 },
+                { text: 'Desigual', size: 30 },
+                { text: 'Alarmante', size: 28 }
+            ];
+            
+            const wordCloudHTML = words.map(word => 
+                `<span style="font-size: ${word.size}px; color: ${word.size > 30 ? '#e63946' : '#f77f00'}; margin: 0 10px; font-weight: bold;">${word.text}</span>`
+            ).join('');
+            
+            document.getElementById('wordcloud').innerHTML = wordCloudHTML;
+        }
+        
+        // Inicializar tudo quando a página carregar
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                createBogotaMap();
+                createCharts();
+                createWordCloud();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

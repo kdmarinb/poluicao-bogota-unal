@@ -1,0 +1,54 @@
+{
+  "ciudades": [
+    {
+      "ciudad": "São Paulo", 
+      "pm25_promedio": 25, 
+      "poblacion": 12300000,
+      "politicaPrincipal": "Rodízio Municipal + CETESB",
+      "reduccionDesde2019": "-18%"
+    },
+    {
+      "ciudad": "Rio de Janeiro", 
+      "pm25_promedio": 20, 
+      "poblacion": 6700000,
+      "politicaPrincipal": "MonitorAr-Rio",
+      "reduccionDesde2019": "-15%"
+    },
+    {
+      "ciudad": "Belo Horizonte", 
+      "pm25_promedio": 18, 
+      "poblacion": 2500000,
+      "politicaPrincipal": "Plano de Mobilidade Urbana",
+      "reduccionDesde2019": "-12%"
+    },
+    {
+      "ciudad": "Bogotá", 
+      "pm25_promedio": 30, 
+      "poblacion": 7400000,
+      "politicaPrincipal": "Pico y Placa",
+      "reduccionDesde2019": "+23%"
+    }
+  ],
+  "politicasBrasil": [
+    {
+      "nombre": "Operação Inverno",
+      "descripcion": "Fiscalização intensiva de emissões durante período crítico (maio-setembro)",
+      "impacto": "Redução de 30% nos picos de poluição"
+    },
+    {
+      "nombre": "Rodízio Municipal SP",
+      "descripcion": "Restrição de 20% da frota diariamente por final de placa",
+      "impacto": "1.5 milhão de veículos fora das ruas por dia"
+    },
+    {
+      "nombre": "CETESB Qualidade do Ar",
+      "descripcion": "Sistema de previsão com 48h de antecedência usando IA",
+      "impacto": "85% de acerto nas previsões de picos"
+    },
+    {
+      "nombre": "ProConve",
+      "descripcion": "Programa de Controle de Poluição do Ar por Veículos Automotores",
+      "impacto": "Redução de 90% nas emissões por veículo novo desde 1986"
+    }
+  ]
+}
