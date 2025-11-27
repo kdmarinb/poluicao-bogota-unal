@@ -3,611 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Ar que Respiramos | Desigualdade Invisível em Bogotá</title>
+    <title>Monitor Ambiental Bogotá | Edição Especial</title>
     
-    <!-- Fuentes impactantes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Bibliotecas -->
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-    <script src="https://unpkg.com/scrollama"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
+    <script src="https://unpkg.com/lucide@latest"></script> <style>
         :root {
-            --color-danger: #e63946;
-            --color-warning: #f77f00;
-            --color-safe: #06ffa5;
-            --color-dark: #0a0908;
-            --color-white: #ffffff;
-            --gradient-toxic: linear-gradient(135deg, #e63946 0%, #f77f00 100%);
+            --paper-bg: #fdfbf7; /* Cor de papel jornal levemente envelhecido */
+            --ink-black: #1a1a1a;
+            --ink-grey: #4a4a4a;
+            --highlight-red: #c53030; /* Vermelho editorial, menos neon */
+            --highlight-blue: #2b6cb0;
+            --border-color: #e2e8f0;
+            --nav-active: #000000;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
+            background-color: #e5e5e5; /* Fundo da "mesa" */
             font-family: 'Inter', sans-serif;
-            background: var(--color-dark);
-            color: var(--color-white);
-            overflow-x: hidden;
-            cursor: default;
-        }
-        
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
-        }
-        
-        /* Loader dramático */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            color: var(--ink-black);
             height: 100vh;
-            background: var(--color-dark);
-            z-index: 9999;
+            overflow: hidden;
             display: flex;
-            align-items: center;
             justify-content: center;
-            transition: opacity 1s;
-        }
-        
-        .loader-text {
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-        
-        /* Hero impactante */
-        .hero {
-            height: 100vh;
-            position: relative;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, rgba(10,9,8,0.9) 0%, rgba(230,57,70,0.3) 100%);
         }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.2;
-            background: url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=1920') center/cover;
-            filter: grayscale(100%);
-        }
-        
-        .hero-content {
+
+        /* Container Principal (O Jornal) */
+        .newspaper-container {
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            background-color: var(--paper-bg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: grid;
+            grid-template-rows: auto 1fr;
+            overflow: hidden;
             position: relative;
-            z-index: 2;
+        }
+
+        /* Cabeçalho do Jornal (Masthead) */
+        header {
+            border-bottom: 4px double var(--ink-black);
+            padding: 1.5rem 2rem;
             text-align: center;
-            padding: 2rem;
-            max-width: 1000px;
+            position: relative;
+            background: var(--paper-bg);
+            z-index: 10;
         }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            background: var(--gradient-toxic);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease-out;
+
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--ink-black);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-        
-        /* Contador dramático */
-        .impact-counter {
-            background: rgba(230, 57, 70, 0.1);
-            border: 2px solid var(--color-danger);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem auto;
-            max-width: 600px;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-        
-        .counter-number {
+
+        h1.masthead {
+            font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 900;
-            color: var(--color-danger);
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
             font-family: 'Playfair Display', serif;
-        }
-        
-        .counter-text {
-            font-size: 1.2rem;
-            margin-top: 1rem;
-            opacity: 0.9;
-        }
-        
-        /* Navegación elegante */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 9, 8, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1.5rem;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-        
-        nav.visible {
-            transform: translateY(0);
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: var(--color-white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        nav a:hover {
-            color: var(--color-warning);
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--color-warning);
-            transition: width 0.3s;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* Secciones con scroll dramático */
-        .section {
-            min-height: 100vh;
-            padding: 5rem 2rem;
-            position: relative;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gradient-toxic);
-        }
-        
-        /* Mapa interativo */
-        #mapa-bogota {
-            width: 100%;
-            height: 600px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(230, 57, 70, 0.3);
-        }
-        
-        /* Cards informativos */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .info-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--gradient-toxic);
-        }
-        
-        .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-warning);
-        }
-        
-        /* Comparação Brasil */
-        .brasil-section {
-            background: linear-gradient(135deg, rgba(6,255,165,0.05) 0%, transparent 100%);
-            border-radius: 30px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 2rem 0;
-        }
-        
-        .comparison-table th,
-        .comparison-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .comparison-table th {
-            background: rgba(255,255,255,0.05);
-            font-weight: 700;
-            color: var(--color-safe);
-        }
-        
-        .comparison-table tr:hover {
-            background: rgba(255,255,255,0.02);
-        }
-        
-        /* Footer emotivo */
-        footer {
-            background: linear-gradient(180deg, transparent 0%, rgba(230,57,70,0.1) 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        
-        .footer-message {
-            font-size: 1.5rem;
             font-style: italic;
-            opacity: 0.9;
+            font-size: 1.2rem;
+            color: var(--ink-grey);
+        }
+
+        /* Navegação (Abas) */
+        nav {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 2rem;
+            background: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav li {
+            padding: 1rem 0;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav li:hover { color: var(--highlight-red); }
+
+        nav li.active {
+            color: var(--ink-black);
+            border-bottom: 3px solid var(--highlight-red);
+        }
+
+        /* Área de Conteúdo (Páginas) */
+        .content-area {
+            position: relative;
+            overflow-y: auto;
+            padding: 3rem;
+            scroll-behavior: smooth;
+        }
+
+        .page {
+            display: none; /* Esconde todas as páginas por padrão */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block; /* Mostra a página ativa */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos de Tipografia Jornalística */
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .sub-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--ink-grey);
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.6;
             margin-bottom: 2rem;
+            border-left: 4px solid var(--highlight-red);
+            padding-left: 1rem;
         }
-        
-        /* Animações ScrollyTelling */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+
+        p {
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+            text-align: justify;
         }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Grid Layout para Colunas */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
         }
-        
-        /* Responsive */
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .sidebar {
+            background: #f0f0f0;
+            padding: 1.5rem;
+            border-top: 5px solid var(--ink-black);
+        }
+
+        /* Componentes Específicos */
+        .quote-box {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            font-style: italic;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-top: 1px solid var(--ink-black);
+            border-bottom: 1px solid var(--ink-black);
+        }
+
+        .stat-highlight {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--highlight-red);
+            display: block;
+        }
+
+        .card-solution {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+            background: white;
+        }
+
+        .card-solution:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--highlight-blue);
+        }
+
+        /* Mapas e Gráficos */
+        .visual-container {
+            width: 100%;
+            border: 1px solid #ddd;
+            background: white;
+            padding: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .caption {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* Responsividade */
         @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-            
-            .counter-number {
-                font-size: 3rem;
-            }
+            .newspaper-container { width: 100%; height: 100vh; }
+            h1.masthead { font-size: 2.5rem; }
+            .two-columns, .three-columns { grid-template-columns: 1fr; }
+            .headline { font-size: 2.5rem; }
+            nav ul { gap: 1rem; overflow-x: auto; }
+            header { padding: 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-text">Carregando dados de poluição...</div>
+
+    <div class="newspaper-container">
+        <header>
+            <div class="meta-header">
+                <span>Vol. 1 | Edição Especial</span>
+                <span>Bogotá, D.C. - Novembro 2025</span>
+                <span>Projeto Interdisciplinar</span>
+            </div>
+            <h1 class="masthead">O Ar de Bogotá</h1>
+            <div class="subtitle">Modelagem Preditiva e Desigualdade Ambiental</div>
+        </header>
+
+        <nav>
+            <ul>
+                <li onclick="showPage('capa')" class="active">Capa</li>
+                <li onclick="showPage('mapa')">Geografia & Risco</li>
+                <li onclick="showPage('dados')">Análise de Dados</li>
+                <li onclick="showPage('solucoes')">Plano de Ação</li>
+                <li onclick="showPage('metodologia')">Sobre o Estudo</li>
+            </ul>
+        </nav>
+
+        <div class="content-area">
+            
+            <div id="capa" class="page active">
+                <div class="two-columns" style="grid-template-columns: 2fr 1fr;">
+                    <div>
+                        <h2 class="headline">Desigualdade Invisível: O Ar que Respiramos não é o Mesmo para Todos</h2>
+                        <div class="lead">
+                            Uma análise físico-estatística revela como a poluição por PM2.5 em Bogotá afeta desproporcionalmente as zonas de baixa renda no sudoeste da cidade.
+                        </div>
+                        <p>
+                            <span style="font-size: 3rem; float: left; line-height: 0.8; margin-right: 10px; font-family: 'Playfair Display'">E</span>m Bogotá, a poluição do ar não é apenas um problema ambiental, mas uma profunda questão social. Nossos dados mostram que enquanto o norte da cidade respira, o sudoeste (Kennedy, Ciudad Bolívar) enfrenta concentrações críticas de material particulado.
+                        </p>
+                        <p>
+                            Este projeto propõe uma mudança de paradigma: sair da gestão reativa para a <strong>preditiva</strong>. Usando modelos SARIMAX e análise geoespacial, buscamos não apenas prever picos de poluição, mas intervir antes que eles prejudiquem a saúde das crianças e idosos nas zonas mais vulneráveis.
+                        </p>
+                        <br>
+                        <div class="quote-box">
+                            "O risco não é democrático. A física das montanhas e a economia da cidade aprisionam a poluição nos bairros mais pobres."
+                        </div>
+                    </div>
+                    
+                    <div class="sidebar">
+                        <h3 style="font-family: 'Playfair Display'; margin-bottom: 1rem;">Em Números</h3>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <span class="stat-highlight" id="counter">0</span>
+                            <span style="font-size: 0.9rem; text-transform: uppercase;">Pessoas afetadas na Zona Sudoeste</span>
+                        </div>
+
+                        <hr style="margin: 1rem 0; border-color: #ccc;">
+
+                        <div style="margin-bottom: 2rem;">
+                            <span class="stat-highlight">29<small style="font-size:1rem">µg/m³</small></span>
+                            <span style="font-size: 0.9rem; text-transform: uppercase;">Média de PM2.5 em Kennedy (Acima do padrão OMS)</span>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <span class="stat-highlight">10x</span>
+                            <span style="font-size: 0.9rem; text-transform: uppercase;">Maior exposição para crianças de estratos baixos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mapa" class="page">
+                <h2 class="headline" style="font-size: 2.5rem;">A Geografia da Exposição</h2>
+                
+                <div class="two-columns">
+                    <div class="visual-container">
+                        <div id="mapa-bogota" style="height: 500px; width: 100%;"></div>
+                        <div class="caption">Fig 1. Distribuição espacial das estações de monitoramento e níveis de risco.</div>
+                    </div>
+
+                    <div>
+                        <h3 class="sub-headline">A Física que Aprisiona</h3>
+                        <p>
+                            Bogotá funciona como uma bacia semi-fechada. A topografia montanhosa a leste (Cerros Orientales) e os regimes de ventos fracos criam condições ideais para a estagnação de poluentes.
+                        </p>
+                        <ul style="margin-left: 20px; line-height: 2; margin-bottom: 20px;">
+                            <li><strong>Inversão Térmica:</strong> Nas manhãs frias, uma camada de ar quente aprisiona o ar frio e poluído próximo ao solo.</li>
+                            <li><strong>Transporte de Biomassa:</strong> Ventos alísios trazem fumaça de queimadas da Orinoquía e Amazônia.</li>
+                            <li><strong>Zona Sudoeste:</strong> Por ser a zona mais baixa e industrial, recebe a carga de poluição "varrida" do norte pelos ventos.</li>
+                        </ul>
+                        
+                        <div style="background: #e2e8f0; padding: 1rem; border-left: 4px solid var(--highlight-red);">
+                            <strong>Ponto Crítico:</strong> As localidades de Kennedy, Tunjuelito e Bosa formam o "triângulo da poluição", coincidindo com áreas de alta densidade populacional e Estratos 1 e 2.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dados" class="page">
+                <h2 class="headline" style="font-size: 2.5rem;">O Que Dizem os Dados?</h2>
+                <p class="lead">Uma análise das séries temporais da RMCAB e percepção social.</p>
+
+                <div class="two-columns">
+                    <div>
+                        <div class="visual-container">
+                            <div id="grafico-temporal" style="height: 350px;"></div>
+                            <div class="caption">Variação diária de PM2.5. Note os picos nas horas de ponta (6h-9h).</div>
+                        </div>
+                        <p>
+                            A análise estatística revela um padrão de "sazonalidade diária". Os níveis sobem drasticamente com o tráfego matinal e a atividade industrial, agravados pela estabilidade atmosférica da manhã.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <div class="visual-container">
+                            <div id="grafico-estratos" style="height: 350px;"></div>
+                            <div class="caption">Correlação clara: Menor renda (Estrato 1-2) = Maior Poluição.</div>
+                        </div>
+                        <p>
+                            Ao cruzar dados de poluição com dados socioeconômicos do DANE, confirmamos a hipótese de desigualdade ambiental. Os estratos 5 e 6 (Usaquén) desfrutam de ar significativamente mais limpo.
+                        </p>
+                    </div>
+                </div>
+
+                <hr style="margin: 3rem 0;">
+
+                <h3 class="sub-headline">A Voz da Comunidade</h3>
+                <div class="three-columns">
+                    <div style="grid-column: span 2; display: flex; align-items: center; justify-content: center;">
+                        <div id="wordcloud" style="width: 100%; text-align: center;"></div>
+                    </div>
+                    <div class="sidebar" style="background: #fff; border: 1px dashed #ccc;">
+                        <h4>Resultados da Pesquisa</h4>
+                        <p>Em questionário aplicado a moradores:</p>
+                        <ul>
+                            <li><strong>85%</strong> sentem que a poluição afeta sua saúde.</li>
+                            <li>Palavras mais citadas: "Tosse", "Olhos", "Fumaça", "Caminhões".</li>
+                            <li>Percepção de injustiça: Moradores do sul sentem que as medidas restritivas (Pico y Placa) não resolvem o problema local.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="solucoes" class="page">
+                <h2 class="headline">Fase 3: Proposta de Intervenção</h2>
+                <p class="lead">Não basta monitorar. É preciso prever e agir com justiça.</p>
+
+                <div class="three-columns">
+                    <div class="card-solution">
+                        <div style="color: var(--highlight-blue); margin-bottom: 1rem;">
+                            <i data-lucide="radar" width="40" height="40"></i>
+                        </div>
+                        <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 0.5rem;">1. Alerta Precoce Local</h3>
+                        <p style="font-size: 0.9rem; font-style: italic;">Modelo SARIMAX</p>
+                        <p>
+                            Desenvolvimento de um modelo estatístico preditivo que avisa com <strong>24 a 48 horas de antecedência</strong> sobre picos de poluição.
+                        </p>
+                        <p>
+                            <strong>A inovação:</strong> Alertas por UPZ (bairro), não apenas para a cidade toda. Permite que escolas em Kennedy suspendam atividades físicas antes que o ar se torne tóxico.
+                        </p>
+                    </div>
+
+                    <div class="card-solution">
+                        <div style="color: var(--highlight-blue); margin-bottom: 1rem;">
+                            <i data-lucide="truck" width="40" height="40"></i>
+                        </div>
+                        <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 0.5rem;">2. Janelas Limpas</h3>
+                        <p style="font-size: 0.9rem; font-style: italic;">Logística Inteligente</p>
+                        <p>
+                            Em vez de proibir tudo, criar horários de restrição focados em <strong>corredores de carga</strong> específicos que atravessam zonas residenciais.
+                        </p>
+                        <p>
+                            Uso de incentivos para "micrologística" (bicicletas de carga) e rotas alternativas baseadas na previsão do vento.
+                        </p>
+                    </div>
+
+                    <div class="card-solution">
+                        <div style="color: var(--highlight-blue); margin-bottom: 1rem;">
+                            <i data-lucide="scale" width="40" height="40"></i>
+                        </div>
+                        <h3 style="font-family: 'Playfair Display'; font-size: 1.5rem; margin-bottom: 0.5rem;">3. Plano Estrutural</h3>
+                        <p style="font-size: 0.9rem; font-style: italic;">Justiça Ambiental</p>
+                        <p>
+                            Integração do plano de ordenamento territorial com a qualidade do ar.
+                        </p>
+                        <p>
+                            Priorização de <strong>infraestrutura verde</strong> (barreiras de árvores) em escolas e hospitais das zonas sudoeste, financiado por um orçamento participativo verde.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="visual-container" style="margin-top: 3rem; background: #f8f9fa;">
+                    <h3 style="padding: 1rem; border-bottom: 1px solid #ccc;">Simulação do Modelo Preditivo</h3>
+                    <div id="modelo-previsao" style="height: 400px;"></div>
+                    <div class="caption" style="padding: 1rem;">
+                        O gráfico mostra a capacidade do modelo (vermelho tracejado) de antecipar a subida da poluição (verde sólido), permitindo ação preventiva.
+                    </div>
+                </div>
+            </div>
+
+            <div id="metodologia" class="page">
+                <h2 class="headline">Nos Bastidores da Ciência</h2>
+                
+                <div class="two-columns">
+                    <div>
+                        <h3 class="sub-headline">Equipe & Ferramentas</h3>
+                        <p><strong>Autores:</strong> Karen Daniela Marin Baez & Johann Camilo Rincon Real</p>
+                        <p><strong>Instituição:</strong> Universidade Nacional da Colômbia</p>
+                        
+                        <h4 style="margin-top: 1rem;">Tecnologias Utilizadas:</h4>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Python (Pandas/Statsmodels):</strong> Para limpeza de dados e modelagem SARIMAX.</li>
+                            <li><strong>Plotly.js:</strong> Para visualização de dados interativa na web.</li>
+                            <li><strong>OpenAQ & RMCAB:</strong> Fontes de dados abertos.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #fff; border: 1px solid #ccc; padding: 1.5rem;">
+                        <h4 style="text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem;">Glossário Rápido</h4>
+                        <dl>
+                            <dt><strong>PM2.5</strong></dt>
+                            <dd style="margin-bottom: 10px; font-size: 0.9rem;">Partículas finas (menos de 2.5 micrômetros) que penetram nos pulmões e corrente sanguínea.</dd>
+                            
+                            <dt><strong>SARIMAX</strong></dt>
+                            <dd style="margin-bottom: 10px; font-size: 0.9rem;">Seasonal AutoRegressive Integrated Moving Average with eXogenous regressors. Modelo estatístico usado para previsão.</dd>
+                            
+                            <dt><strong>Inversão Térmica</strong></dt>
+                            <dd style="font-size: 0.9rem;">Fenômeno onde ar quente fica sobre ar frio, impedindo a dispersão de poluentes.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
-    
-    <!-- Navegação -->
-    <nav id="navbar">
-        <ul>
-            <li><a href="#inicio">Início</a></li>
-            <li><a href="#problema">O Problema</a></li>
-            <li><a href="#dados">Dados</a></li>
-            <li><a href="#solucoes">Soluções</a></li>
-            <li><a href="#brasil">Brasil</a></li>
-            <li><a href="#modelo">Modelo Preditivo</a></li>
-            <li><a href="#metodologia">Metodologia</a></li>
-        </ul>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 data-aos="fade-up">O Ar que Respiramos e as Desigualdades que Não Vemos</h1>
-            <p class="subtitle" data-aos="fade-up" data-aos-delay="200">
-                Modelagem Preditiva de PM2,5 em Bogotá
-            </p>
-            
-            <div class="impact-counter" data-aos="fade-up" data-aos-delay="400">
-                <div class="counter-number">
-                    <span id="counter">0</span>
-                </div>
-                <div class="counter-text">
-                    pessoas em zonas vulneráveis respiram ar perigoso AGORA
-                </div>
-            </div>
-            
-            <button onclick="scrollToSection('problema')" class="btn-scroll" data-aos="fade-up" data-aos-delay="600">
-                Entenda o problema ↓
-            </button>
-        </div>
-    </section>
-    
-    <!-- Seção 1: O Problema -->
-    <section id="problema" class="section">
-        <h2 class="section-title reveal">A Geografia da Desigualdade</h2>
-        
-        <div class="container">
-            <div id="mapa-bogota" class="reveal"></div>
-            
-            <div class="cards-grid">
-                <div class="info-card reveal">
-                    <div class="card-icon">🏭</div>
-                    <h3 class="card-title">Kennedy & Carvajal</h3>
-                    <p>39.7 μg/m³ de PM2,5 - O dobro do limite seguro da OMS</p>
-                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 2-3 | 1.2 milhões de pessoas</p>
-                </div>
-                
-                <div class="info-card reveal">
-                    <div class="card-icon">⚠️</div>
-                    <h3 class="card-title">Ciudad Bolívar</h3>
-                    <p>27 μg/m³ de PM2,5 - Zona de alto risco permanente</p>
-                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 1 | 400 mil pessoas</p>
-                </div>
-                
-                <div class="info-card reveal">
-                    <div class="card-icon">✨</div>
-                    <h3 class="card-title">Usaquén</h3>
-                    <p>19 μg/m³ de PM2,5 - Ar relativamente limpo</p>
-                    <p style="margin-top: 1rem; opacity: 0.8;">Estrato 5-6 | Menor exposição</p>
-                </div>
-            </div>
-            
-            <div class="reveal" style="margin-top: 3rem; padding: 2rem; background: rgba(230,57,70,0.1); border-radius: 20px;">
-                <h3 style="color: var(--color-danger); margin-bottom: 1rem;">A Física que Aprisiona</h3>
-                <p style="font-size: 1.2rem; line-height: 1.8;">
-                    Bogotá está situada a 2.600 metros de altitude, cercada por montanhas que criam uma 
-                    barreira natural. Os ventos fracos e a inversão térmica frequente transformam a cidade 
-                    em uma câmara de acumulação de poluentes. As zonas mais baixas e povoadas - justamente 
-                    onde vivem os mais vulneráveis - se tornam armadilhas mortais de PM2,5.
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Seção 2: Dados -->
-    <section id="dados" class="section">
-        <h2 class="section-title reveal">Os Dados Revelam a Verdade</h2>
-        
-        <div class="container">
-            <div id="grafico-temporal" class="reveal" style="height: 400px;"></div>
-            <div id="grafico-estratos" class="reveal" style="height: 400px; margin-top: 2rem;"></div>
-            
-            <div class="reveal" style="margin-top: 3rem;">
-                <h3 style="color: var(--color-warning); margin-bottom: 1rem;">Vozes da Comunidade</h3>
-                <div id="wordcloud" style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 20px;">
-                    <!-- Word cloud será gerado por JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Seção 3: Soluções -->
-    <section id="solucoes" class="section">
-        <h2 class="section-title reveal">Três Soluções para Salvar Vidas</h2>
-        
-        <div class="cards-grid">
-            <div class="info-card reveal">
-                <div class="card-icon">🚨</div>
-                <h3 class="card-title">1. Sistema de Alerta Precoce</h3>
-                <p>Modelo SARIMAX que prevê picos de PM2,5 com 24-48h de antecedência.</p>
-                <ul style="margin-top: 1rem; padding-left: 20px;">
-                    <li>Alertas por localidade/UPZ</li>
-                    <li>SMS e notificações push</li>
-                    <li>Mapas de risco em tempo real</li>
-                </ul>
-            </div>
-            
-            <div class="info-card reveal">
-                <div class="card-icon">🚛</div>
-                <h3 class="card-title">2. Janelas Limpas</h3>
-                <p>Gestão inteligente de emissões em corredores prioritários.</p>
-                <ul style="margin-top: 1rem; padding-left: 20px;">
-                    <li>Restrições temporárias para diesel</li>
-                    <li>Rotas alternativas dinâmicas</li>
-                    <li>Incentivos para retrofit</li>
-                </ul>
-            </div>
-            
-            <div class="info-card reveal">
-                <div class="card-icon">🌳</div>
-                <h3 class="card-title">3. Plano de Justiça Ambiental</h3>
-                <p>Transformação estrutural com foco em equidade.</p>
-                <ul style="margin-top: 1rem; padding-left: 20px;">
-                    <li>Corredores verdes estratégicos</li>
-                    <li>Eletrificação do transporte</li>
-                    <li>Orçamento participativo verde</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Seção 4: Comparação Brasil -->
-    <section id="brasil" class="section">
-        <h2 class="section-title reveal">Aprendendo com o Brasil</h2>
-        
-        <div class="brasil-section reveal">
-            <h3 style="color: var(--color-safe); margin-bottom: 2rem;">
-                O que São Paulo pode ensinar a Bogotá
-            </h3>
-            
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Cidade</th>
-                        <th>PM2,5 Médio (μg/m³)</th>
-                        <th>População Exposta</th>
-                        <th>Política Principal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Bogotá</strong></td>
-                        <td style="color: var(--color-danger);">26-30</td>
-                        <td>7.4 milhões</td>
-                        <td>Pico y Placa (reativa)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>São Paulo</strong></td>
-                        <td style="color: var(--color-warning);">22-25</td>
-                        <td>12.3 milhões</td>
-                        <td>Rodízio + CETESB (preventiva)</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Rio de Janeiro</strong></td>
-                        <td style="color: var(--color-safe);">18-20</td>
-                        <td>6.7 milhões</td>
-                        <td>MonitorAr-Rio (monitoramento)</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div style="margin-top: 2rem;">
-                <h4 style="color: var(--color-safe); margin-bottom: 1rem;">
-                    Políticas Brasileiras de Sucesso:
-                </h4>
-                <ul style="line-height: 2;">
-                    <li>✅ <strong>Operação Inverno:</strong> Fiscalização intensiva durante períodos críticos</li>
-                    <li>✅ <strong>Rodízio Municipal:</strong> Redução de 20% da frota diariamente</li>
-                    <li>✅ <strong>CETESB:</strong> Sistema de previsão com 48h de antecedência</li>
-                    <li>✅ <strong>ProConve:</strong> Controle rigoroso de emissões veiculares</li>
-                </ul>
-            </div>
-            
-            <div id="grafico-brasil" style="height: 400px; margin-top: 2rem;"></div>
-        </div>
-    </section>
-    
-    <!-- Seção 5: Modelo Preditivo -->
-    <section id="modelo" class="section">
-        <h2 class="section-title reveal">Modelo Preditivo em Ação</h2>
-        
-        <div class="reveal">
-            <div id="modelo-previsao" style="height: 500px;"></div>
-            
-            <div style="margin-top: 2rem; padding: 2rem; background: rgba(6,255,165,0.1); border-radius: 20px;">
-                <h3 style="color: var(--color-safe); margin-bottom: 1rem;">Métricas do Modelo</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <div>
-                        <strong>Precisão (R²):</strong> 0.78
-                    </div>
-                    <div>
-                        <strong>Erro Médio (MAE):</strong> 3.2 μg/m³
-                    </div>
-                    <div>
-                        <strong>Antecedência:</strong> 24-48 horas
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-message">
-            "A poluição do ar não escolhe suas vítimas, mas a geografia e a economia sim."
-        </div>
-        <p style="opacity: 0.7;">
-            Karen Daniela Marin Baez & Johann Camilo Rincon Real<br>
-            Universidade Nacional da Colômbia - 2024
-        </p>
-    </footer>
-    
-    <!-- Scripts -->
+
     <script>
-        // Inicialização AOS
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-        
-        // Remover loader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.querySelector('.loader').style.opacity = '0';
-                setTimeout(() => {
-                    document.querySelector('.loader').style.display = 'none';
-                }, 1000);
-            }, 2000);
-        });
-        
-        // Contador animado
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // Lógica de Navegação (Abas)
+        function showPage(pageId) {
+            // Remover classe active de todas as páginas e abas
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('nav li').forEach(l => l.classList.remove('active'));
+            
+            // Adicionar active no alvo
+            document.getElementById(pageId).classList.add('active');
+            
+            // Encontrar o li correspondente (simples busca pelo texto ou index)
+            const navItems = document.querySelectorAll('nav li');
+            // Mapeamento simples baseada na ordem, ou você pode passar 'this' na função
+            if(pageId === 'capa') navItems[0].classList.add('active');
+            if(pageId === 'mapa') navItems[1].classList.add('active');
+            if(pageId === 'dados') navItems[2].classList.add('active');
+            if(pageId === 'solucoes') navItems[3].classList.add('active');
+            if(pageId === 'metodologia') navItems[4].classList.add('active');
+
+            // Forçar redimensionamento dos gráficos Plotly (eles bugam se iniciados escondidos)
+            window.dispatchEvent(new Event('resize'));
+        }
+
+        // Contador da Capa
         function animateCounter() {
             const counter = document.getElementById('counter');
-            const target = 1600000;
-            const increment = target / 100;
+            const target = 1600000; // 1.6 Milhões
             let current = 0;
+            const increment = target / 50;
             
             const timer = setInterval(() => {
                 current += increment;
@@ -616,263 +518,156 @@
                     clearInterval(timer);
                 }
                 counter.textContent = Math.floor(current).toLocaleString('pt-BR');
-            }, 20);
+            }, 30);
         }
-        
-        // Ativar contador quando visível
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.id === 'counter') {
-                    animateCounter();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        
-        observer.observe(document.getElementById('counter'));
-        
-        // Navegação sticky
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('visible');
-            } else {
-                navbar.classList.remove('visible');
-            }
-            
-            // Reveal elements
-            document.querySelectorAll('.reveal').forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    el.classList.add('active');
-                }
-            });
-        });
-        
-        // Scroll suave
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Criar Mapa de Bogotá
-        function createBogotaMap() {
+        animateCounter();
+
+        // 1. MAPA (Simulado com Plotly Scattermapbox ou Scattergeo)
+        function drawMap() {
             const data = [{
                 type: 'scattermapbox',
                 lat: [4.5958, 4.6254, 4.5709, 4.6965],
                 lon: [-74.1489, -74.1475, -74.1761, -74.0323],
                 mode: 'markers+text',
                 marker: {
-                    size: [39.7, 30.6, 27, 19],
-                    color: ['#e63946', '#f77f00', '#f77f00', '#06ffa5'],
-                    opacity: 0.8
+                    size: [25, 20, 22, 15],
+                    color: ['#c53030', '#dd6b20', '#dd6b20', '#38a169'],
+                    opacity: 0.9
                 },
-                text: ['Carvajal: 39.7 μg/m³', 'Kennedy: 30.6 μg/m³', 'C. Bolívar: 27 μg/m³', 'Usaquén: 19 μg/m³'],
-                textposition: 'top center',
-                textfont: {
-                    size: 14,
-                    color: '#ffffff'
-                }
+                text: ['Carvajal (Crítico)', 'Kennedy (Alto)', 'C. Bolívar (Alto)', 'Usaquén (Bom)'],
+                textposition: 'top right',
+                textfont: { family: 'Inter', size: 12, color: 'black' }
             }];
-            
+
             const layout = {
                 mapbox: {
-                    style: 'dark',
-                    center: {lat: 4.6097, lon: -74.0817},
+                    style: 'open-street-map', // Estilo claro/papel
+                    center: {lat: 4.63, lon: -74.10},
                     zoom: 10
                 },
                 margin: {t: 0, b: 0, l: 0, r: 0},
-                paper_bgcolor: 'transparent',
-                font: {color: '#ffffff'}
+                paper_bgcolor: '#fdfbf7',
             };
-            
-            const config = {
-                mapboxAccessToken: 'pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNrOWJqb2F4djBnMjEzbG50amg0dnJieG4ifQ.Zme1-Uzoi75IaFbieBDl3A',
-                responsive: true
-            };
-            
-            Plotly.newPlot('mapa-bogota', data, layout, config);
+
+            // Nota: scattermapbox requer token em alguns casos, ou style open-street-map. 
+            // Se falhar, usar scattergeo simples.
+            Plotly.newPlot('mapa-bogota', data, layout);
         }
-        
-        // Criar gráficos
-        function createCharts() {
-            // Gráfico temporal
-            const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago'];
-            const pm25Values = [35, 42, 38, 45, 40, 37, 33, 35];
-            
+
+        // 2. GRÁFICOS
+        function drawCharts() {
+            // Cores do tema jornal
+            const inkColor = '#1a1a1a';
+            const redAlert = '#c53030';
+            const greenSafe = '#38a169';
+
+            // Temporal
             const trace1 = {
-                x: months,
-                y: pm25Values,
+                x: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
+                y: [15, 12, 35, 42, 28, 25, 30, 20],
                 type: 'scatter',
                 mode: 'lines+markers',
-                line: {
-                    color: '#e63946',
-                    width: 3
-                },
-                marker: {
-                    size: 10,
-                    color: '#f77f00'
-                },
+                line: { color: inkColor, width: 2 },
                 fill: 'tozeroy',
-                fillcolor: 'rgba(230, 57, 70, 0.2)'
+                fillcolor: 'rgba(0,0,0,0.1)'
             };
-            
+
             const layout1 = {
-                title: 'Evolução PM2,5 em 2024 - Zona Sul',
-                xaxis: {title: 'Mês'},
-                yaxis: {title: 'PM2,5 (μg/m³)'},
+                margin: {t: 20, l: 40, r: 20, b: 40},
                 paper_bgcolor: 'transparent',
                 plot_bgcolor: 'transparent',
-                font: {color: '#ffffff'},
-                shapes: [{
-                    type: 'line',
-                    x0: 0,
-                    y0: 25,
-                    x1: 1,
-                    y1: 25,
-                    xref: 'paper',
-                    line: {
-                        color: '#06ffa5',
-                        width: 2,
-                        dash: 'dash'
-                    }
-                }],
-                annotations: [{
-                    x: 0.5,
-                    y: 25,
-                    xref: 'paper',
-                    text: 'Limite OMS',
-                    showarrow: false,
-                    font: {color: '#06ffa5'}
-                }]
+                xaxis: { title: 'Hora do Dia', gridcolor: '#e2e8f0' },
+                yaxis: { title: 'PM2.5 (µg/m³)', gridcolor: '#e2e8f0' },
+                font: { family: 'Inter', color: inkColor }
             };
-            
-            Plotly.newPlot('grafico-temporal', [trace1], layout1, {responsive: true});
-            
-            // Gráfico por estratos
+            Plotly.newPlot('grafico-temporal', [trace1], layout1, {displayModeBar: false});
+
+            // Estratos
             const trace2 = {
                 x: ['Estrato 1', 'Estrato 2', 'Estrato 3', 'Estrato 4', 'Estrato 5', 'Estrato 6'],
-                y: [35, 32, 28, 22, 19, 18],
+                y: [32, 29, 25, 18, 15, 12],
                 type: 'bar',
                 marker: {
-                    color: ['#e63946', '#e63946', '#f77f00', '#f77f00', '#06ffa5', '#06ffa5']
+                    color: [redAlert, redAlert, '#dd6b20', '#dd6b20', greenSafe, greenSafe]
                 }
             };
-            
+
             const layout2 = {
-                title: 'Exposição ao PM2,5 por Estrato Socioeconômico',
-                xaxis: {title: 'Estrato'},
-                yaxis: {title: 'PM2,5 Médio (μg/m³)'},
+                margin: {t: 20, l: 40, r: 20, b: 40},
                 paper_bgcolor: 'transparent',
                 plot_bgcolor: 'transparent',
-                font: {color: '#ffffff'}
+                xaxis: { gridcolor: 'transparent' },
+                yaxis: { title: 'Média Anual', gridcolor: '#e2e8f0' },
+                font: { family: 'Inter', color: inkColor }
             };
-            
-            Plotly.newPlot('grafico-estratos', [trace2], layout2, {responsive: true});
-            
-            // Gráfico Brasil
+            Plotly.newPlot('grafico-estratos', [trace2], layout2, {displayModeBar: false});
+
+            // Previsão (Soluções)
+            const hours = Array.from({length: 24}, (_, i) => i);
+            const obs = [20, 22, 21, 25, 30, 35, 40, 38, 32, 28, 25, 22]; // 12h
+            const pred = [22, 20, 19, 20, 25, 30, 38, 45, 42, 35, 30, 28]; // Próximas 12h
+
             const trace3 = {
-                x: ['Bogotá', 'São Paulo', 'Rio de Janeiro', 'Belo Horizonte'],
-                y: [30, 25, 20, 18],
-                type: 'bar',
-                marker: {
-                    color: ['#e63946', '#f77f00', '#ffd60a', '#06ffa5']
-                }
+                x: hours.slice(0, 12),
+                y: obs,
+                name: 'Observado',
+                line: { color: inkColor }
             };
-            
-            const layout3 = {
-                title: 'Comparação PM2,5 - Colômbia vs Brasil (2024)',
-                xaxis: {title: 'Cidade'},
-                yaxis: {title: 'PM2,5 Médio (μg/m³)'},
-                paper_bgcolor: 'transparent',
-                plot_bgcolor: 'transparent',
-                font: {color: '#ffffff'}
-            };
-            
-            Plotly.newPlot('grafico-brasil', [trace3], layout3, {responsive: true});
-            
-            // Modelo preditivo
-            const hours = Array.from({length: 48}, (_, i) => i);
-            const historical = hours.slice(0, 24).map(h => 25 + Math.random() * 10);
-            const predicted = hours.slice(24).map(h => 28 + Math.sin(h/6) * 8 + Math.random() * 3);
-            
             const trace4 = {
-                x: hours.slice(0, 24),
-                y: historical,
-                type: 'scatter',
-                mode: 'lines',
-                name: 'Histórico',
-                line: {color: '#06ffa5', width: 2}
+                x: hours.slice(11, 24),
+                y: [obs[11], ...pred.slice(1)],
+                name: 'Previsão Modelo',
+                line: { color: redAlert, dash: 'dot', width: 3 }
             };
-            
-            const trace5 = {
-                x: hours.slice(23),
-                y: [historical[23], ...predicted],
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: 'Previsão',
-                line: {color: '#e63946', width: 2, dash: 'dash'},
-                marker: {size: 6}
-            };
-            
-            const layout4 = {
-                title: 'Modelo SARIMAX - Previsão 24h Kennedy',
-                xaxis: {title: 'Horas'},
-                yaxis: {title: 'PM2,5 (μg/m³)'},
+
+            const layout3 = {
+                margin: {t: 20, l: 40, r: 20, b: 40},
                 paper_bgcolor: 'transparent',
                 plot_bgcolor: 'transparent',
-                font: {color: '#ffffff'},
-                shapes: [{
-                    type: 'line',
-                    x0: 0,
-                    y0: 35,
-                    x1: 48,
-                    y1: 35,
-                    line: {
-                        color: '#f77f00',
-                        width: 2,
-                        dash: 'dash'
-                    }
-                }],
-                annotations: [{
-                    x: 40,
-                    y: 35,
-                    text: 'Limiar de Alerta',
-                    showarrow: false,
-                    font: {color: '#f77f00'}
-                }]
+                xaxis: { title: 'Horas (Futuro)', gridcolor: '#e2e8f0' },
+                yaxis: { title: 'PM2.5', gridcolor: '#e2e8f0' },
+                showlegend: true,
+                legend: { x: 0, y: 1 },
+                font: { family: 'Inter' }
             };
-            
-            Plotly.newPlot('modelo-previsao', [trace4, trace5], layout4, {responsive: true});
+            Plotly.newPlot('modelo-previsao', [trace3, trace4], layout3, {displayModeBar: false});
         }
-        
-        // Word Cloud simples
-        function createWordCloud() {
+
+        // Word Cloud (Simples HTML)
+        function drawWordCloud() {
             const words = [
-                { text: 'IRRESPIRÁVEL', size: 40 },
-                { text: 'Sufocante', size: 35 },
-                { text: 'Perigoso', size: 30 },
-                { text: 'Injusto', size: 28 },
-                { text: 'Tóxico', size: 32 },
-                { text: 'Preocupante', size: 25 },
-                { text: 'Desigual', size: 30 },
-                { text: 'Alarmante', size: 28 }
+                {text: "Dificuldade Respiratória", size: 24, w: 700},
+                {text: "Caminhões", size: 20, w: 600},
+                {text: "Alergia", size: 18, w: 500},
+                {text: "Poeira", size: 22, w: 600},
+                {text: "Injustiça", size: 16, w: 400},
+                {text: "Gripe Constante", size: 19, w: 500},
+                {text: "Zona Sul", size: 20, w: 600},
+                {text: "Fumaça", size: 28, w: 800, color: '#c53030'}
             ];
-            
-            const wordCloudHTML = words.map(word => 
-                `<span style="font-size: ${word.size}px; color: ${word.size > 30 ? '#e63946' : '#f77f00'}; margin: 0 10px; font-weight: bold;">${word.text}</span>`
-            ).join('');
-            
-            document.getElementById('wordcloud').innerHTML = wordCloudHTML;
+
+            const container = document.getElementById('wordcloud');
+            let html = '';
+            words.forEach(w => {
+                html += `<span style="
+                    display:inline-block; 
+                    padding: 5px 10px; 
+                    font-size: ${w.size}px; 
+                    font-weight: ${w.w}; 
+                    color: ${w.color || '#4a4a4a'};
+                    font-family: 'Playfair Display', serif;
+                ">${w.text}</span>`;
+            });
+            container.innerHTML = html;
         }
-        
-        // Inicializar tudo quando a página carregar
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                createBogotaMap();
-                createCharts();
-                createWordCloud();
-            }, 1000);
-        });
+
+        // Executar
+        window.onload = function() {
+            drawMap();
+            drawCharts();
+            drawWordCloud();
+        };
+
     </script>
 </body>
 </html>
