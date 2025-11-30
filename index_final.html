@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Ar de Bogotá | Jornal Digital Interativo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --paper-bg: #faf8f5;
+            --paper-dark: #f0ece4;
+            --ink-black: #1a1714;
+            --ink-grey: #4a4540;
+            --ink-light: #7a756d;
+            --alert-red: #b91c1c;
+            --alert-orange: #c2410c;
+            --alert-yellow: #a16207;
+            --safe-green: #166534;
+            --accent-blue: #1e40af;
+            --border-dark: #2a2520;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #d4d0c8 0%, #c8c4bc 100%);
+            font-family: 'Source Serif 4', Georgia, serif;
+            color: var(--ink-black);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Container do Jornal */
+        .newspaper {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--paper-bg);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 4px 6px rgba(0,0,0,0.05),
+                0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        /* Cabeçalho / Masthead */
+        header {
+            background: var(--ink-black);
+            color: var(--paper-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .masthead-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 1rem;
+        }
+
+        h1.masthead-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* Navegação */
+        nav {
+            background: var(--paper-dark);
+            border-bottom: 3px solid var(--ink-black);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            overflow-x: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: flex-start; /* Alterado para acomodar muitos itens */
+            flex-wrap: nowrap; /* Scroll horizontal se necessário */
+            padding: 0 1rem;
+        }
+
+        nav li {
+            padding: 1rem 1rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        nav li:hover { 
+            background: var(--ink-black);
+            color: var(--paper-bg);
+        }
+
+        nav li.active {
+            background: var(--alert-red);
+            color: white;
+        }
+
+        /* Conteúdo */
+        main {
+            padding: 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tipografia Editorial */
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--ink-grey);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        p { 
+            margin-bottom: 1.2rem; 
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Helpers de Layout */
+        .grid-main {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px; /* Oreja Esq | Conteúdo | Oreja Dir */
+            gap: 2rem;
+        }
+        
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+        /* Placeholders de Imagem */
+        .img-placeholder {
+            background-color: #e2e2e2;
+            border: 1px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .img-placeholder::after {
+            content: attr(data-name);
+            display: block;
+        }
+
+        figcaption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Elementos Específicos */
+        .oreja {
+            background: var(--paper-dark);
+            border: 1px solid var(--ink-black);
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .index-box {
+            background: var(--ink-black);
+            color: white;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .index-box h4 { border-bottom: 1px solid #555; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .index-box ul { list-style: none; }
+        .index-box li { font-family: 'JetBrains Mono'; font-size: 0.8rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; }
+
+        /* Classificados */
+        .classified-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            font-family: sans-serif; /* Estilo mais 'popular' */
+        }
+        .classified-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            font-size: 0.8rem;
+        }
+        .classified-item h4 { color: var(--accent-blue); margin-bottom: 5px; text-transform: uppercase; font-size: 0.85rem;}
+        .classified-price { font-weight: bold; color: var(--alert-red); display: block; margin-top: 5px; }
+
+        /* Passatempos */
+        .puzzle-box {
+            border: 2px solid var(--ink-black);
+            padding: 1rem;
+            background: white;
+            height: 100%;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .grid-main { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .oreja { display: none; } /* Esconde orejas em mobile */
+        }
+    </style>
+</head>
+<body>
+
+<div class="newspaper">
+    <header>
+        <div class="masthead-meta">
+            <span>Vol. 1 • Edição Especial</span>
+            <span>Bogotá, D.C. — Novembro 2025</span>
+            <span>R$ 5,00 / COP 4.000</span>
+            <span>www.oardebogota.com</span>
+        </div>
+        <h1 class="masthead-title">O Ar de Bogotá</h1>
+        <div class="masthead-subtitle">Modelagem Preditiva e Análise da Desigualdade Ambiental</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="active" onclick="showPage('capa')">Capa</li>
+            <li onclick="showPage('o-ar')">O Ar</li>
+            <li onclick="showPage('brasil')">Brasil</li>
+            <li onclick="showPage('local')">Local</li>
+            <li onclick="showPage('economia')">Economia</li>
+            <li onclick="showPage('esportes')">Esportes</li>
+            <li onclick="showPage('cultura')">Cultura</li>
+            <li onclick="showPage('passatempos')">Passatempos</li>
+            <li onclick="showPage('classificados')">Classificados</li>
+            <li onclick="showPage('opiniao')">Opinião</li>
+            <li onclick="showPage('contraportada')">Contraportada</li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="capa" class="page active">
+            <div style="display: flex; gap: 1rem; justify-content: space-between; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem;">
+                <div class="oreja" style="flex: 1; height: 100px;">
+                    <div class="img-placeholder" style="height: 100%;" data-name="oreja1.png"></div>
+                </div>
+                <div class="oreja" style="flex: 1; height: 100px;">
+                    <div class="img-placeholder" style="height: 100%;" data-name="oreja2.png"></div>
+                </div>
+                <div class="oreja" style="flex: 1; height: 100px;">
+                    <div class="img-placeholder" style="height: 100%;" data-name="oreja3.png"></div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
+                <article>
+                    <h2 class="headline" style="font-size: 3.5rem;">Desigualdade Invisível: O Ar que Respiramos não é o Mesmo para Todos</h2>
+                    <p class="subheadline">Análise revela como a poluição por PM2.5 afeta desproporcionalmente o sudoeste de Bogotá.</p>
+                    
+                    <p class="lead">
+                        <span style="float: left; font-size: 3rem; line-height: 0.8; font-weight: bold; margin-right: 10px;">E</span>m Bogotá, a poluição do ar transcende a questão ambiental para se tornar um problema de justiça social. Dados da RMCAB mostram que moradores do sudoeste enfrentam concentrações de material particulado muito superiores às do norte.
+                    </p>
+                    
+                    <p>Este projeto propõe uma mudança de paradigma: sair da gestão reativa para a <strong>gestão preditiva</strong>, utilizando modelos SARIMAX. O objetivo é antecipar picos de poluição com 48 horas de antecedência. "O risco não é democrático", afirmam os pesquisadores.</p>
+
+                    <div class="index-box">
+                        <h4>SUMÁRIO DESTA EDIÇÃO</h4>
+                        <ul>
+                            <li><strong>Pág 2:</strong> O Ar que Respiramos - A física da poluição.</li>
+                            <li><strong>Pág 3:</strong> Lições do Brasil - O caso de São Paulo.</li>
+                            <li><strong>Pág 4:</strong> Soluções Locais - Modelo Preditivo.</li>
+                            <li><strong>Pág 5:</strong> Economia - O custo da saúde.</li>
+                            <li><strong>Pág 9:</strong> Classificados - Ofertas de máscaras e filtros.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: 400px; background: #333; color: white;" data-name="portada.png"></div>
+                    <figcaption>Vista aérea da contaminação em Ciudad Bolívar. Foto: Arquivo do Projeto.</figcaption>
+                    
+                    <div style="background: var(--paper-dark); padding: 1rem; border-top: 4px solid var(--alert-red);">
+                        <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red);">MANCHETE</h3>
+                        <p style="font-size: 0.9rem;">Modelos matemáticos confirmam: ventos alísios e topografia criam "armadilha" de poluição nos bairros mais pobres.</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div id="o-ar" class="page">
+            <h2 class="headline">O Ar que Respiramos</h2>
+            <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <p>A poluição do ar em Bogotá é a manifestação diária de uma desigualdade social que também se respira. A gestão reativa da cidade, que age somente após a crise, cobra um preço alto da saúde das comunidades vulneráveis. Nosso projeto nasce dessa urgência.</p>
+                    <p>A física da dispersão atmosférica, considerando a topografia de Bogotá (uma bacia cercada por montanhas), cria zonas de estagnação. Durante as manhãs, a inversão térmica aprisiona os poluentes emitidos pelos caminhões a diesel justamente nas áreas de Kennedy e Bosa.</p>
+                    <div class="img-placeholder" style="height: 250px;" data-name="mapa_dispersao.png"></div>
+                    <figcaption>Mapa de dispersão de poluentes mostrando a concentração no sudoeste.</figcaption>
+                </div>
+                <div>
+                    <p>Entrevistas realizadas com moradores revelam o impacto humano: "Não posso abrir a janela de manhã porque a fuligem cobre os móveis", relata Maria, residente de Ciudad Bolívar. As crianças são as mais afetadas, com taxas de doenças respiratórias 10x maiores nestas zonas.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="img-placeholder" style="height: 250px;" data-name="grafico_padroes.png"></div>
+                    <figcaption>Gráfico comparativo: Zona Norte vs. Zona Sudoeste.</figcaption>
+                </div>
+            </div>
+        </div>
+
+        <div id="brasil" class="page">
+            <h2 class="headline">Lições do Brasil</h2>
+            <p class="subheadline">O que ocorre no gigante vizinho e como eles solucionam problemas similares.</p>
+
+            <div class="grid-3">
+                <article style="grid-column: span 2;">
+                    <p>São Paulo, a maior metrópole da América do Sul, enfrenta desafios similares. O programa <strong>PROCONVE</strong> reduziu em 90% as emissões veiculares desde 1986. Mais recentemente, a Zona de Baixa Emissão (ZBE) restringiu caminhões antigos no centro.</p>
+                    <p>A comparação é inevitável. Enquanto Bogotá aposta no "Pico y Placa", São Paulo implementou um rodízio estrutural e inspeção veicular rigorosa. O Brasil também avança com o CONAMA 491, definindo novos padrões de qualidade do ar.</p>
+                    
+                    <table style="width:100%; border-collapse: collapse; margin: 1rem 0; border: 1px solid #333;">
+                        <tr style="background: #333; color: white;">
+                            <th style="padding: 10px;">Aspecto</th>
+                            <th style="padding: 10px;">São Paulo (BR)</th>
+                            <th style="padding: 10px;">Bogotá (COL)</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Restrição</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Rodízio + ZBE</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Pico y Placa</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #ddd;">Monitoramento</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">CETESB (43 estações)</td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">RMCAB (19 estações)</td>
+                        </tr>
+                    </table>
+                </article>
+                <aside>
+                    <div class="img-placeholder" style="height: 300px;" data-name="saopaulo_transito.png"></div>
+                    <figcaption>Trânsito na Av. Paulista, São Paulo.</figcaption>
+                    <p style="font-size: 0.9rem;">O modelo brasileiro de gestão de dados da CETESB serve de inspiração para a integração de dados proposta para Bogotá.</p>
+                </aside>
+            </div>
+        </div>
+
+        <div id="local" class="page">
+            <h2 class="headline">Soluções para Bogotá</h2>
+            <p class="subheadline">Resultados do projeto e impacto na vida das pessoas.</p>
+            
+            <div class="grid-3">
+                <div class="puzzle-box" style="background: #eef2ff; border-color: var(--accent-blue);">
+                    <h3 style="color: var(--accent-blue);">1. Alerta Precoce</h3>
+                    <p>Uso de modelo SARIMAX para prever picos de poluição com 48h de antecedência. Isso permite que escolas suspendam atividades físicas antes que o ar fique tóxico.</p>
+                </div>
+                <div class="puzzle-box" style="background: #f0fdf4; border-color: var(--safe-green);">
+                    <h3 style="color: var(--safe-green);">2. Janelas Limpas</h3>
+                    <p>Restrição inteligente de carga baseada na previsão do modelo. Caminhões são desviados de zonas residenciais apenas nas horas críticas.</p>
+                </div>
+                <div class="puzzle-box" style="background: #fff7ed; border-color: var(--alert-orange);">
+                    <h3 style="color: var(--alert-orange);">3. Plano Estrutural</h3>
+                    <p>Justiça ambiental no plano diretor: mais árvores e barreiras verdes onde os dados mostram maior vulnerabilidade.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <p class="lead">Conclusão dos Pesquisadores:</p>
+                <p>O modelo atingiu um erro médio (MAE) de apenas 9.0 µg/m³, suficiente para salvar vidas através da prevenção. Implementar estas soluções custaria menos do que o gasto atual com internações hospitalares por asma e doenças cardiovasculares.</p>
+                <div class="img-placeholder" style="height: 200px;" data-name="grafico_resultados_modelo.png"></div>
+            </div>
+        </div>
+
+        <div id="economia" class="page">
+            <h2 class="headline">Economia & Poluição</h2>
+            <p class="subheadline">Quanto custa o ar sujo para o bolso do bogotano?</p>
+            
+            <div class="grid-2">
+                <article>
+                    <h3>Perda de Produtividade</h3>
+                    <p>Estudos indicam que a má qualidade do ar reduz a produtividade laboral em até 5%. Em Bogotá, dias de alta poluição correlacionam-se com maior absenteísmo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a nisi ac justo ornare tincidunt.</p>
+                    <p>O sistema de saúde gasta bilhões de pesos anualmente tratando doenças evitáveis. A implementação do nosso sistema de alerta precoce poderia economizar cerca de R$ 15 milhões por ano em custos hospitalares.</p>
+                </article>
+                <article>
+                    <h3>O Mercado de Imóveis</h3>
+                    <p>Bairros com ar mais limpo no Norte valorizam-se, enquanto zonas industriais depreciam. A desigualdade ambiental gera também desigualdade patrimonial. Nulla facilisi. Duis aliquet egestas purus in blandit.</p>
+                    <div class="img-placeholder" style="height: 200px;" data-name="grafico_custo_saude.png"></div>
+                </article>
+            </div>
+        </div>
+
+        <div id="esportes" class="page">
+            <h2 class="headline">Esporte em Risco</h2>
+            <p class="subheadline">Ciclovía: Lazer ou Perigo?</p>
+            
+            <div style="float: right; width: 300px; margin-left: 20px;">
+                <div class="img-placeholder" style="height: 300px;" data-name="ciclovia_domingo.png"></div>
+                <figcaption>Ciclistas usam máscaras na Av. Boyacá.</figcaption>
+            </div>
+
+            <p>A famosa Ciclovía de domingo é um orgulho da cidade, mas corredores e ciclistas perguntam: é seguro treinar? Nossos dados mostram que entre 6h e 9h da manhã, o esforço físico ao ar livre no sudoeste da cidade pode ser prejudicial devido à inversão térmica.</p>
+            <p>Atletas de alto rendimento já ajustam seus treinos baseados no IBOCA. "O desempenho cai quando o ar está pesado", diz o treinador Carlos Mendes. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae ipsum ut odio molestie cursus.</p>
+            <p>Recomendação do Jornal: Verifique o nosso alerta na capa antes de sair para correr amanhã.</p>
+        </div>
+
+        <div id="cultura" class="page">
+            <h2 class="headline">Cultura & Entretenimiento</h2>
+            <p class="subheadline">O lado leve (e visual) da cidade.</p>
+
+            <h3>Humor: Memes da Poluição</h3>
+            <div class="grid-2" style="margin-bottom: 2rem;">
+                <div class="img-placeholder" style="height: 250px;" data-name="meme1.png"></div>
+                <div class="img-placeholder" style="height: 250px;" data-name="meme2.png"></div>
+            </div>
+
+            <h3>Galeria: Bogotá com e sem Smog</h3>
+            <div class="grid-4">
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria1.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria2.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria3.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria4.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria5.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria6.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria7.png"></div>
+                <div class="img-placeholder" style="height: 150px;" data-name="galeria8.png"></div>
+            </div>
+        </div>
+
+        <div id="passatempos" class="page">
+            <h2 class="headline">Passatempos</h2>
+            <p class="subheadline">Desafie sua mente (enquanto usa uma máscara).</p>
+            
+            <div class="grid-2">
+                <div class="puzzle-box">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Sudoku Ambiental</h3>
+                    <table style="margin: 0 auto; border-collapse: collapse; border: 2px solid black;">
+                        <tr><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">5</td><td style="border:1px solid #999; width:30px; height:30px;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center; border-right:2px solid black;">1</td><td style="border:1px solid #999; width:30px; height:30px;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">2</td></tr>
+                        <tr><td style="border:1px solid #999; width:30px; height:30px;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">4</td><td style="border:1px solid #999; width:30px; height:30px; border-right:2px solid black;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">3</td><td style="border:1px solid #999; width:30px; height:30px;"></td></tr>
+                        <tr><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">2</td><td style="border:1px solid #999; width:30px; height:30px;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center; border-right:2px solid black;">6</td><td style="border:1px solid #999; width:30px; height:30px;"></td><td style="border:1px solid #999; width:30px; height:30px; text-align:center;">9</td></tr>
+                    </table>
+                    <p style="text-align: center; font-size: 0.8rem; margin-top: 10px;">Complete para descobrir o nível de PM2.5.</p>
+                </div>
+
+                <div class="puzzle-box">
+                    <h3 style="text-align: center;">Crucigrama "Ar Puro"</h3>
+                    <ul style="font-size: 0.85rem; margin-left: 1.5rem;">
+                        <li><strong>Horizontal 1:</strong> Partícula fina perigosa (5 letras). _ _ _ _ _</li>
+                        <li><strong>Horizontal 2:</strong> Capital da Colômbia (6 letras). _ _ _ _ _ _</li>
+                        <li><strong>Vertical 1:</strong> Fenômeno que prende a poluição (8 letras). _ _ _ _ _ _ _ _</li>
+                    </ul>
+                </div>
+
+                <div class="puzzle-box" style="grid-column: span 2;">
+                    <h3>Tira Cômica do Dia</h3>
+                    <div class="img-placeholder" style="height: 150px;" data-name="tira_comica.png"></div>
+                    <figcaption>O dia a dia de uma nuvem de fumaça em Kennedy.</figcaption>
+                </div>
+
+                <div class="puzzle-box" style="grid-column: span 2;">
+                    <h3>Horóscopo da Fumaça</h3>
+                    <div class="grid-4" style="font-size: 0.8rem;">
+                        <div><strong>Áries:</strong> Marte em combustão. Evite exercícios ao ar livre hoje.</div>
+                        <div><strong>Touro:</strong> Seja teimoso, use máscara N95.</div>
+                        <div><strong>Gêmeos:</strong> O vento muda a direção da fumaça a seu favor.</div>
+                        <div><strong>Câncer:</strong> Proteja sua casa (e seus pulmões).</div>
+                        <div><strong>Leão:</strong> Você brilha, mas o sol está coberto pelo smog.</div>
+                        <div><strong>Virgem:</strong> Analise os dados do IBOCA antes de sair.</div>
+                        <div><strong>Libra:</strong> Busque o equilíbrio entre caminhar e pegar ônibus.</div>
+                        <div><strong>Escorpião:</strong> Um mistério no ar... é apenas PM10.</div>
+                        <div><strong>Sagitário:</strong> Viaje para as montanhas, fuja do vale.</div>
+                        <div><strong>Capricórnio:</strong> Trabalho duro, mas respire fundo (com filtro).</div>
+                        <div><strong>Aquário:</strong> Inove com um purificador de ar caseiro.</div>
+                        <div><strong>Peixes:</strong> Não nade na poluição. Fique em casa.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="classificados" class="page">
+            <h2 class="headline">Classificados & Anúncios</h2>
+            <p class="subheadline">Oportunidades únicas (para quem quer respirar).</p>
+
+            <div class="classified-grid">
+                <div class="classified-item">
+                    <h4>VENDE-SE CASA</h4>
+                    <p>Localização: Cerros Orientales (Ar Puro!). Longe da contaminação de Kennedy. Vista livre de smog.</p>
+                    <span class="classified-price">R$ 850.000,00</span>
+                    <small>Tel: +57 300 123 4567</small>
+                </div>
+                <div class="classified-item">
+                    <h4>ALUGA-SE APTO</h4>
+                    <p>Centro. Janelas vedadas hermeticamente. Inclui purificador de ar industrial.</p>
+                    <span class="classified-price">R$ 2.500/mês</span>
+                    <small>Tel: +55 11 99999-8888</small>
+                </div>
+
+                <div class="classified-item">
+                    <h4>TESLA MODEL 3</h4>
+                    <p>Zero emissões! Ajude Bogotá e seu bolso. Isento de Pico y Placa.</p>
+                    <span class="classified-price">R$ 280.000,00</span>
+                    <small>Tratar com Carlos.</small>
+                </div>
+                <div class="classified-item">
+                    <h4>BICICLETA ELÉTRICA</h4>
+                    <p>Fuja do trânsito e não polua. Bateria nova. Capacete grátis.</p>
+                    <span class="classified-price">R$ 4.500,00</span>
+                    <small>Tel: +57 310 555 1234</small>
+                </div>
+
+                <div class="classified-item" style="background: #fff8e1;">
+                    <h4>MÁSCARAS DE GÁS</h4>
+                    <p>Modelo militar vintage. Perfeito para correr na Av. Caracas às 18h.</p>
+                    <span class="classified-price">R$ 150,00</span>
+                </div>
+                <div class="classified-item" style="background: #e0f2f1;">
+                    <h4>VENDE-SE AR PURO</h4>
+                    <p>Garrafas de ar importado da Amazônia. Sinta a natureza.</p>
+                    <span class="classified-price">R$ 50,00 / un</span>
+                </div>
+                <div class="classified-item">
+                    <h4>EMPREGO</h4>
+                    <p>Analista de Dados. Necessário saber Python e não ter medo de gráficos tristes.</p>
+                    <span class="classified-price">Salário a combinar</span>
+                </div>
+                <div class="classified-item">
+                    <h4>DOA-SE</h4>
+                    <p>Carro velho a diesel. Motivo: Consciência pesada.</p>
+                    <span class="classified-price">GRÁTIS</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="opiniao" class="page">
+            <h2 class="headline">Opinião & Debate</h2>
+            
+            <div class="grid-2">
+                <article>
+                    <h3 class="subheadline">Cartas do Leitor</h3>
+                    <div style="background: white; padding: 1.5rem; border: 1px solid #ddd; margin-bottom: 1rem;">
+                        <h4 style="margin-bottom: 0.5rem;">Indignação em Bosa</h4>
+                        <p style="font-style: italic;">"É inaceitável que continuemos sendo o 'escapamento' da cidade. O projeto apresentado mostra claramente que a desigualdade é planejada. Precisamos das janelas limpas já!"</p>
+                        <p style="text-align: right; font-weight: bold;">— Juliana Rocha, Estudante</p>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border: 1px solid #ddd;">
+                        <h4 style="margin-bottom: 0.5rem;">Soluções Reais</h4>
+                        <p style="font-style: italic;">"Parabéns pela pesquisa. O modelo preditivo é uma ferramenta que a prefeitura deveria adotar ontem. Chega de improviso."</p>
+                        <p style="text-align: right; font-weight: bold;">— Roberto Silva, Engenheiro</p>
+                    </div>
+                </article>
+
+                <aside>
+                    <h3 class="subheadline">Entrevista da Semana</h3>
+                    <div class="img-placeholder" style="height: 300px; background: #000;" data-name="video_entrevista_youtube.png"></div>
+                    <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
+                        <h4>Prof. Especialista em Estatística (UNAL)</h4>
+                        <p style="font-size: 0.9rem;">Conversamos com o professor sobre como a ciência de dados pode ser uma ferramenta de ativismo social e justiça ambiental. "Os números não mentem, eles gritam", afirma.</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <div id="contraportada" class="page">
+            <h2 class="headline">Ficha Técnica & Agradecimentos</h2>
+            
+            <div class="grid-main">
+                <div class="oreja">
+                    <p style="font-size: 0.8rem;">Obrigado por ler nossa edição especial.</p>
+                </div>
+
+                <div style="text-align: center;">
+                    <h3 style="margin-bottom: 2rem;">Projeto Interdisciplinar - Português</h3>
+                    
+                    <div style="margin-bottom: 3rem;">
+                        <h4>Autores</h4>
+                        <p style="font-size: 1.2rem;">Karen Daniela Marin Baez</p>
+                        <p style="font-size: 1.2rem;">Johann Camilo Rincon Real</p>
+                        <p style="color: var(--ink-light);">Universidad Nacional de Colombia</p>
+                    </div>
+
+                    <div class="grid-2" style="text-align: left;">
+                        <div>
+                            <h4>Fontes & Dados</h4>
+                            <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem;">
+                                <li>RMCAB (Rede de Monitoramento de Bogotá)</li>
+                                <li>OpenAQ API</li>
+                                <li>DANE (Censo 2018)</li>
+                                <li>Literatura Científica (Jin et al., Pachón et al.)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Ferramentas</h4>
+                            <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem;">
+                                <li>Python (Pandas, Statsmodels)</li>
+                                <li>Plotly.js (Visualização)</li>
+                                <li>HTML5/CSS3 Grid Layout</li>
+                                <li>SARIMAX (Modelagem)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 3rem; padding: 2rem; border: 1px solid #ccc; background: white;">
+                        <h4>Agradecimentos Especiais</h4>
+                        <p>Aos professores orientadores e a todos os cidadãos que responderam ao nosso questionário de percepção ambiental. Este trabalho é dedicado a todos que lutam por um ar mais limpo em Bogotá.</p>
+                    </div>
+                </div>
+
+                <div class="oreja">
+                    <p style="font-size: 0.8rem;">Escaneie para ver o código no GitHub.</p>
+                    <div class="img-placeholder" style="height: 80px;" data-name="qr_code.png"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+// Script de Navegação
+function showPage(pageId) {
+    // Remove classe active de todas as páginas e botões
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav li').forEach(l => l.classList.remove('active'));
+    
+    // Adiciona active à página selecionada
+    document.getElementById(pageId).classList.add('active');
+    
+    // Adiciona active ao botão clicado (busca pelo onclick correspondente)
+    const navItems = document.querySelectorAll('nav li');
+    for (let item of navItems) {
+        if (item.getAttribute('onclick').includes(pageId)) {
+            item.classList.add('active');
+            break;
+        }
+    }
+    
+    // Scroll suave para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Inicializar ícones
+lucide.createIcons();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,223 @@
+Año;Mes;Fecha;Dengue;ENOS C;ENOS;Añomes;No. Mes;Temperatura Máxima;Temperatura mínima;Temperatura promedio;Casos leptospirosis;Lluvia Acumulada;Temporada *;Casos ESI-IRAG;FRM;Familias Afectadas;Inundaciones;Encharcamiento;Damnificados inundaciones;Damnificados encharcamientos;Clasificación ONI
+2007;Ene;lunes, 1 de enero de 2007;;Niño;SD;;;26,4;4,4;14,11;;;;;3;0;0;2;0;0;
+2007;Feb;jueves, 1 de febrero de 2007;;Neutro;SD;;;25,4;-4,6;13,48;;;;;6;0;0;4;0;0;
+2007;Mar;jueves, 1 de marzo de 2007;;Neutro;SD;;;24;5,1;14,23;;;;;12;11;0;8;0;0;
+2007;Abr;domingo, 1 de abril de 2007;;Neutro;SD;;;23;6,6;14,75;;;;;28;3;1;40;3;0;
+2007;May;martes, 1 de mayo de 2007;;Neutro;SD;;;21,9;5,9;13,26;;;;;16;6;0;36;0;25;
+2007;Jun;viernes, 1 de junio de 2007;;Neutro;SD;;;19,8;5,9;12,71;;;;;12;3;1;7;0;0;
+2007;Jul;domingo, 1 de julio de 2007;;Niña;SD;;;23,6;4,3;13,32;;;;;8;1;2;13;2;6;
+2007;Ago;miércoles, 1 de agosto de 2007;;Niña;SD;;;23,3;3;13,04;;;;;4;0;5;2;2;0;
+2007;Sep;sábado, 1 de septiembre de 2007;;Niña;SD;;;24,3;1,7;13,56;;;;;6;13;0;0;0;0;
+2007;Oct;lunes, 1 de octubre de 2007;;Niña;SD;;;25,7;4,2;13,27;;;;;53;33;3;134;0;78;
+2008;Oct;lunes, 1 de octubre de 2007;;Neutro;SD;;;22,7;4,3;14,14;;;;;5;4;1;18;2;0;
+2007;Nov;jueves, 1 de noviembre de 2007;;Niña;SD;;;25,7;-0,1;12,85;;;;;43;52;15;101;54;23;
+2008;Nov;jueves, 1 de noviembre de 2007;;Niña;SD;;;22,8;7;14,29;;;;;33;39;8;43;17;4;
+2007;Dic;sábado, 1 de diciembre de 2007;;Niña;SD;;;23,8;2,1;11,98;;;;;65;64;0;127;0;1;
+2008;Ene;martes, 1 de enero de 2008;;Niña;SD;;;23,8;-1,5;12,16;;;;;10;2;0;0;0;0;
+2008;Feb;viernes, 1 de febrero de 2008;;Niña;SD;;;23,5;-1,1;11,43;;;;;7;6;0;30;0;1;
+2008;Mar;sábado, 1 de marzo de 2008;;Niña;SD;;;24,5;3,8;13,39;;;;;9;8;5;34;160;2;
+2008;Abr;martes, 1 de abril de 2008;;Niña;SD;;;24,2;2,2;13,42;;;;;8;10;2;21;248;0;
+2008;May;jueves, 1 de mayo de 2008;;Niña;SD;;;22,7;4,5;13,68;;;;;74;52;1;32;14;9;
+2008;Jun;domingo, 1 de junio de 2008;;Niña;SD;;;22,5;5,7;13,72;;;;;23;3;1;12;0;1;
+2008;Jul;martes, 1 de julio de 2008;;Neutro;SD;;;21;6,1;13,45;;;;;17;4;0;6;0;0;
+2008;Ago;viernes, 1 de agosto de 2008;;Neutro;SD;;;21,6;5;13,69;;;;;4;0;1;5;0;0;
+2008;Sep;lunes, 1 de septiembre de 2008;;Neutro;SD;;;22,6;6;13,97;;;;;3;2;0;0;0;0;
+2008;Dic;lunes, 1 de diciembre de 2008;;Niña;SD;;;22,9;4,3;14,03;;;;;38;11;5;26;0;0;
+2009;Ene;jueves, 1 de enero de 2009;127;Niña;-0,8;2009Ene;1;23,5;4;14,05;0;476,9;Lluvioso;55;5;0;1;5;0;0;NIÑA DÉBIL
+2009;Feb;domingo, 1 de febrero de 2009;36;Niña;-0,7;2009Feb;2;23,8;5,1;14,22;1;796,7;Lluvioso;74;21;47;4;61;60;1;NIÑA DÉBIL
+2009;Mar;domingo, 1 de marzo de 2009;26;Niña;-0,5;2009Mar;3;23,7;7,3;14,32;1;1092,3;Lluvioso;149;7;5;4;35;7;2;NIÑA DÉBIL
+2009;Abr;miércoles, 1 de abril de 2009;52;Neutro;-0,2;2009Abr;4;24,4;5,7;14,71;1;686;Lluvioso;303;39;64;2;25;0;5;NEUTRO
+2009;May;viernes, 1 de mayo de 2009;37;Neutro;0,1;2009May;5;22,8;5,4;14,58;2;243,4;Menos lluvioso;264;4;109;1;7;2;0;NEUTRO
+2009;Jun;lunes, 1 de junio de 2009;51;Neutro;0,4;2009Jun;6;23,3;6,4;14,35;1;393,4;Menos lluvioso;323;6;5;0;12;0;0;NEUTRO
+2009;Jul;miércoles, 1 de julio de 2009;70;Niño;0,5;2009Jul;7;21,4;6,4;13,92;2;354,5;Menos lluvioso;331;4;0;0;8;0;0;NIÑO DÉBIL
+2009;Ago;sábado, 1 de agosto de 2009;21;Niño;0,5;2009Ago;8;23,4;7,1;14,47;1;252,2;Menos lluvioso;509;3;0;0;1;0;0;NIÑO DÉBIL
+2009;Sep;martes, 1 de septiembre de 2009;25;Niño;0,7;2009Sep;9;22,9;4;14,56;0;220;Menos lluvioso;572;0;0;0;1;0;0;NIÑO DÉBIL
+2009;Oct;jueves, 1 de octubre de 2009;73;Niño;1;2009Oct;10;24,1;3,7;14,34;2;1322,7;Lluvioso;423;3;26;16;70;1;9;NIÑO MODERADO
+2009;Nov;domingo, 1 de noviembre de 2009;47;Niño;1,3;2009Nov;11;24,6;5,3;14,7;1;665,4;Lluvioso;410;5;13;4;31;4;1;NIÑO MODERADO
+2009;Dic;martes, 1 de diciembre de 2009;110;Niño;1,6;2009Dic;12;24,9;2,8;14,64;1;423,5;Lluvioso;360;4;3;1;18;0;0;NIÑO FUERTE
+2010;Ene;viernes, 1 de enero de 2010;707;Niño;1,5;2010Ene;13;25;0,4;14,67;1;96,1;Menos lluvioso;230;2;0;0;1;0;0;NIÑO FUERTE
+2010;Feb;lunes, 1 de febrero de 2010;225;Niño;1,3;2010Feb;14;26,2;6;15,62;0;216,3;Menos lluvioso;263;3;1;0;3;0;0;NIÑO MODERADO
+2010;Mar;lunes, 1 de marzo de 2010;211;Niño;0,9;2010Mar;15;25,2;5,3;15,92;0;215,7;Menos lluvioso;436;2;0;0;2;0;0;NIÑO DÉBIL
+2010;Abr;jueves, 1 de abril de 2010;412;Neutro;0,4;2010Abr;16;24,2;7,4;15,09;1;1429,3;Lluvioso;510;19;91;3;57;2;28;NEUTRO
+2010;May;sábado, 1 de mayo de 2010;224;Neutro;-0,1;2010May;17;23,9;9,1;15,17;0;1659,7;Lluvioso;498;36;71;5;68;111;8;NEUTRO
+2010;Jun;martes, 1 de junio de 2010;194;Niña;-0,6;2010Jun;18;22,3;7,3;14,55;0;685,3;Lluvioso;350;20;8;0;8;0;0;NIÑA DÉBIL
+2010;Jul;jueves, 1 de julio de 2010;333;Niña;-1;2010Jul;19;24,1;6,6;14,39;0;976,5;Lluvioso;188;27;67;2;19;0;0;NIÑA MODERADO
+2010;Ago;domingo, 1 de agosto de 2010;119;Niña;-1,4;2010Ago;20;24;8,1;14,35;0;302,1;Menos lluvioso;1;7;1;0;4;0;3;NIÑA MODERADO
+2010;Sep;miércoles, 1 de septiembre de 2010;49;Niña;-1,6;2010Sep;21;23,5;6,6;14,33;2;494,3;Menos lluvioso;0;5;7;0;3;0;2;NIÑA FUERTE
+2010;Oct;viernes, 1 de octubre de 2010;66;Niña;-1,7;2010Oct;22;25,8;6,3;14,5;0;1216,5;Lluvioso;2;19;12;19;46;67;11;NIÑA FUERTE
+2010;Nov;lunes, 1 de noviembre de 2010;42;Niña;-1,7;2010Nov;23;24,2;6,7;14,3;0;1738;Lluvioso;69;139;915;23;53;1099;71;NIÑA FUERTE
+2010;Dic;miércoles, 1 de diciembre de 2010;40;Niña;-1,6;2010Dic;24;24,5;5;13,72;0;1084,8;Lluvioso;45;180;451;10;24;22;52;NIÑA FUERTE
+2011;Ene;sábado, 1 de enero de 2011;135;Niña;-1,4;2011Ene;25;24,9;4,3;13,83;2;642,3;Menos lluvioso;65;45;75;1;24;6;17;NIÑA MODERADO
+2011;Feb;martes, 1 de febrero de 2011;30;Niña;-1,1;2011Feb;26;24,2;5,5;14,11;1;40,25;Menos lluvioso;113;31;52;0;50;0;4;NIÑA MODERADO
+2011;Mar;martes, 1 de marzo de 2011;19;Niña;-0,8;2011Mar;27;22,3;6;14,01;1;923,55;Lluvioso;292;103;211;0;47;0;6;NIÑA DÉBIL
+2011;Abr;viernes, 1 de abril de 2011;26;Niña;-0,6;2011Abr;28;24,4;8,4;14,33;0;1627,8;Lluvioso;379;174;288;15;114;82;40;NIÑA DÉBIL
+2011;May;domingo, 1 de mayo de 2011;22;Niña;-0,5;2011May;29;22,8;7,7;14,76;3;1090,8;Lluvioso;305;204;275;0;62;0;744;NIÑA DÉBIL
+2011;Jun;miércoles, 1 de junio de 2011;16;Neutro;-0,4;2011Jun;30;24,1;6;14,63;1;604,1;Menos lluvioso;213;47;101;0;31;0;233;NEUTRO
+2011;Jul;viernes, 1 de julio de 2011;38;Niña;-0,5;2011Jul;31;22,4;5,6;13,93;0;445,4;Menos lluvioso;133;18;26;1;15;0;9;NIÑA DÉBIL
+2011;Ago;lunes, 1 de agosto de 2011;28;Niña;-0,7;2011Ago;32;24,2;5,3;14,21;3;355;Menos lluvioso;141;12;1;55;20;1;0;NIÑA DÉBIL
+2011;Sep;jueves, 1 de septiembre de 2011;17;Niña;-0,9;2011Sep;33;23,8;4,2;13,96;0;398;Menos lluvioso;119;22;19;0;35;0;1;NIÑA DÉBIL
+2011;Oct;sábado, 1 de octubre de 2011;30;Niña;-1,1;2011Oct;34;23,4;5,3;13,8;0;1380,3;Lluvioso;120;46;51;16;137;28;1;NIÑA MODERADO
+2011;Nov;martes, 1 de noviembre de 2011;22;Niña;-1,1;2011Nov;35;23,6;4,6;13,97;1;1809,6;Lluvioso;149;167;707;6;498;21;108;NIÑA MODERADO
+2011;Dic;jueves, 1 de diciembre de 2011;41;Niña;-1;2011Dic;36;24;6,5;14,27;1;1323;Lluvioso;129;236;898;7;308;0;21344;NIÑA MODERADO
+2012;Ene;domingo, 1 de enero de 2012;153;Niña;-0,8;2012Ene;37;24,3;4,2;14,29;1;690,9;Lluvioso;85;15;16;1;77;0;2;NIÑA DÉBIL
+2012;Feb;miércoles, 1 de febrero de 2012;43;Niña;-0,6;2012Feb;38;24,2;4,2;14;2;1178,7;Lluvioso;201;11;15;1;187;0;16;NIÑA DÉBIL
+2012;Mar;jueves, 1 de marzo de 2012;42;Niña;-0,5;2012Mar;39;23,9;6,7;14,1;1;985,6;Lluvioso;334;24;45;1;95;0;24;NIÑA DÉBIL
+2012;Abr;domingo, 1 de abril de 2012;67;Neutro;-0,4;2012Abr;40;23,2;7,2;13,95;1;1434,2;Lluvioso;310;84;274;2;253;202;134;NEUTRO
+2012;May;martes, 1 de mayo de 2012;46;Neutro;-0,2;2012May;41;23,2;6,5;14,4;3;287,6;Menos lluvioso;249;7;29;0;3;0;0;NEUTRO
+2012;Jun;viernes, 1 de junio de 2012;65;Neutro;0,1;2012Jun;42;23,2;4,9;14,22;0;270,7;Menos lluvioso;126;8;5;0;0;0;0;NEUTRO
+2012;Jul;domingo, 1 de julio de 2012;110;Neutro;0,3;2012Jul;43;21,3;6,6;13,7;2;430,5;Menos lluvioso;72;7;4;0;8;0;7;NEUTRO
+2012;Ago;miércoles, 1 de agosto de 2012;50;Neutro;0,3;2012Ago;44;22,4;7,3;13,74;2;429,3;Menos lluvioso;71;6;9;0;15;0;11;NEUTRO
+2012;Sep;sábado, 1 de septiembre de 2012;63;Neutro;0,3;2012Sep;45;26,3;4,6;13,95;0;257,3;Menos lluvioso;99;5;2;2;7;0;0;NEUTRO
+2012;Oct;lunes, 1 de octubre de 2012;56;Neutro;0,2;2012Oct;46;26,4;5,2;14,41;1;1069,6;Lluvioso;90;24;20;1;46;0;0;NEUTRO
+2012;Nov;jueves, 1 de noviembre de 2012;78;Neutro;0;2012Nov;47;24,7;2,9;14,4;0;537;Lluvioso;106;11;29;1;46;0;8;NEUTRO
+2012;Dic;sábado, 1 de diciembre de 2012;127;Neutro;-0,2;2012Dic;48;24,8;3,6;14,04;0;548,1;Lluvioso;70;2;0;0;16;0;5;NEUTRO
+2013;Ene;martes, 1 de enero de 2013;573;Neutro;-0,4;2013Ene;49;25,1;2,5;14,46;2;79,2;Menos lluvioso;31;2;50;0;0;0;0;NEUTRO
+2013;Feb;viernes, 1 de febrero de 2013;148;Neutro;-0,3;2013Feb;50;24,3;5,4;14,35;2;882,2;Lluvioso;57;5;13;2;8;13;2;NEUTRO
+2013;Mar;viernes, 1 de marzo de 2013;212;Neutro;-0,2;2013Mar;51;25,5;4,1;14,84;4;500;Lluvioso;125;9;8;0;21;0;0;NEUTRO
+2013;Abr;lunes, 1 de abril de 2013;255;Neutro;-0,2;2013Abr;52;25,8;5,2;14,91;1;1444,6;Lluvioso;177;16;17;1;25;0;0;NEUTRO
+2013;May;miércoles, 1 de mayo de 2013;169;Neutro;-0,3;2013May;53;24,8;6,7;14,61;2;1025,5;Lluvioso;179;6;2;0;7;0;0;NEUTRO
+2013;Jun;sábado, 1 de junio de 2013;238;Neutro;-0,3;2013Jun;54;23,3;6,5;14,48;1;205,6;Menos lluvioso;133;2;2;0;1;0;0;NEUTRO
+2013;Jul;lunes, 1 de julio de 2013;337;Neutro;-0,4;2013Jul;55;23,3;5,4;13,59;3;296,3;Menos lluvioso;58;5;0;0;0;0;0;NEUTRO
+2013;Ago;jueves, 1 de agosto de 2013;191;Neutro;-0,4;2013Ago;56;24,3;6,7;13,94;1;453,3;Menos lluvioso;71;2;1;0;0;0;0;NEUTRO
+2013;Sep;domingo, 1 de septiembre de 2013;103;Neutro;-0,3;2013Sep;57;23,7;4;14,3;0;301,5;Menos lluvioso;39;3;2;0;2;0;0;NEUTRO
+2013;Oct;martes, 1 de octubre de 2013;147;Neutro;-0,2;2013Oct;58;24,3;4,3;14,03;4;776,4;Lluvioso;75;7;26;2;12;13;1;NEUTRO
+2013;Nov;viernes, 1 de noviembre de 2013;114;Neutro;-0,2;2013Nov;59;24,6;5,3;13,98;2;1363;Lluvioso;81;12;6;2;4;0;0;NEUTRO
+2013;Dic;domingo, 1 de diciembre de 2013;129;Neutro;-0,3;2013Dic;60;24,4;4,7;14,04;1;758;Lluvioso;69;11;4;4;1;0;0;NEUTRO
+2014;Ene;miércoles, 1 de enero de 2014;513;Neutro;-0,4;2014Ene;61;24,7;3,3;14,31;8;382,1;Menos lluvioso;47;2;1;0;1;0;0;NEUTRO
+2014;Feb;sábado, 1 de febrero de 2014;124;Neutro;-0,4;2014Feb;62;24,3;5,3;14,52;3;658,7;Lluvioso;96;2;6;0;0;0;0;NEUTRO
+2014;Mar;sábado, 1 de marzo de 2014;127;Neutro;-0,2;2014Mar;63;25,6;5,2;14,67;3;959,6;Lluvioso;167;7;5;0;1;0;0;NEUTRO
+2014;Abr;martes, 1 de abril de 2014;206;Neutro;0,1;2014Abr;64;24,2;6,2;14,71;2;619,3;Lluvioso;140;3;1;1;2;0;0;NEUTRO
+2014;May;jueves, 1 de mayo de 2014;107;Neutro;0,3;2014May;65;24,4;4,6;14,76;4;792;Lluvioso;127;2;0;0;0;0;0;NEUTRO
+2014;Jun;domingo, 1 de junio de 2014;124;Neutro;0,2;2014Jun;66;22,3;6,1;14,23;4;383,7;Menos lluvioso;94;14;9;3;2;12;11;NEUTRO
+2014;Jul;martes, 1 de julio de 2014;195;Neutro;0,1;2014Jul;67;23;6,5;14,04;5;550,9;Menos lluvioso;57;16;5;0;0;0;0;NEUTRO
+2014;Ago;viernes, 1 de agosto de 2014;100;Neutro;0;2014Ago;68;22,6;3,3;13,66;5;789,6;Menos lluvioso;58;6;0;1;0;0;0;NEUTRO
+2014;Sep;lunes, 1 de septiembre de 2014;94;Neutro;0,2;2014Sep;69;24,7;5,2;14,12;4;11;Menos lluvioso;57;4;2;1;1;0;0;NEUTRO
+2014;Oct;miércoles, 1 de octubre de 2014;180;Neutro;0,4;2014Oct;70;23,8;5,9;14,3;1;950,2;Lluvioso;41;4;1;2;11;0;0;NEUTRO
+2014;Nov;sábado, 1 de noviembre de 2014;155;Niño;0,6;2014Nov;71;24,6;6;14,36;6;1110,1;Lluvioso;60;10;7;8;1;8;0;NIÑO DÉBIL
+2014;Dic;lunes, 1 de diciembre de 2014;316;Niño;0,7;2014Dic;72;24,4;4;13,97;1;1101,5;Lluvioso;55;22;19;5;2;0;0;NIÑO DÉBIL
+2015;Ene;jueves, 1 de enero de 2015;503;Niño;0,6;2015Ene;73;24,6;1,9;14,03;2;367,2;Menos lluvioso;26;3;3;1;0;0;0;NIÑO DÉBIL
+2015;Feb;domingo, 1 de febrero de 2015;86;Niño;0,6;2015Feb;74;26,5;4,7;14,63;0;307,1;Menos lluvioso;36;1;0;0;0;0;0;NIÑO DÉBIL
+2015;Mar;domingo, 1 de marzo de 2015;79;Niño;0,6;2015Mar;75;25,3;6,4;14,81;0;967,4;Lluvioso;59;14;41;1;31;0;0;NIÑO DÉBIL
+2015;Abr;miércoles, 1 de abril de 2015;108;Niño;0,8;2015Abr;76;23;7,3;14,92;1;468,1;Lluvioso;64;4;8;2;2;0;0;NIÑO DÉBIL
+2015;May;viernes, 1 de mayo de 2015;70;Niño;1;2015May;77;26,9;5,9;15,08;2;173,9;Menos lluvioso;70;5;2;0;0;0;0;NIÑO MODERADO
+2015;Jun;lunes, 1 de junio de 2015;84;Niño;1,2;2015Jun;78;22,6;6;14,08;4;603,8;Lluvioso;46;12;13;1;0;0;0;NIÑO MODERADO
+2015;Jul;miércoles, 1 de julio de 2015;102;Niño;1,5;2015Jul;79;22,3;6,9;14,33;3;208,9;Menos lluvioso;39;4;0;1;0;0;0;NIÑO FUERTE
+2015;Ago;sábado, 1 de agosto de 2015;62;Niño;1,8;2015Ago;80;22;5,5;14,52;2;204,3;Menos lluvioso;37;7;5;0;0;0;0;NIÑO FUERTE
+2015;Sep;martes, 1 de septiembre de 2015;71;Niño;2,1;2015Sep;81;24,1;3,3;14,62;3;692;Lluvioso;40;3;0;2;0;0;0;NIÑO FUERTE
+2015;Oct;jueves, 1 de octubre de 2015;121;Niño;2,4;2015Oct;82;25,4;5,3;14,85;3;484;Lluvioso;44;0;0;1;11;0;4;NIÑO FUERTE
+2015;Nov;domingo, 1 de noviembre de 2015;189;Niño;2,5;2015Nov;83;25,3;7,2;14,99;3;1372,1;Lluvioso;47;7;2;0;36;0;2;NIÑO FUERTE
+2015;Dic;martes, 1 de diciembre de 2015;356;Niño;2,6;2015Dic;84;24,9;3,6;14,5;4;18,6;Menos lluvioso;37;0;0;1;0;0;0;NIÑO FUERTE
+2016;Ene;viernes, 1 de enero de 2016;1101;Niño;2,5;2016Ene;85;27,3;3,1;15,4;2;66,6;Menos lluvioso;26;3;0;0;0;0;0;NIÑO FUERTE
+2016;Feb;lunes, 1 de febrero de 2016;283;Niño;2,2;2016Feb;86;27,5;4,8;15,93;2;184,3;Menos lluvioso;39;3;0;0;0;0;0;NIÑO FUERTE
+2016;Mar;martes, 1 de marzo de 2016;353;Niño;1,7;2016Mar;87;28,2;5,7;16,19;1;851,7;Lluvioso;87;3;1;5;8;0;2;NIÑO FUERTE
+2016;Abr;viernes, 1 de abril de 2016;244;Niño;1;2016Abr;88;26,4;8,6;15,41;2;1409,9;Lluvioso;125;12;106;1;26;0;10;NIÑO MODERADO
+2016;May;domingo, 1 de mayo de 2016;147;Niño;0,5;2016May;89;24,7;8;15,12;4;859,3;Lluvioso;131;6;1;3;9;0;0;NIÑO DÉBIL
+2016;Jun;miércoles, 1 de junio de 2016;134;Neutro;0;2016Jun;90;24,4;6,8;14,35;5;258,8;Menos lluvioso;115;2;3;1;0;0;0;NEUTRO
+2016;Jul;viernes, 1 de julio de 2016;123;Neutro;-0,3;2016Jul;91;22,6;7,4;14,26;2;474,3;Menos lluvioso;86;3;0;3;1;0;0;NEUTRO
+2016;Ago;lunes, 1 de agosto de 2016;75;Niña;-0,6;2016Ago;92;23,4;5,2;14,32;4;406,2;Menos lluvioso;72;4;1;1;0;0;0;NIÑA DÉBIL
+2016;Sep;jueves, 1 de septiembre de 2016;31;Niña;-0,7;2016Sep;93;24,1;5,4;14,37;3;678,7;Lluvioso;88;2;1;6;7;0;0;NIÑA DÉBIL
+2016;Oct;sábado, 1 de octubre de 2016;46;Niña;-0,7;2016Oct;94;25,4;5;14,84;10;843;Lluvioso;79;4;0;1;30;0;1;NIÑA DÉBIL
+2016;Nov;martes, 1 de noviembre de 2016;51;Niña;-0,7;2016Nov;95;26;6,5;14,45;3;1885;Lluvioso;62;22;25;1;35;0;0;NIÑA DÉBIL
+2016;Dic;jueves, 1 de diciembre de 2016;57;Niña;-0,6;2016Dic;96;25;4;14,3;3;569,6;Lluvioso;38;1;0;0;0;0;0;NIÑA DÉBIL
+2017;Ene;domingo, 1 de enero de 2017;105;Neutro;-0,3;2017Ene;97;24,4;2,2;14,06;3;427;Menos lluvioso;29;1;0;0;5;0;0;NEUTRO
+2017;Feb;miércoles, 1 de febrero de 2017;25;Neutro;-0,1;2017Feb;98;26;3,5;14,41;0;708,4;Lluvioso;61;1;1;0;1;0;0;NEUTRO
+2017;Mar;miércoles, 1 de marzo de 2017;25;Neutro;0,1;2017Mar;99;24,8;4,9;14,34;2;1392,9;Lluvioso;130;42;57;4;6;0;0;NEUTRO
+2017;Abr;sábado, 1 de abril de 2017;41;Neutro;0,3;2017Abr;100;25,5;4,1;14,88;2;614,5;Lluvioso;133;16;16;0;2;0;0;NEUTRO
+2017;May;lunes, 1 de mayo de 2017;32;Neutro;0,4;2017May;101;25,2;6,8;14,78;6;1394;Lluvioso;105;54;78;6;16;0;0;NEUTRO
+2017;Jun;jueves, 1 de junio de 2017;37;Neutro;0,4;2017Jun;102;24;6,8;14,6;1;797,1;Lluvioso;101;13;13;2;0;4;0;NEUTRO
+2017;Jul;sábado, 1 de julio de 2017;49;Neutro;0,2;2017Jul;103;23,9;6,2;14,09;2;155,2;Menos lluvioso;60;6;9;0;0;0;0;NEUTRO
+2017;Ago;martes, 1 de agosto de 2017;33;Neutro;-0,1;2017Ago;104;24,6;5,4;14,44;2;591,1;Menos lluvioso;42;5;0;0;0;0;0;NEUTRO
+2017;Sep;viernes, 1 de septiembre de 2017;41;Neutro;-0,4;2017Sep;105;24,2;5,9;14,82;10;290,9;Menos lluvioso;58;3;2;0;0;0;0;NEUTRO
+2017;Oct;domingo, 1 de octubre de 2017;38;Niña;-0,7;2017Oct;106;27;5,4;14,41;4;669,1;Lluvioso;48;7;5;0;2;0;0;NIÑA DÉBIL
+2017;Nov;miércoles, 1 de noviembre de 2017;24;Niña;-0,9;2017Nov;107;25,2;4,9;14,29;6;1200,4;Lluvioso;62;23;42;1;28;0;4;NIÑA DÉBIL
+2017;Dic;viernes, 1 de diciembre de 2017;28;Niña;-1;2017Dic;108;25,1;2,6;14,35;5;579,5;Menos lluvioso;45;5;4;2;2;0;0;NIÑA MODERADO
+2018;Ene;lunes, 1 de enero de 2018;108;Niña;-0,9;2018Ene;109;25,5;3,4;13,92;13;533,9;Menos lluvioso;34;16;9;2;1;0;0;NIÑA DÉBIL
+2018;Feb;jueves, 1 de febrero de 2018;21;Niña;-0,8;2018Feb;110;26,6;4,9;14,72;5;339,3;Menos lluvioso;70;0;0;0;0;0;0;NIÑA DÉBIL
+2018;Mar;jueves, 1 de marzo de 2018;35;Niña;-0,6;2018Mar;111;27,1;3,5;14,63;7;980,5;Lluvioso;97;6;1;0;8;0;139;NIÑA DÉBIL
+2018;Abr;domingo, 1 de abril de 2018;46;Neutro;-0,4;2018Abr;112;25;7;13,94;7;1391;Lluvioso;120;53;63;2;27;6;18;NEUTRO
+2018;May;martes, 1 de mayo de 2018;17;Neutro;-0,1;2018May;113;22,9;6,5;14,35;12;1004,8;Lluvioso;180;9;2;0;5;0;0;NEUTRO
+2018;Jun;viernes, 1 de junio de 2018;55;Neutro;0,1;2018Jun;114;21,7;6,4;14,08;8;315,2;Lluvioso;153;3;0;0;0;0;0;NEUTRO
+2018;Jul;domingo, 1 de julio de 2018;73;Neutro;0,1;2018Jul;115;22,1;7,4;14,16;6;449,3;Menos lluvioso;70;6;1;0;0;0;0;NEUTRO
+2018;Ago;miércoles, 1 de agosto de 2018;39;Neutro;0,2;2018Ago;116;22,2;3,4;13,85;1;347,1;Menos lluvioso;64;5;6;0;0;0;0;NEUTRO
+2018;Sep;sábado, 1 de septiembre de 2018;46;Neutro;0,4;2018Sep;117;24,8;5,3;14,52;7;282,9;Menos lluvioso;69;8;9;0;12;0;0;NEUTRO
+2018;Oct;lunes, 1 de octubre de 2018;59;Niño;0,7;2018Oct;118;24,6;6,3;14,85;6;618,1;Lluvioso;44;8;3;0;13;0;0;NIÑO DÉBIL
+2018;Nov;jueves, 1 de noviembre de 2018;62;Niño;0,9;2018Nov;119;26;6;14,98;7;932;Lluvioso;63;2;1;0;26;0;108;NIÑO DÉBIL
+2018;Dic;sábado, 1 de diciembre de 2018;85;Niño;0,8;2018Dic;120;25,8;3,6;14,34;6;19,9;Menos lluvioso;53;3;0;0;2;0;1;NIÑO DÉBIL
+2019;Ene;martes, 1 de enero de 2019;392;Niño;0,8;2019Ene;121;25,6;3,9;14,63;2;169,4;Menos lluvioso;25;0;0;2;1;0;0;NIÑO DÉBIL
+2019;Feb;viernes, 1 de febrero de 2019;130;Niño;0,8;2019Feb;122;27,4;6,2;15,45;4;394;Menos lluvioso;42;9;0;3;13;0;0;NIÑO DÉBIL
+2019;Mar;viernes, 1 de marzo de 2019;103;Niño;0,8;2019Mar;123;26,9;6,8;15,42;1;840,1;Lluvioso;87;9;12;0;32;0;65;NIÑO DÉBIL
+2019;Abr;lunes, 1 de abril de 2019;177;Niño;0,7;2019Abr;124;26,2;8;15,43;3;1240,6;Lluvioso;151;25;0;0;32;0;0;NIÑO DÉBIL
+2019;May;miércoles, 1 de mayo de 2019;307;Niño;0,6;2019May;125;25;5,3;15,09;7;1295,3;Lluvioso;163;7;88;11;0;0;5;NIÑO DÉBIL
+2019;Jun;sábado, 1 de junio de 2019;168;Niño;0,5;2019Jun;126;24,8;5,8;14,79;4;766,5;Menos lluvioso;115;5;149;0;8;0;9;NIÑO DÉBIL
+2019;Jul;lunes, 1 de julio de 2019;335;Neutro;0,3;2019Jul;127;27,2;6,2;14,63;3;464,3;Menos lluvioso;66;10;0;0;7;0;0;NEUTRO
+2019;Ago;jueves, 1 de agosto de 2019;182;Neutro;0,1;2019Ago;128;27,1;4,5;14,36;3;412,4;Menos lluvioso;66;7;127;0;0;0;0;NEUTRO
+2019;Sep;domingo, 1 de septiembre de 2019;159;Neutro;0,1;2019Sep;129;29,7;6,2;15,01;1;754,9;Menos lluvioso;55;5;9;3;16;0;4;NEUTRO
+2019;Oct;martes, 1 de octubre de 2019;130;Neutro;0,3;2019Oct;130;28,7;4,8;14,55;4;1049,7;Lluvioso;59;7;7;0;30;0;123;NEUTRO
+2019;Nov;viernes, 1 de noviembre de 2019;203;Niño;0,5;2019Nov;131;28,8;5,2;15,13;1;2036,2;Lluvioso;46;37;0;0;68;0;0;NIÑO DÉBIL
+2019;Dic;domingo, 1 de diciembre de 2019;163;Niño;0,5;2019Dic;132;28,4;5,7;15,25;6;439,7;Lluvioso;58;5;4;0;10;0;6;NIÑO DÉBIL
+2020;Ene;miércoles, 1 de enero de 2020;967;Niño;0,5;2020Ene;133;28,7;3,3;15,15;9;354,2;Menos lluvioso;36;5;0;0;43;0;7;NIÑO DÉBIL
+2020;Feb;sábado, 1 de febrero de 2020;188;Niño;0,6;2020Feb;134;29,1;0,7;15,36;4;1035,5;Lluvioso;72;8;0;1;44;0;2;NIÑO DÉBIL
+2020;Mar;domingo, 1 de marzo de 2020;106;Niño;0,5;2020Mar;135;28;5,8;15,84;2;927,6;Lluvioso;203;4;4;0;36;0;0;NIÑO DÉBIL
+2020;Abr;miércoles, 1 de abril de 2020;75;Neutro;0,3;2020Abr;136;26,4;4,8;15,64;1;736,1;Menos lluvioso;474;2;2;0;3;0;1;NEUTRO
+2020;May;viernes, 1 de mayo de 2020;72;Neutro;0;2020May;137;25,5;7,2;15,39;0;783,3;Menos lluvioso;1784;10;6;0;1;0;0;NEUTRO
+2020;Jun;lunes, 1 de junio de 2020;52;Neutro;-0,2;2020Jun;138;24,8;7,1;14,89;3;919,3;Lluvioso;3091;8;15;0;0;0;0;NEUTRO
+2020;Jul;miércoles, 1 de julio de 2020;42;Neutro;-0,4;2020Jul;139;23,9;7,4;14,57;1;1041,9;Lluvioso;5063;5;16;0;3;0;0;NEUTRO
+2020;Ago;sábado, 1 de agosto de 2020;21;Neutro;-0.6;2020Ago;140;25,9;6;14,85;0;473,4;Menos lluvioso;132;3;10;0;3;0;0;NIÑO FUERTE
+2020;Sep;martes, 1 de septiembre de 2020;54;Neutro;-0.9;2020Sep;141;25,2;4,1;14,54;3;980,7;Lluvioso;59;1;0;0;3;0;0;NIÑO FUERTE
+2020;Oct;jueves, 1 de octubre de 2020;56;Neutro;-1.2;2020Oct;142;25,8;6,1;14,93;6;397,9;Menos lluvioso;79;0;0;0;4;0;0;NIÑO FUERTE
+2020;Nov;domingo, 1 de noviembre de 2020;49;Neutro;-1.3;2020Nov;143;25,8;7,1;14,65;5;2413,2;Lluvioso;84;71;204;0;75;0;42;NIÑO FUERTE
+2020;Dic;martes, 1 de diciembre de 2020;47;Niña;-1,2;2020Dic;144;26,2;4,6;14,69;3;880,1;Lluvioso;84;29;47;0;4;0;0;NIÑA MODERADO
+2021;Ene;viernes, 1 de enero de 2021;33;Niña;-1;2021Ene;145;26,5;4;14,37;5;186,6;Menos lluvioso;64;4;6;0;1;0;0;NIÑA MODERADO
+2021;Feb;lunes, 1 de febrero de 2021;29;Niña;-0,9;2021Feb;146;26,8;4;15,18;6;549,1;Menos lluvioso;63;2;1;0;5;0;3;NIÑA DÉBIL
+2021;Mar;lunes, 1 de marzo de 2021;25;Niña;-0,8;2021Mar;147;26,3;6,5;14,21;8;1310,3;Lluvioso;113;8;9;0;15;0;0;NIÑA DÉBIL
+2021;Abr;jueves, 1 de abril de 2021;22;Niña;-0,7;2021Abr;148;26,5;4,9;15,25;7;1061,7;Lluvioso;143;16;22;0;5;0;0;NIÑA DÉBIL
+2021;May;sábado, 1 de mayo de 2021;15;Niña;-0,5;2021May;149;27,1;6,8;15,11;8;1692;Lluvioso;154;61;85;0;11;0;8;NIÑA DÉBIL
+2021;Jun;martes, 1 de junio de 2021;22;Neutro;-0,4;2021Jun;150;26;5,9;14,59;4;1491,4;Lluvioso;205;49;97;0;22;0;4;NEUTRO
+2021;Jul;jueves, 1 de julio de 2021;20;Neutro;-0,4;2021Jul;151;25,3;7,4;14,5;5;104,8;Menos lluvioso;167;25;12;0;7;0;0;NEUTRO
+2021;Ago;domingo, 1 de agosto de 2021;40;Niña;-0,5;2021Ago;152;26,4;6,6;14,52;8;282,2;Lluvioso;170;16;12;0;13;0;7;NIÑA DÉBIL
+2021;Sep;miércoles, 1 de septiembre de 2021;31;Niña;-0,7;2021Sep;153;26,1;3,9;14,47;12;127,6;Menos lluvioso;181;9;4;0;3;0;0;NIÑA DÉBIL
+2021;Oct;viernes, 1 de octubre de 2021;29;Niña;-0,8;2021Oct;154;26,4;4,9;14,9;16;498,8;Lluvioso;170;25;58;1;38;7;38;NIÑA DÉBIL
+2021;Nov;lunes, 1 de noviembre de 2021;53;Niña;-1;2021Nov;155;26,3;4,4;14,82;9;305;Lluvioso;151;21;182;0;40;0;10;NIÑA MODERADO
+2021;Dic;miércoles, 1 de diciembre de 2021;36;Niña;-1;2021Dic;156;26,6;3,5;15,49;13;95,5;Menos lluvioso;105;8;27;0;0;0;0;NIÑA MODERADO
+2022;Ene;sábado, 1 de enero de 2022;44;Niña;-1;2022Ene;157;26,4;3,5;14,94;9;233,6;Lluvioso;81;1;0;0;6;0;0;NIÑA MODERADO
+2022;Feb;martes, 1 de febrero de 2022;17;Niña;-1;2022Feb;158;26,2;5,1;14,77;8;1439,3;Lluvioso;137;4;4;0;9;0;0;NIÑA MODERADO
+2022;Mar;martes, 1 de marzo de 2022;21;Niña;-1,3;2022Mar;159;26,4;4,2;15,06;12;1021,5;Lluvioso;212;15;20;0;44;0;111;NIÑA MODERADO
+2022;Abr;viernes, 1 de abril de 2022;62;Niña;-1,6;2022Abr;160;27,7;5,5;14,92;12;1523,2;Lluvioso;216;35;38;0;38;0;288;NIÑA FUERTE
+2022;May;domingo, 1 de mayo de 2022;61;Niña;-1,6;2022May;161;27,3;6,6;15,06;13;927,4;Lluvioso;379;24;18;0;10;0;107;NIÑA FUERTE
+2022;Jun;miércoles, 1 de junio de 2022;27;Niña;-1,9;2022Jun;162;25;6;13,95;8;1534,9;Lluvioso;338;50;188;0;31;0;47;NIÑA FUERTE
+2022;Jul;viernes, 1 de julio de 2022;69;Niña;-2,2;2022Jul;163;25,7;4;14,7;9;720,8;Lluvioso;219;18;39;0;5;0;0;NIÑA FUERTE
+2022;Ago;lunes, 1 de agosto de 2022;62;Niña;-1,8;2022Ago;164;26;4,9;14,39;9;676,7;Lluvioso;191;11;7;0;3;0;0;NIÑA FUERTE
+2022;Sep;jueves, 1 de septiembre de 2022;37;Niña;-1,8;2022Sep;165;26,3;4,4;14,21;10;848,9;Lluvioso;211;6;5;0;1;0;0;NIÑA FUERTE
+2022;Oct;sábado, 1 de octubre de 2022;65;Niña;-1,7;2022Oct;166;28,7;6,5;14,61;12;2167,5;Lluvioso;188;27;26;1;19;0;52;NIÑA FUERTE
+2022;Nov;martes, 1 de noviembre de 2022;55;Niña;-1,5;2022Nov;167;25,6;6,8;14,56;15;2065,1;Lluvioso;209;71;568;0;48;0;137;NIÑA FUERTE
+2022;Dic;jueves, 1 de diciembre de 2022;75;Niña;-1,5;2022Dic;168;26,5;2,3;14,31;17;874,8;Lluvioso;164;26;61;1;15;0;4;NIÑA DÉBIL
+2023;Ene;domingo, 1 de enero de 2023;25;Niña;-0,7;2023Ene;169;26,8;2,6;14,2;25;1714,1;Lluvioso;244;54;103;0;16;0;12;NIÑA DÉBIL
+2023;Feb;miércoles, 1 de febrero de 2023;11;Neutro;-0,4;2023Feb;170;27,3;2;14,8;11;531,6;Menos lluvioso;285;13;14;0;7;0;7;NIÑA DÉBIL
+2023;Mar;miércoles, 1 de marzo de 2023;11;Neutro;-0,1;2023Mar;171;26,3;7;15;11;1573,4;Lluvioso;391;71;89;0;37;0;1366;NIÑA DÉBIL
+2023;Abr;sábado, 1 de abril de 2023;7;Neutro;0,2;2023Abr;172;26,1;6,7;15,2;7;1154,8;Lluvioso;455;16;10;0;7;0;0;NIÑA DÉBIL
+2023;May;lunes, 1 de mayo de 2023;15;Neutro;0,5;2023May;173;27,8;6,8;15,8;15;1159,6;Lluvioso;520;9;6;0;13;0;0;NIÑO DÉBIL
+2023;Jun;jueves, 1 de junio de 2023;6;Neutro;0,8;2023Jun;174;25,6;6,4;15,4;6;322,4;Menos lluvioso;341;9;6;0;2;0;0;NIÑO DÉBIL
+2023;Jul;sábado, 1 de julio de 2023;11;Niño;1,1;2023Jul;175;25,2;8;15,07;5;710,6;Menos Lluvioso;286;8;7;0;2;0;0;NIÑO MODERADO
+2023;Ago;martes, 1 de agosto de 2023;6;Niño;1,3;2023Agos;176;26,6;5,6;15,35;6;657,9;Menos Lluvioso;317;9;12;0;1;0;0;NIÑO MODERADO
+2023;Sep;viernes, 1 de septiembre de 2023;3;Niño;1,6;2023Sep;177;27,8;4,4;15,34;11;709,8;Menos Lluvioso;311;4;0;0;8;0;12;NIÑO FUERTE
+2023;Oct;domingo, 1 de octubre de 2023;0;Niño;1,8;2023Oct;178;27,9;6,2;15,59;12;1328,8;Lluvioso;291;3;2;0;46;0;53;NIÑO FUERTE
+2023;Nov;miércoles, 1 de noviembre de 2023;4;Niño;1,9;2023Nov;179;26,7;4,9;15,72;16;722,5;Menos Lluvioso;347;14;17;0;12;0;3;NIÑO FUERTE
+2023;Dic;viernes, 1 de diciembre de 2023;2;Niño;2;2023Dic;180;27;4,6;15,8;10;621,9;Menos Lluvioso;259;8;6;0;4;0;10;NIÑO FUERTE
+2024;Ene;lunes, 1 de enero de 2024;520;Niño;1,8;2024Ene;181;29,8;2,9;15,93;2;156,2;Menos Lluvioso;319;0;0;0;0;0;0;NIÑO FUERTE
+2024;Feb;jueves, 1 de febrero de 2024;208;Niño;1,5;2024Feb;182;28,3;5,5;16,04;2;772,9;Menos Lluvioso;412;5;34;0;7;0;0;NIÑO FUERTE
+2024;Mar;viernes, 1 de marzo de 2024;285;Niño;1,1;2024Mar;183;29,8;6,7;16,29;1;670,6;Menos Lluvioso;457;12;10;0;2;0;0;NIÑO MODERADO
+2024;Abr;lunes, 1 de abril de 2024;418;Niño;0,7;2024Abr;184;29,4;3,5;15,9;1;1376,7;Lluvioso;552;11;13;0;2;0;0;NIÑO DÉBIL
+2024;May;miércoles, 1 de mayo de 2024;310;Neutro;0,4;2024May;185;28,9;8,7;16,08;5;1122,6;Lluvioso;736;13;9;0;7;0;6;NEUTRO
+2024;Jun;sábado, 1 de junio de 2024;319;Neutro;0,2;2024Jun;186;28,6;7,5;15,27;4;1334,9;Lluvioso;548;12;14;0;5;0;0;NEUTRO
+2024;Jul;lunes, 1 de julio de 2024;381;Neutro;0;2024Jul;187;28;6,9;15,03;1;599,7;Menos Lluvioso;424;4;1;0;5;0;133;NEUTRO
+2024;Ago;jueves, 1 de agosto de 2024;192;Neutro;-0,1;2024Agos;188;27,8;5,1;14,92;5;188,3;Menos Lluvioso;382;2;1;0;0;0;0;NEUTRO
+2024;Sep;domingo, 1 de septiembre de 2024;121;Neutro;-0,2;2024Sept;189;27,8;5,5;15,39;4;649,7;Menos Lluvioso;366;13;19;0;30;0;67;NEUTRO
+2024;Oct;martes, 1 de octubre de 2024;132;Neutro;-0,3;2024Oct;190;30,1;4,5;15,32;1;1493,6;Lluvioso;329;26;28;0;15;0;1;NEUTRO
+2024;Nov;viernes, 1 de noviembre de 2024;104;Neutro;-0,4;2024Nov;191;26;6,9;14,55;1;2499,9;Lluvioso;364;152;391;0;67;0;67;NEUTRO
+2024;Dic;domingo, 1 de diciembre de 2024;139;Neutro;0,5;2024Dic;192;25,3;4,6;14,98;4;379,2;Menos Lluvioso;262;10;22;0;8;0;1;NEUTRO
+2025;Ene;miércoles, 1 de enero de 2025;537;Niño;-0.6;2025Ene;193;26,4;2,2;14,78;2;425,7;Menos Lluvioso;246;3;1;0;0;0;0;NIÑO FUERTE 
+2025;Feb;sábado, 1 de febrero de 2025;105;Niño;-0.4;2025Feb;194;25,1;7,1;15,34;3;1685,7;Lluvioso;380;9;11;0;27;0;0;NIÑO FUERTE 
+2025;Mar;sábado, 1 de marzo de 2025;109;Niño;-0.2;2025Mar;195;27;5,4;15,98;2;2660,2;Lluvioso;535;20;6;0;27;0;0;NIÑO FUERTE 
+2025;Abr;martes, 1 de abril de 2025;160;Neutro;-0,1;2025Abr;196;25,6;6,7;15,38;3;2609,6;Lluvioso;568;37;42;0;24;0;50;NEUTRO
+2025;May;jueves, 1 de mayo de 2025;79;Neutro;-0,1;2025May;197;24,2;8,2;14,96;5;1856,5;Lluvioso;628;23;6;0;15;0;0;NEUTRO
+2025;Jun;domingo, 1 de junio de 2025;71;Neutro;-0,1;2025Jun;198;;;;4;1430,9;Lluvioso;525;17;15;0;9;0;9;NEUTRO
