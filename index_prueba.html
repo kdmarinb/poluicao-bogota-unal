@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Ar de Bogotá | Jornal Digital Interativo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --paper-bg: #faf8f5;
+            --paper-dark: #f0ece4;
+            --ink-black: #1a1714;
+            --ink-grey: #4a4540;
+            --ink-light: #7a756d;
+            --alert-red: #b91c1c;
+            --alert-orange: #c2410c;
+            --alert-yellow: #a16207;
+            --safe-green: #166534;
+            --accent-blue: #1e40af;
+            --border-dark: #2a2520;
+            --ticker-height: 35px; /* Altura de la barra financiera */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Ajuste para anclas: evita que los títulos queden tapados al hacer clic en el menú */
+        html {
+            scroll-padding-top: 100px; 
+        }
+
+        body {
+            background: linear-gradient(135deg, #d4d0c8 0%, #c8c4bc 100%);
+            font-family: 'Source Serif 4', Georgia, serif;
+            color: var(--ink-black);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            /* CRÍTICO: Empuja el periódico hacia abajo para no chocar con la barra fija */
+            padding-top: calc(var(--ticker-height) + 20px) !important; 
+        }
+
+        /* --- ESTILOS BARRA FINANCEIRA (TICKER) --- */
+        .ticker-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--ink-black);
+            color: #e5e5e5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            height: var(--ticker-height);
+            line-height: var(--ticker-height);
+            overflow: hidden;
+            z-index: 10000; /* Capa más alta */
+            border-bottom: 3px solid var(--alert-red);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            /* Velocidad ultra lenta (600s) */
+            animation: ticker-scroll 600s linear infinite; 
+            padding-left: 100%;
+        }
+
+        .ticker-wrap:hover .ticker { animation-play-state: paused; }
+
+        .ticker-item {
+            display: inline-block;
+            margin-right: 5rem;
+        }
+
+        .up { color: #4ade80; font-weight: bold; }
+        .down { color: #f87171; font-weight: bold; }
+        .label { color: #9ca3af; margin-right: 5px; }
+
+        @keyframes ticker-scroll {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        /* --- ESTILOS PERIÓDICO --- */
+        .newspaper {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--paper-bg);
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.1),
+                0 4px 6px rgba(0,0,0,0.05),
+                0 20px 40px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        header {
+            background: var(--ink-black);
+            color: var(--paper-bg);
+            padding: 1rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .masthead-meta {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 1rem;
+        }
+
+        h1.masthead-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .masthead-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background: var(--paper-dark);
+            border-bottom: 3px solid var(--ink-black);
+            position: sticky;
+            /* CRÍTICO: Se pega JUSTO DEBAJO de la barra roja (35px), no en 0 */
+            top: var(--ticker-height); 
+            z-index: 100;
+            overflow-x: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            padding: 0 1rem;
+        }
+
+        nav li {
+            padding: 1rem 1rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        nav li:hover { 
+            background: var(--ink-black);
+            color: var(--paper-bg);
+        }
+
+        nav li.active {
+            background: var(--alert-red);
+            color: white;
+        }
+
+        /* --- CONTENIDO --- */
+        main { padding: 2rem; }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .subheadline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--ink-grey);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1rem;
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        p { margin-bottom: 1.2rem; line-height: 1.8; text-align: justify; }
+
+        /* Grids y Utilidades */
+        .grid-main {
+            display: grid;
+            grid-template-columns: 200px 1fr 200px;
+            gap: 2rem;
+        }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+        .img-placeholder {
+            background-color: #e2e2e2;
+            border: 1px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        figcaption {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--ink-light);
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .oreja {
+            background: var(--paper-dark);
+            border: 1px solid var(--ink-black);
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .index-box {
+            background: var(--ink-black);
+            color: white;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .index-box h4 { border-bottom: 1px solid #555; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .index-box ul { list-style: none; }
+        .index-box li { font-family: 'JetBrains Mono'; font-size: 0.8rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; }
+
+        /* Classificados */
+        .classified-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            font-family: sans-serif;
+        }
+        .classified-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            font-size: 0.8rem;
+        }
+        .classified-item h4 { color: var(--accent-blue); margin-bottom: 5px; text-transform: uppercase; font-size: 0.85rem;}
+        .classified-price { font-weight: bold; color: var(--alert-red); display: block; margin-top: 5px; }
+
+        /* Passatempos */
+        .puzzle-box {
+            border: 2px solid var(--ink-black);
+            padding: 1rem;
+            background: white;
+            height: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .grid-main { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .oreja { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrap">
+        <div class="ticker" id="financial-ticker">
+            <span>Iniciando sistema financiero...</span>
+        </div>
+    </div>
+
+    <script>
+        async function updateTicker() {
+            try {
+                const res = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
+                const data = await res.json();
+                const usd = data.USDBRL;
+                const eur = data.EURBRL;
+                const btc = data.BTCBRL;
+
+                const fmt = (val) => {
+                    const num = parseFloat(val);
+                    return num >= 0 
+                        ? `<span class="up">▲ ${num}%</span>` 
+                        : `<span class="down">▼ ${num}%</span>`;
+                };
+
+                const oilPrice = (82.50 + (Math.random() * 0.5)).toFixed(2); 
+                const cafePrice = (235.40 + (Math.random())).toFixed(2);
+
+                const singleBlock = `
+                    <div class="ticker-item"><span class="label">🇺🇸 USD/BRL:</span> R$ ${parseFloat(usd.bid).toFixed(3)} ${fmt(usd.pctChange)}</div>
+                    <div class="ticker-item"><span class="label">🇪🇺 EUR/BRL:</span> R$ ${parseFloat(eur.bid).toFixed(3)} ${fmt(eur.pctChange)}</div>
+                    <div class="ticker-item"><span class="label">🛢️ BRENT:</span> US$ ${oilPrice} <span class="down">▼ -0.4%</span></div>
+                    <div class="ticker-item"><span class="label">☕ CAFÉ (C):</span> US$ ${cafePrice} <span class="up">▲ +1.2%</span></div>
+                    <div class="ticker-item"><span class="label">₿ BTC:</span> R$ ${(parseFloat(btc.bid)/1000).toFixed(1)}k ${fmt(btc.pctChange)}</div>
+                    <div class="ticker-item"><span class="label">🏭 CARBONO:</span> € 75.20 <span class="down">▼ -0.1%</span></div>
+                    <div class="ticker-item"><span class="label">🇨🇴 COP/USD:</span> $ 4,150 <span class="up">▲ +0.05%</span></div>
+                `;
+
+                // Repetición x10 para scroll fluido
+                document.getElementById('financial-ticker').innerHTML = singleBlock.repeat(10);
+            } catch (error) {
+                console.error("Error cargando finanzas:", error);
+                document.getElementById('financial-ticker').innerHTML = "<div class='ticker-item'>Mercado Offline</div>";
+            }
+        }
+        updateTicker();
+    </script>
+
+    <div class="newspaper">
+        <header>
+            <div class="masthead-meta">
+                <span>Vol. 1 • Edição Especial</span>
+                <span>Bogotá, D.C. — Novembro 2025</span>
+                <span>R$ 5,00 / COP 4.000</span>
+                <span>www.oardebogota.com</span>
+            </div>
+            <h1 class="masthead-title">O Ar de Bogotá</h1>
+            <div class="masthead-subtitle">Modelagem Preditiva e Análise da Desigualdade Ambiental</div>
+        </header>
+
+        <nav>
+            <ul>
+                <li class="active" onclick="showPage('capa')">Capa</li>
+                <li onclick="showPage('o-ar')">O Ar</li>
+                <li onclick="showPage('brasil')">Brasil</li>
+                <li onclick="showPage('local')">Local</li>
+                <li onclick="showPage('economia')">Economia</li>
+                <li onclick="showPage('esportes')">Esportes</li>
+                <li onclick="showPage('cultura')">Cultura</li>
+                <li onclick="showPage('passatempos')">Passatempos</li>
+                <li onclick="showPage('classificados')">Classificados</li>
+                <li onclick="showPage('opiniao')">Opinião</li>
+                <li onclick="showPage('contraportada')">Contraportada</li>
+            </ul>
+        </nav>
+
+        <main>
+            <div id="capa" class="page active">
+
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8rem; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem; height: 160px;">
+                    
+                    <div style="flex: 1.2; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #ddd; padding-right: 5px;">
+                        <img src="img/oreja1.png" alt="Logo Principal" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                    </div>
+
+                    <div style="flex: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; border-right: 1px solid #eee;">
+                        <div style="height: 60%; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                            <img src="img/oreja2.png" alt="Encuesta Ciudadana" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                        </div>
+                        <p style="font-family: 'Source Serif 4', serif; font-size: 0.65rem; line-height: 1.1; margin: 0; color: #444;">Como você avalia o ar do seu bairro?</p>
+                        <a href="https://forms.gle/qPV7y5SKdgHrNztH7" target="_blank" style="font-family: 'JetBrains Mono'; font-size: 0.65rem; color: black; font-weight: bold; text-decoration: underline; margin-top: 4px; cursor: pointer;">PARTICIPE DA PESQUISA AQUI</a>
+                    </div>
+
+                    <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;">
+                        <a href="https://vurbee.com.br/moto-eletrica-scooter-3000w/" target="_blank" style="display: block; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                            <img src="img/oreja3.png" alt="Moto Vurbee" title="Oferta Vurbee" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                        </a>
+                    </div>
+
+                    <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <img src="img/oreja4.png" alt="Oreja 4" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                    </div>
+
+                    <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center;">
+                        <img src="img/oreja5.png" alt="Oreja 5" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                    </div>
+                </div>
+
+                <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
+                    <article>
+                        <h2 class="headline" style="font-size: 3.5rem;">Desigualdade Invisível: O Ar que Respiramos não é o Mesmo para Todos</h2>
+                        <p class="subheadline">Análise revela como a poluição por PM2.5 afeta desproporcionalmente o sudoeste de Bogotá.</p>
+                        
+                        <p class="lead"><span style="float: left; font-size: 3rem; line-height: 0.8; font-weight: bold; margin-right: 10px;">E</span>m Bogotá, a poluição do ar transcende a questão ambiental para se tornar um problema de justiça social. Dados da RMCAB mostram que moradores do sudoeste enfrentam concentrações de material particulado muito superiores às do norte.</p>
+                        
+                        <p>Este projeto propõe uma mudança de paradigma: sair da gestión reativa para a <strong>gestión preditiva</strong>, utilizando modelos SARIMAX. O objetivo é antecipar picos de poluição com 48 horas de antecedência. "O risco não é democrático", afirmam os pesquisadores.</p>
+
+                        <div class="index-box">
+                            <h4>SUMÁRIO DESTA EDIÇÃO</h4>
+                            <ul>
+                                <li><strong>Pág 2:</strong> O Ar que Respiramos - A física da poluição.</li>
+                                <li><strong>Pág 3:</strong> Lições do Brasil - O caso de São Paulo.</li>
+                                <li><strong>Pág 4:</strong> Soluções Locais - Modelo Preditivo.</li>
+                                <li><strong>Pág 5:</strong> Economia - O custo da saúde.</li>
+                                <li><strong>Pág 9:</strong> Classificados - Ofertas de máscaras e filtros.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <aside>
+                        <div class="img-placeholder" style="height: 400px; background: #333; color: white;" data-name="portada.png"></div>
+                        <figcaption>Vista aérea da contaminação em Ciudad Bolívar. Foto: Arquivo do Projeto.</figcaption>
+                        
+                        <div style="background: var(--paper-dark); padding: 1rem; border-top: 4px solid var(--alert-red);">
+                            <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red);">MANCHETE</h3>
+                            <p style="font-size: 0.9rem;">Modelos matemáticos confirmam: ventos alísios y topografía criam "armadilha" de poluição nos bairros mais pobres.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <div id="o-ar" class="page">
+                <h2 class="headline">O Ar que Respiramos</h2>
+                <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana.</p>
+                <div class="grid-2">
+                    <div>
+                        <p>A poluição do ar em Bogotá é a manifestação diária de uma desigualdade social que também se respira...</p>
+                        <div class="img-placeholder" style="height: 250px;" data-name="mapa_dispersao.png"></div>
+                        <figcaption>Mapa de dispersão de poluentes.</figcaption>
+                    </div>
+                    <div>
+                        <p>Entrevistas realizadas com moradores revelam o impacto humano...</p>
+                        <div class="img-placeholder" style="height: 250px;" data-name="grafico_padroes.png"></div>
+                        <figcaption>Gráfico comparativo.</figcaption>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="brasil" class="page">
+                <h2 class="headline">Lições do Brasil</h2>
+                 <p class="subheadline">O que ocorre no gigante vizinho.</p>
+                 <div class="grid-3">
+                    <article style="grid-column: span 2;">
+                        <p>São Paulo, a maior metrópole da América do Sul...</p>
+                        </article>
+                    <aside>
+                        <div class="img-placeholder" style="height: 300px;" data-name="saopaulo_transito.png"></div>
+                    </aside>
+                 </div>
+            </div>
+
+            <div id="local" class="page">
+                 <h2 class="headline">Soluções para Bogotá</h2>
+                 <div class="grid-3">
+                    <div class="puzzle-box"><h3>1. Alerta Precoce</h3><p>SARIMAX...</p></div>
+                     <div class="puzzle-box"><h3>2. Janelas Limpas</h3><p>Logística...</p></div>
+                     <div class="puzzle-box"><h3>3. Plano Estrutural</h3><p>Justiça...</p></div>
+                 </div>
+            </div>
+
+            <div id="economia" class="page">
+                 <h2 class="headline">Economia & Poluição</h2>
+                 <div class="grid-2">
+                    <article><p>Perda de produtividade...</p></article>
+                    <article><div class="img-placeholder" style="height: 200px;" data-name="grafico_custo_saude.png"></div></article>
+                 </div>
+            </div>
+
+            <div id="esportes" class="page">
+                <h2 class="headline">Esporte em Risco</h2>
+                <div style="float: right; width: 300px; margin-left: 20px;">
+                    <div class="img-placeholder" style="height: 300px;" data-name="ciclovia_domingo.png"></div>
+                </div>
+                <p>A famosa Ciclovía...</p>
+            </div>
+
+            <div id="cultura" class="page">
+                <h2 class="headline">Cultura & Entretenimiento</h2>
+                <h3>Humor</h3>
+                <div class="grid-2"><div class="img-placeholder" style="height: 250px;" data-name="meme1.png"></div><div class="img-placeholder" style="height: 250px;" data-name="meme2.png"></div></div>
+                <h3>Galeria</h3>
+                <div class="grid-4">
+                    <div class="img-placeholder" style="height: 150px;" data-name="galeria1.png"></div>
+                    <div class="img-placeholder" style="height: 150px;" data-name="galeria2.png"></div>
+                    <div class="img-placeholder" style="height: 150px;" data-name="galeria3.png"></div>
+                    <div class="img-placeholder" style="height: 150px;" data-name="galeria4.png"></div>
+                </div>
+            </div>
+
+            <div id="passatempos" class="page">
+                <h2 class="headline">Passatempos</h2>
+                <div class="grid-2">
+                    <div class="puzzle-box"><h3>Sudoku</h3></div>
+                    <div class="puzzle-box"><h3>Crucigrama</h3></div>
+                    <div class="puzzle-box" style="grid-column: span 2;"><h3>Tira Cômica</h3><div class="img-placeholder" style="height: 150px;" data-name="tira_comica.png"></div></div>
+                    <div class="puzzle-box" style="grid-column: span 2;"><h3>Horóscopo</h3></div>
+                </div>
+            </div>
+
+            <div id="classificados" class="page">
+                <h2 class="headline">Classificados</h2>
+                <div class="classified-grid">
+                    <div class="classified-item"><h4>VENDE-SE CASA</h4><span class="classified-price">R$ 850k</span></div>
+                    <div class="classified-item"><h4>TESLA</h4><span class="classified-price">R$ 280k</span></div>
+                    </div>
+            </div>
+
+            <div id="opiniao" class="page">
+                <h2 class="headline">Opinião</h2>
+                <div class="grid-2">
+                    <article><h3>Cartas</h3><div><h4>Indignação</h4></div></article>
+                    <aside><h3>Entrevista</h3><div class="img-placeholder" style="height: 300px;" data-name="video_entrevista_youtube.png"></div></aside>
+                </div>
+            </div>
+
+            <div id="contraportada" class="page">
+                <h2 class="headline">Ficha Técnica</h2>
+                <div class="grid-main">
+                    <div class="oreja"><p>Obrigado.</p></div>
+                    <div style="text-align: center;"><h3>Projeto Interdisciplinar</h3><p>Karen & Johann</p></div>
+                    <div class="oreja"><div class="img-placeholder" style="height: 80px;" data-name="qr_code.png"></div></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('nav li').forEach(l => l.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            const navItems = document.querySelectorAll('nav li');
+            for (let item of navItems) {
+                if (item.getAttribute('onclick').includes(pageId)) {
+                    item.classList.add('active');
+                    break;
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>

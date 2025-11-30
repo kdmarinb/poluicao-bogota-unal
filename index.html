@@ -273,6 +273,111 @@
 </head>
 <body>
 
+    <style>
+    /* 1. ESPACIO PARA QUE NO SE TAPE EL CONTENIDO */
+    body { 
+        padding-top: 45px !important; /* Empuja todo el periódico hacia abajo */
+    }
+    
+    /* 2. TRUCO PARA QUE EL MENÚ NO TAPE LOS TÍTULOS AL HACER CLIC */
+    html {
+        scroll-padding-top: 130px; /* Al hacer clic en el menú, deja este espacio arriba */
+    }
+
+    .ticker-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #1a1714;
+        color: #e5e5e5;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        height: 35px;
+        line-height: 35px;
+        overflow: hidden;
+        z-index: 10000; /* Siempre encima */
+        border-bottom: 3px solid #b91c1c;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .ticker {
+        display: inline-block;
+        white-space: nowrap;
+        /* VELOCIDAD: 600s = 10 minutos. Irá muy lento y legible */
+        animation: ticker-scroll 600s linear infinite; 
+        padding-left: 100%; /* Inicia fuera de la pantalla */
+    }
+
+    /* Pausa al pasar el mouse */
+    .ticker-wrap:hover .ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        display: inline-block;
+        margin-right: 5rem; /* Mucho espacio entre noticias */
+    }
+
+    .up { color: #4ade80; font-weight: bold; }
+    .down { color: #f87171; font-weight: bold; }
+    .label { color: #9ca3af; margin-right: 5px; }
+
+    @keyframes ticker-scroll {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-100%, 0, 0); }
+    }
+</style>
+
+<div class="ticker-wrap">
+    <div class="ticker" id="financial-ticker">
+        <span>Iniciando sistema financiero...</span>
+    </div>
+</div>
+
+<script>
+    async function updateTicker() {
+        try {
+            // API Gratuita AwesomeAPI
+            const res = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
+            const data = await res.json();
+
+            const usd = data.USDBRL;
+            const eur = data.EURBRL;
+            const btc = data.BTCBRL;
+
+            const fmt = (val) => {
+                const num = parseFloat(val);
+                return num >= 0 
+                    ? `<span class="up">▲ ${num}%</span>` 
+                    : `<span class="down">▼ ${num}%</span>`;
+            };
+
+            const oilPrice = (82.50 + (Math.random() * 0.5)).toFixed(2); 
+            const cafePrice = (235.40 + (Math.random())).toFixed(2);
+
+            // Bloque único de datos
+            const singleBlock = `
+                <div class="ticker-item"><span class="label">🇺🇸 USD/BRL:</span> R$ ${parseFloat(usd.bid).toFixed(3)} ${fmt(usd.pctChange)}</div>
+                <div class="ticker-item"><span class="label">🇪🇺 EUR/BRL:</span> R$ ${parseFloat(eur.bid).toFixed(3)} ${fmt(eur.pctChange)}</div>
+                <div class="ticker-item"><span class="label">🛢️ BRENT:</span> US$ ${oilPrice} <span class="down">▼ -0.4%</span></div>
+                <div class="ticker-item"><span class="label">☕ CAFÉ (C):</span> US$ ${cafePrice} <span class="up">▲ +1.2%</span></div>
+                <div class="ticker-item"><span class="label">₿ BTC:</span> R$ ${(parseFloat(btc.bid)/1000).toFixed(1)}k ${fmt(btc.pctChange)}</div>
+                <div class="ticker-item"><span class="label">🏭 CARBONO:</span> € 75.20 <span class="down">▼ -0.1%</span></div>
+                <div class="ticker-item"><span class="label">🇨🇴 COP/USD:</span> $ 4,150 <span class="up">▲ +0.05%</span></div>
+            `;
+
+            // Repetimos 10 veces. Al ser 600 segundos, se moverá suavemente.
+            document.getElementById('financial-ticker').innerHTML = singleBlock.repeat(10);
+            
+        } catch (error) {
+            console.error("Error cargando finanzas:", error);
+            document.getElementById('financial-ticker').innerHTML = "<div class='ticker-item'>Mercado Offline - Verifique conexión</div>";
+        }
+    }
+    updateTicker();
+</script>
+
 <div class="newspaper">
     <header>
         <div class="masthead-meta">
@@ -303,17 +408,55 @@
 
     <main>
         <div id="capa" class="page active">
-            <div style="display: flex; gap: 1rem; justify-content: space-between; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem;">
-                <div class="oreja" style="flex: 1; height: 100px;">
-                    <div class="img-placeholder" style="height: 100%;" data-name="oreja1.png"></div>
-                </div>
-                <div class="oreja" style="flex: 1; height: 100px;">
-                    <div class="img-placeholder" style="height: 100%;" data-name="oreja2.png"></div>
-                </div>
-                <div class="oreja" style="flex: 1; height: 100px;">
-                    <div class="img-placeholder" style="height: 100%;" data-name="oreja3.png"></div>
-                </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8rem; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem; height: 160px;">
+            
+            <div style="flex: 1.2; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #ddd; padding-right: 5px;">
+                <img src="img/oreja1.png" 
+                    alt="Logo Principal" 
+                    style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
             </div>
+
+            <div style="flex: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; border-right: 1px solid #eee;">
+                
+                <div style="height: 60%; width: 100%; display: flex; align-items: center; justify-content: center; margin-bottom: 5px;">
+                    <img src="img/oreja2.png" 
+                        alt="Encuesta Ciudadana" 
+                        style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                </div>
+                
+                <p style="font-family: 'Source Serif 4', serif; font-size: 0.65rem; line-height: 1.1; margin: 0; color: #444;">
+                    Como você avalia o ar do seu bairro?
+                </p>
+
+                <a href="https://forms.gle/qPV7y5SKdgHrNztH7" target="_blank" 
+                style="font-family: 'JetBrains Mono'; font-size: 0.65rem; color: black; font-weight: bold; text-decoration: underline; margin-top: 4px; cursor: pointer;">
+                PARTICIPE DA PESQUISA AQUI
+                </a>
+            </div>
+
+            <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.2s;">
+                <a href="https://vurbee.com.br/moto-eletrica-scooter-3000w/" target="_blank" style="display: block; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                    <img src="img/oreja3.png" 
+                        alt="Moto Elétrica Vurbee" 
+                        title="Ver Oferta Vurbee"
+                        style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+                </a>
+            </div>
+
+            <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center;">
+                <img src="img/oreja4.png" 
+                    alt="Oreja 4" 
+                    style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+            </div>
+
+            <div style="flex: 1; height: 100%; display: flex; align-items: center; justify-content: center;">
+                <img src="img/oreja5.png" 
+                    alt="Oreja 5" 
+                    style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
+            </div>
+
+        </div>
 
             <div class="grid-2" style="grid-template-columns: 2fr 1fr;">
                 <article>
