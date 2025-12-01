@@ -585,7 +585,9 @@
 
                 <hr style="margin: 4rem 0; border: 0; border-top: 2px solid #eee;">
 
-                <div style="margin-bottom: 6rem;"> <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
+                <div style="margin-bottom: 5rem;">
+                    
+                    <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
                         Monitoramento Detalhado por Estação
                     </h3>
                     <p style="margin-bottom: 2rem; font-size: 1.1rem;">
@@ -614,7 +616,7 @@
                     </select>
 
                     <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
-                        <iframe id="visorGraficos" src="graficos/1grafico_carvajal_sevillana.html" width="100%" height="1200px" frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>
+                        <iframe id="visorGraficos" src="graficos/1grafico_carvajal_sevillana.html" width="100%" height="950px" frameborder="0" style="border: none;"></iframe>
                     </div>
                 </div>
 
@@ -623,11 +625,11 @@
                         Ranking de Queixas e Reportes
                     </h3>
                     <p style="margin-bottom: 2rem; font-size: 1.1rem;">
-                        Análise consolidada das denúncias cidadãs por localidade.
+                        Análise consolidada das denúncias cidadãs por localidade. (Deslize para ver a legenda)
                     </p>
                     
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
-                        <iframe src="graficos/ranking_queixas.html" width="100%" height="1000px" frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
+                        <iframe src="graficos/ranking_queixas.html" style="width: 100%; min-width: 1200px; height: 1000px; border: none;"></iframe>
                     </div>
                 </div>
 
@@ -639,7 +641,6 @@
                     }
                 </script>
             </div>
-
 
 
             <div id="economia" class="page">
