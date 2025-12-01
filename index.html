@@ -574,15 +574,25 @@
                     </div>
                 </div>
 
-                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+                <div style="margin-top: 3rem; margin-bottom: 4rem; font-size: 1.1rem; line-height: 1.7; color: #333; text-align: justify;">
+                    <p style="margin-bottom: 1.5rem;">
+                        A análise combinada das medições de PM2.5, os padrões meteorológicos e os dados socioeconômicos de Bogotá mostra com clareza que a carga de poluição não se distribui de forma homogênea na cidade: as localidades do sudoeste (Kennedy, Bosa, Ciudad Bolívar e Tunjuelito) concentram os maiores níveis de exposição, enquanto o norte e os morros orientais respiram ar consideravelmente mais limpo. Esta desigualdade ambiental explica-se, sobretudo, pela proximidade a corredores de carga a diesel, zonas industriais e falta de barreiras verdes efetivas.
+                    </p>
+                    <p>
+                        A partir dessas descobertas, o projeto propõe três linhas de ação complementares. Primeiro, um sistema de <strong>alerta precoce</strong> que use modelos de séries temporais (como SARIMAX) para antecipar episódios de alta concentração. Segundo, a criação de <strong>“janelas limpas”</strong> de operação de carga, com rotas adaptativas que reduzam o impacto nas zonas vulneráveis nos momentos de pior dispersão. E terceiro, um <strong>plano estrutural de justiça ambiental</strong> que priorize intervenções físicas nos bairros mais expostos.
+                    </p>
+                </div>
 
-                <div style="margin-bottom: 4rem;">
-                    <h3 class="subheadline" style="font-weight: 800; font-size: 1.8rem; color: #1a1714; margin-bottom: 0.5rem;">
-                        Monitoramento detalhado por estação
+                <hr style="margin: 4rem 0; border: 0; border-top: 2px solid #eee;">
+
+                <div style="margin-bottom: 6rem;"> <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
+                        Monitoramento Detalhado por Estação
                     </h3>
-                    <p style="margin-bottom: 1.5rem;">Selecione uma estação para visualizar o comportamento histórico e predições:</p>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                        Selecione uma estação abaixo para visualizar o comportamento histórico e as predições do modelo:
+                    </p>
                     
-                    <select id="stationSelector" onchange="cambiarGrafico()" style="padding: 12px; font-size: 1rem; width: 100%; max-width: 400px; margin-bottom: 1.5rem; border: 2px solid var(--paper-dark); border-radius: 6px; background-color: #fff; cursor: pointer;">
+                    <select id="stationSelector" onchange="cambiarGrafico()" style="padding: 15px; font-size: 1.1rem; width: 100%; max-width: 500px; margin-bottom: 2rem; border: 2px solid var(--paper-dark); border-radius: 8px; background-color: #fff; cursor: pointer; display: block;">
                         <option value="1grafico_carvajal_sevillana.html">1. Carvajal - Sevillana</option>
                         <option value="2grafico_kennedy.html">2. Kennedy</option>
                         <option value="3grafico_bosa.html">3. Bosa</option>
@@ -603,28 +613,21 @@
                         <option value="18grafico_el_jazmín.html">18. El Jazmín</option>
                     </select>
 
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <iframe id="visorGraficos" src="graficos/1grafico_carvajal_sevillana.html" width="100%" height="900px" frameborder="0" style="border: none;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
+                        <iframe id="visorGraficos" src="graficos/1grafico_carvajal_sevillana.html" width="100%" height="1200px" frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>
                     </div>
                 </div>
-                    <div style="margin-top: 3rem; margin-bottom: 3rem; font-size: 1.1rem; line-height: 1.7; color: #333; text-align: justify;">
-                        <p style="margin-bottom: 1.5rem;">
-                            A análise combinada das medições de PM2.5, os padrões meteorológicos e os dados socioeconômicos de Bogotá mostra com clareza que a carga de poluição não se distribui de forma homogênea na cidade: as localidades do sudoeste (Kennedy, Bosa, Ciudad Bolívar e Tunjuelito) concentram os maiores níveis de exposição, enquanto o norte e os morros orientais respiram ar consideravelmente mais limpo. Esta desigualdade ambiental explica-se, sobretudo, pela proximidade a corredores de carga a diesel, zonas industriais e falta de barreiras verdes efetivas.
-                        </p>
-                        <p>
-                            A partir dessas descobertas, o projeto propõe três linhas de ação complementares. Primeiro, um sistema de <strong>alerta precoce</strong> que use modelos de séries temporais (como SARIMAX) para antecipar episódios de alta concentração. Segundo, a criação de <strong>“janelas limpas”</strong> de operação de carga, com rotas adaptativas que reduzam o impacto nas zonas vulneráveis nos momentos de pior dispersão. E terceiro, um <strong>plano estrutural de justiça ambiental</strong> que priorize intervenções físicas nos bairros mais expostos: mais árvores, redesenho viário e espaços públicos que funcionem como amortecedores de poluição. Essas soluções visam reduzir, de maneira focalizada, tanto os picos de PM2.5 quanto a desigualdade em quem os sofre.
-                        </p>
-                    </div>
 
-                    <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
-                <div>
-                    <h3 class="subheadline" style="font-weight: 800; font-size: 1.8rem; color: #1a1714; margin-bottom: 0.5rem;">
-                        Ranking de queixas e reportes
+                <div style="margin-bottom: 4rem;">
+                    <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
+                        Ranking de Queixas e Reportes
                     </h3>
-                    <p style="margin-bottom: 1.5rem;">Análise consolidada das denúncias cidadãs por localidade.</p>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+                        Análise consolidada das denúncias cidadãs por localidade.
+                    </p>
                     
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                        <iframe src="graficos/ranking_queixas.html" width="100%" height="900px" frameborder="0" style="border: none;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
+                        <iframe src="graficos/ranking_queixas.html" width="100%" height="1000px" frameborder="0" scrolling="no" style="overflow: hidden;"></iframe>
                     </div>
                 </div>
 
@@ -636,7 +639,9 @@
                     }
                 </script>
             </div>
-                </div> 
+
+
+
             <div id="economia" class="page">
                 <h2 class="headline">Economia & Poluição</h2>
                 <p class="subheadline">Quanto custa o ar sujo para o bolso do bogotano?</p>
