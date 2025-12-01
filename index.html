@@ -574,24 +574,14 @@
                     </div>
                 </div>
 
-                <div style="margin-top: 3rem; margin-bottom: 4rem; font-size: 1.1rem; line-height: 1.7; color: #333; text-align: justify;">
-                    <p style="margin-bottom: 1.5rem;">
-                        A análise combinada das medições de PM2.5, os padrões meteorológicos e os dados socioeconômicos de Bogotá mostra com clareza que a carga de poluição não se distribui de forma homogênea na cidade: as localidades do sudoeste (Kennedy, Bosa, Ciudad Bolívar e Tunjuelito) concentram os maiores níveis de exposição, enquanto o norte e os morros orientais respiram ar consideravelmente mais limpo. Esta desigualdade ambiental explica-se, sobretudo, pela proximidade a corredores de carga a diesel, zonas industriais e falta de barreiras verdes efetivas.
-                    </p>
-                    <p>
-                        A partir dessas descobertas, o projeto propõe três linhas de ação complementares. Primeiro, um sistema de <strong>alerta precoce</strong> que use modelos de séries temporais (como SARIMAX) para antecipar episódios de alta concentração. Segundo, a criação de <strong>“janelas limpas”</strong> de operação de carga, com rotas adaptativas que reduzam o impacto nas zonas vulneráveis nos momentos de pior dispersão. E terceiro, um <strong>plano estrutural de justiça ambiental</strong> que priorize intervenções físicas nos bairros mais expostos.
-                    </p>
-                </div>
-
                 <hr style="margin: 4rem 0; border: 0; border-top: 2px solid #eee;">
 
                 <div style="margin-bottom: 5rem;">
-                    
                     <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
                         Monitoramento Detalhado por Estação
                     </h3>
                     <p style="margin-bottom: 2rem; font-size: 1.1rem;">
-                        Selecione uma estação abaixo para visualizar o comportamento histórico e as predições do modelo:
+                        Selecione uma estação abaixo para visualizar o comportamento histórico e as predições do modelo SARIMAX:
                     </p>
                     
                     <select id="stationSelector" onchange="cambiarGrafico()" style="padding: 15px; font-size: 1.1rem; width: 100%; max-width: 500px; margin-bottom: 2rem; border: 2px solid var(--paper-dark); border-radius: 8px; background-color: #fff; cursor: pointer; display: block;">
@@ -620,16 +610,59 @@
                     </div>
                 </div>
 
+                <div style="margin-bottom: 5rem; padding: 2rem; background-color: #fafafa; border-left: 5px solid var(--accent-blue);">
+                    
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1.5rem; color: #1a1714;">
+                        Soluções para Bogotá: O Desafio Central da Carga a Diesel
+                    </h3>
+                    
+                    <div style="font-size: 1.15rem; line-height: 1.8; color: #333; text-align: justify;">
+                        <p style="margin-bottom: 1.5rem;">
+                            A análise combinada das medições de PM2.5, os padrões meteorológicos e os dados socioeconômicos de Bogotá mostra com clareza que a carga de poluição não se distribui de forma homogênea na cidade: as localidades do sudoeste (Kennedy, Bosa, Ciudad Bolívar e Tunjuelito) concentram os maiores níveis de exposição, enquanto o norte e os morros orientais respiram ar consideravelmente mais limpo. Esta desigualdade ambiental é profundamente iníqua, já que 33% da população bogotana vive precisamente nessas quatro localidades críticas.
+                        </p>
+
+                        <h4 style="font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--paper-dark);">
+                            A Realidade das Emissões: Carga e Poeira
+                        </h4>
+                        <p style="margin-bottom: 1.5rem;">
+                            O Inventário de Emissões Contaminantes de Bogotá 2023, publicado pela Secretaria Distrital de Ambiente, revela uma descoberta central: <strong>64,2% do total das emissões de PM2.5 provêm de apenas três fontes.</strong> Em primeiro lugar, a ressuspensão de material particulado por trânsito em vias sem pavimentação gera aproximadamente 40% do PM2.5 total. Em segundo lugar, o transporte de carga pesada (caminhões e veículos articulados) representa 33% de todas as emissões de fontes móveis. Em terceiro lugar, a construção e o maquinário amarelo contribuem com 20% adicional.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Este perfil de emissões reflete a geografia logística da cidade. A Autopista Sur, principal corredor de entrada e saída, é utilizada 24/7 por milhares de caminhões a diesel. As emissões não são apenas combustão incompleta; incluem também o desgaste de freios e pneus, e a ressuspensão de poeira acumulada que penetra profundamente nos pulmões.
+                        </p>
+
+                        <h4 style="font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--paper-dark);">
+                            Um Enfoque de Restrição Inteligente: Janelas Limpas
+                        </h4>
+                        <p style="margin-bottom: 1.5rem;">
+                            Bogotá experimentou diversas restrições veiculares com resultados mistos. O projeto propõe levar a lição do sucesso dos ônibus elétricos adiante: em vez de restrições rígidas, implementar um sistema de <strong>"janelas limpas de operação"</strong> baseado na previsão meteorológica. Usando modelos SARIMAX, identificam-se antecipadamente as horas em que a meteorologia impedirá a dispersão do contaminante. Nesses momentos críticos, oferecem-se incentivos para que a carga desloque sua operação para faixas horárias mais seguras ou rotas alternas.
+                        </p>
+                        <p style="margin-bottom: 1.5rem;">
+                            Esta estratégia reconhece uma realidade: não se pode eliminar a carga de Bogotá, mas pode-se temporalizar e reorientar seu impacto para onde cause menos danos à saúde pública.
+                        </p>
+
+                        <h4 style="font-size: 1.4rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: var(--paper-dark);">
+                            Justiça Ambiental e Síntese
+                        </h4>
+                        <p style="margin-bottom: 1.5rem;">
+                            Além do transporte, a desigualdade reflete carências estruturais. O projeto inclui um plano de <strong>justiça ambiental territorial</strong> que priorize intervenções físicas nas zonas mais afetadas: expansão de barreiras verdes adjacentes a corredores de carga e redesenho viário.
+                        </p>
+                        <p>
+                            <strong>Em síntese, a estratégia se apoia em três pilares:</strong> (1) alerta precoce preditivo; (2) operação flexível de carga baseada nessas previsões; e (3) investimento massivo em infraestrutura verde no sudoeste da cidade. Juntos, estes pilares visam reduzir tanto os picos de PM2.5 quanto a desigualdade ambiental.
+                        </p>
+                    </div>
+                </div>
+
                 <div style="margin-bottom: 4rem;">
                     <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
                         Ranking de Queixas e Reportes
                     </h3>
-                    <p style="margin-bottom: 2rem; font-size: 1.1rem;">
-                        Análise consolidada das denúncias cidadãs por localidade. (Deslize para ver a legenda)
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #555;">
+                        <i data-lucide="arrow-left-right"></i> Deslize horizontalmente para visualizar o gráfico completo e a legenda detalhada.
                     </p>
                     
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow-x: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
-                        <iframe src="graficos/ranking_queixas.html" style="width: 100%; min-width: 1200px; height: 1000px; border: none;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
+                        <iframe src="graficos/ranking_queixas.html" style="width: 1300px; height: 900px; border: none; display: block;"></iframe>
                     </div>
                 </div>
 
@@ -641,7 +674,6 @@
                     }
                 </script>
             </div>
-
 
             <div id="economia" class="page">
                 <h2 class="headline">Economia & Poluição</h2>
