@@ -254,6 +254,96 @@
             .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
             .oreja { display: none; }
         }
+
+        /* --- ESTILOS GALERIA & LIGHTBOX --- */
+
+/* Grid Uniforme (Cuadrícula Perfecta) */
+.uniform-grid {
+    display: grid;
+    /* Crea columnas automáticas de mínimo 150px */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 10px;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 1 / 1; /* Fuerza a que sean CUADRADOS perfectos */
+    overflow: hidden;
+    border-radius: 4px;
+    background: #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: zoom-in;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta para llenar el cuadro */
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1); /* Zoom suave al pasar el mouse */
+}
+
+/* Grid Memes (Más grandes) */
+.memes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.meme-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px; /* Altura fija para uniformidad */
+}
+
+.meme-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Se ve la imagen completa */
+}
+
+/* LIGHTBOX */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border: 2px solid white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -845,17 +935,125 @@
             </div>
         </div>
 
-                    <div id="esportes" class="page">
-                <h2 class="headline">Esporte em Risco</h2>
-                <p class="subheadline">Ciclovía: Lazer ou Perigo?</p>
-                <div style="float: right; width: 300px; margin-left: 20px;">
-                    <div class="img-placeholder" style="height: 300px;" data-name="ciclovia_domingo.png"></div>
-                    <figcaption>Ciclistas usam máscaras na Av. Boyacá.</figcaption>
-                </div>
-                <p>A famosa Ciclovía de domingo é um orgulho da cidade, mas corredores e ciclistas perguntam: é seguro treinar? Nossos dados mostram que entre 6h e 9h da manhã, o esforço físico ao ar livre no sudoeste da cidade pode ser prejudicial devido à inversão térmica que segura a poluição da noite anterior.</p>
-                <p>Atletas de alto rendimento já ajustam seus treinos baseados no IBOCA. "O desempenho cai quando o ar está pesado", diz o treinador Carlos Mendes. A recomendação é clara: evitar zonas críticas nas primeiras horas da manhã.</p>
-                <p>Recomendação do Jornal: Verifique o nosso alerta na capa antes de sair para correr amanhã.</p>
+<div id="esportes" class="page">
+            <h2 class="headline">Esporte em Risco</h2>
+            <p class="subheadline">O dilema da Ciclovía: Quando o esforço físico se torna uma ameaça invisível à saúde?</p>
+            
+            <div class="grid-2">
+                <article>
+                    <p class="lead">
+                        As condições meteorológicas de Bogotá, com heladas na madrugada e inversão térmica, tornam a concentração de material particulado crítica. Especialistas alertam: para os <a href="https://www.eltiempo.com/bogota/afectacion-de-la-contaminacion-del-aire-para-los-ciclistas-472238" target="_blank" style="color: var(--alert-red); font-weight: bold; text-decoration: underline;">ciclistas</a>, o risco pode superar os benefícios.
+                    </p>
+                    
+                    <p>
+                        A matemática é cruel com quem pedala. Enquanto um adulto em repouso respira de 12 a 18 vezes por minuto, um ciclista em esforço pode chegar a 30 ou mais, aumentando drasticamente a entrada de contaminantes. "Isso implica aumentar o gasto cardiovascular, gerando mais contato com o material particulado, especialmente nas horas de pico", explicam especialistas em saúde pública da Universidade dos Andes.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">Sintomas e Consequências</h4>
+                    <p>
+                        Não é apenas cansaço. Relatos de ciclistas urbanos incluem irritação nos olhos, ressecamento nasal e infecções de garganta recorrentes. Casos mais graves forçaram atletas amadores a abandonar a bicicleta após diagnósticos de insuficiência cardíaca e bradicardia. O problema se agrava em rotas industriais ou quando se pedala atrás dos chamados "caminhões chaminé".
+                    </p>
+
+                    <div style="background: #fff1f2; border-left: 4px solid var(--alert-red); padding: 1.5rem; margin: 2rem 0;">
+                        <h4 style="font-family: 'JetBrains Mono'; color: var(--alert-red); margin-bottom: 1rem; text-transform: uppercase;">
+                            Recomendações Importantes
+                        </h4>
+                        <ul style="list-style: none; padding: 0; font-size: 0.9rem; line-height: 1.6;">
+                            <li style="margin-bottom: 10px;">
+                                <strong>1. Use N95, não pano:</strong> Máscaras simples não filtram o material particulado MP 2.5, que penetra na corrente sanguínea. Invista em respiradores com certificação.
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <strong>2. Distância é Saúde:</strong> Evite transitar ou parar logo atrás de veículos de carga e ônibus provisórios, responsáveis por grande parte das emissões.
+                            </li>
+                            <li style="margin-bottom: 10px;">
+                                <strong>3. Reduza a Intensidade:</strong> Em dias de alerta ambiental (amarelo ou laranja), diminua o esforço físico e o tempo de exposição.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <h3 style="font-family: 'Playfair Display'; color: var(--safe-green); border-bottom: 2px solid var(--safe-green); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+                            Rotas de Fuga: Onde Respirar Ar Puro
+                        </h3>
+                        <p style="font-size: 0.9rem;">
+                            Cansado do smog? Aqui estão os refúgios recomendados perto de Bogotá para desintoxicar os pulmões (Links Oficiais):
+                        </p>
+
+                        <div class="grid-2" style="gap: 1rem;">
+                            <div style="background: white; border: 1px solid #ddd; padding: 1rem; border-top: 3px solid var(--safe-green);">
+                                <h5 style="color: var(--safe-green); font-weight: bold; margin-bottom: 0.5rem;">Rota do Páramo</h5>
+                                <ul style="font-size: 0.8rem; list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 8px;">
+                                        <strong>PNN Chingaza:</strong> Reserva obrigatória.
+                                        <br><a href="https://www.parquesnacionales.gov.co" target="_blank" style="text-decoration: underline; color: var(--ink-black);">parquesnacionales.gov.co</a>
+                                    </li>
+                                    <li>
+                                        <strong>Matarredonda (Choachí):</strong> Caminhadas de um dia.
+                                        <br><a href="https://parquecologicomatarredonda.com.co" target="_blank" style="text-decoration: underline; color: var(--ink-black);">Web Oficial</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div style="background: white; border: 1px solid #ddd; padding: 1rem; border-top: 3px solid var(--accent-blue);">
+                                <h5 style="color: var(--accent-blue); font-weight: bold; margin-bottom: 0.5rem;">Terapia Termal</h5>
+                                <ul style="font-size: 0.8rem; list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 8px;">
+                                        <strong>Termales Santa Mónica:</strong>
+                                        <br><a href="https://termalessantamonica.com" target="_blank" style="text-decoration: underline; color: var(--ink-black);">termalessantamonica.com</a>
+                                    </li>
+                                    <li>
+                                        <strong>Termales El Zipa (Tabio):</strong>
+                                        <br><a href="https://termalesdetabio.com/" style="text-decoration: underline; color: var(--ink-black);">Web Oficial</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: 250px; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/esporte1.avif" alt="Ciclista com máscara em Bogotá" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 2rem;">
+                        Ciclistas enfrentam os "caminhões chaminé".
+                    </figcaption>
+                    
+                    <div style="background: white; color: var(--ink-black); padding: 1.5rem; margin-bottom: 2rem; border-right: 5px solid var(--alert-red); border: 1px solid #ddd; border-right-width: 5px;">
+                        <h4 style="font-family: 'JetBrains Mono'; font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; color: var(--alert-red);">
+                            Respirar é Fumar?
+                        </h4>
+                        <p style="font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem;">
+                            Um estudo aplicado à realidade de Bogotá revelou dados alarmantes: respirar perto da estação <strong>Sevillana (Kennedy)</strong> em um dia de alerta equivale a fumar cerca de <strong style="color: var(--alert-red);">3,3 cigarros por dia</strong>.
+                        </p>
+                        <p style="font-size: 0.8rem; color: var(--ink-grey); font-style: italic;">
+                            Fonte: App "Shit! I Smoke" / Dados de PM2.5 convertidos.
+                        </p>
+                    </div>
+
+                    <div class="img-placeholder" style="height: 200px; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/esporte2.webp" alt="Paisagem Parque Chingaza" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 2rem;">
+                        Apenas nos Cerros Orientais o ar é limpo.
+                    </figcaption>
+                    
+                    <div style="padding: 1rem; border-top: 1px dashed var(--ink-light);">
+                        <h5 style="font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--ink-light); margin-bottom: 0.5rem;">FONTES CONSULTADAS:</h5>
+                        <ul style="list-style: none; padding: 0; font-size: 0.75rem; line-height: 1.6;">
+                            <li style="margin-bottom: 5px;"><a href="https://www.eltiempo.com/bogota/afectacion-de-la-contaminacion-del-aire-para-los-ciclistas-472238" target="_blank" style="color: var(--alert-red); text-decoration: underline;">El Tiempo: Afetação aos Ciclistas</a></li>
+                            <li style="margin-bottom: 5px;"><a href="https://www.elespectador.com/ambiente/ciclistas-en-bogota-inhalan-mas-contaminacion-article/" target="_blank" style="color: var(--alert-red); text-decoration: underline;">El Espectador: Inalação de Poluição</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="img-placeholder" style="height: 200px; background: #eee; border: none; margin-bottom: 0.5rem; margin-top: 2rem;">
+                    <img src="img/esporte3.jpg" alt="Paisagem Matarredonda" style="width: 100%; height: 100%; object-fit: cover; display: block;">    
+                    </div>
+                    <figcaption style="margin-bottom: 0;">
+                        Paisagem de Matarredonda
+                    </figcaption>
+                </aside>
             </div>
+        </div>
 
             <div id="opiniao" class="page">
                 <h2 class="headline">Opinião & Debate</h2>
@@ -884,30 +1082,72 @@
                 </div>
             </div>
 
-            <div id="cultura" class="page">
-                <h2 class="headline">Cultura & Entretenimiento</h2>
-                <p class="subheadline">O lado leve (e visual) da cidade.</p>
-                <h3>Humor: Memes da Poluição</h3>
-                <div class="grid-2" style="margin-bottom: 2rem;">
-                    <div class="img-placeholder" style="height: 250px;" data-name="meme1.png"></div>
-                    <div class="img-placeholder" style="height: 250px;" data-name="meme2.png"></div>
-                </div>
-                <h3>Galeria: Bogotá com e sem Smog</h3>
-                <div class="grid-4">
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria1.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria2.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria3.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria4.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria5.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria6.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria7.png"></div>
-                    <div class="img-placeholder" style="height: 150px;" data-name="galeria8.png"></div>
+<div id="cultura" class="page">
+            <h2 class="headline">Cultura & Entretenimiento</h2>
+            <p class="subheadline">O lado leve (e visual) da cidade.</p>
+
+            <div style="margin-bottom: 4rem;">
+                <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red); margin-bottom: 1.5rem; text-transform: uppercase; border-bottom: 2px solid var(--ink-black); display: inline-block;">
+                    Humor: Memes da Poluição
+                </h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A internet não perdoa: rir para não tossir.</p>
+                
+                <div class="memes-grid">
+                    <div class="meme-item"><img src="img/meme1.jpg" onclick="openLightbox(this)" alt="Meme 1"></div>
+                    <div class="meme-item"><img src="img/meme2.jpg" onclick="openLightbox(this)" alt="Meme 2"></div>
+                    <div class="meme-item"><img src="img/meme3.jpeg" onclick="openLightbox(this)" alt="Meme 3"></div>
+                    <div class="meme-item"><img src="img/meme4.jpeg" onclick="openLightbox(this)" alt="Meme 4"></div>
+                    <div class="meme-item"><img src="img/meme5.jpeg" onclick="openLightbox(this)" alt="Meme 5"></div>
+                    <div class="meme-item"><img src="img/meme6.jpeg" onclick="openLightbox(this)" alt="Meme 6"></div>
+                    <div class="meme-item"><img src="img/meme7.jpeg" onclick="openLightbox(this)" alt="Meme 7"></div>
+                    <div class="meme-item"><img src="img/meme8.jpeg" onclick="openLightbox(this)" alt="Meme 8"></div>
+                    <div class="meme-item"><img src="img/meme9.jpeg" onclick="openLightbox(this)" alt="Meme 9"></div>
+                    <div class="meme-item"><img src="img/meme10.jfif" onclick="openLightbox(this)" alt="Meme 10"></div>
                 </div>
             </div>
 
+            <div>
+                <h3 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">
+                    Galeria: Bogotá com e sem Smog
+                </h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--ink-grey);">
+                    Um registro visual dos contrastes da cidade. Clique nas imagens para ampliar.
+                </p>
+
+                <div class="uniform-grid">
+                    <div class="gallery-item"><img src="img/galeria1.jpg" onclick="openLightbox(this)" alt="Foto 1"></div>
+                    <div class="gallery-item"><img src="img/galeria2.jpg" onclick="openLightbox(this)" alt="Foto 2"></div>
+                    <div class="gallery-item"><img src="img/galeria3.jpg" onclick="openLightbox(this)" alt="Foto 3"></div>
+                    <div class="gallery-item"><img src="img/galeria4.jpg" onclick="openLightbox(this)" alt="Foto 4"></div>
+                    <div class="gallery-item"><img src="img/galeria5.jpg" onclick="openLightbox(this)" alt="Foto 5"></div>
+                    <div class="gallery-item"><img src="img/galeria6.jpg" onclick="openLightbox(this)" alt="Foto 6"></div>
+                    <div class="gallery-item"><img src="img/galeria7.jpeg" onclick="openLightbox(this)" alt="Foto 7"></div>
+                    <div class="gallery-item"><img src="img/galeria8.jpg" onclick="openLightbox(this)" alt="Foto 8"></div>
+                    <div class="gallery-item"><img src="img/galeria9.jpg" onclick="openLightbox(this)" alt="Foto 9"></div>
+                    <div class="gallery-item"><img src="img/galeria10.jpg" onclick="openLightbox(this)" alt="Foto 10"></div>
+                    <div class="gallery-item"><img src="img/galeria11.jpeg" onclick="openLightbox(this)" alt="Foto 11"></div>
+                    <div class="gallery-item"><img src="img/galeria12.jpeg" onclick="openLightbox(this)" alt="Foto 12"></div>
+                    <div class="gallery-item"><img src="img/galeria13.avif" onclick="openLightbox(this)" alt="Foto 13"></div>
+                    <div class="gallery-item"><img src="img/galeria14.jpeg" onclick="openLightbox(this)" alt="Foto 14"></div>
+                    <div class="gallery-item"><img src="img/galeria15.webp" onclick="openLightbox(this)" alt="Foto 15"></div>
+                    <div class="gallery-item"><img src="img/galeria16.avif" onclick="openLightbox(this)" alt="Foto 16"></div>
+                    <div class="gallery-item"><img src="img/galeria17.avif" onclick="openLightbox(this)" alt="Foto 17"></div>
+                    <div class="gallery-item"><img src="img/galeria18.jpg" onclick="openLightbox(this)" alt="Foto 18"></div>
+                    <div class="gallery-item"><img src="img/galeria19.jpeg" onclick="openLightbox(this)" alt="Foto 19"></div>
+                    <div class="gallery-item"><img src="img/galeria20.avif" onclick="openLightbox(this)" alt="Foto 20"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+            <span class="close-btn">&times;</span>
+            <img class="lightbox-content" id="lightboxImg">
+        </div>
+
+
  <div id="passatempos" class="page">
             <h2 class="headline">Passatempos</h2>
-            <p class="subheadline">Desafie sua mente (enquanto usa uma máscara).</p>
+            <p class="subheadline">Desafie sua mente!</p>
             
             <div class="grid-2">
                 <div class="puzzle-box" style="display: flex; flex-direction: column; align-items: center;">
@@ -1023,83 +1263,74 @@
 
 
 
-            <div id="classificados" class="page">
-                <h2 class="headline">Classificados & Anúncios</h2>
-                <p class="subheadline">Oportunidades únicas (para quem quer respirar).</p>
-                <div class="classified-grid">
-                    <div class="classified-item">
-                        <h4>VENDE-SE CASA</h4>
-                        <p>Localização: Cerros Orientales (Ar Puro!). Longe da contaminação de Kennedy. Vista livre de smog.</p>
-                        <span class="classified-price">R$ 850.000,00</span>
-                        <small>Tel: +57 300 123 4567</small>
-                    </div>
-                    <div class="classified-item">
-                        <h4>ALUGA-SE APTO</h4>
-                        <p>Centro. Janelas vedadas hermeticamente. Inclui purificador de ar industrial.</p>
-                        <span class="classified-price">R$ 2.500/mês</span>
-                        <small>Tel: +55 11 99999-8888</small>
-                    </div>
-                    <div class="classified-item">
-                        <h4>TESLA MODEL 3</h4>
-                        <p>Zero emissões! Ajude Bogotá e seu bolso. Isento de Pico y Placa.</p>
-                        <span class="classified-price">R$ 280.000,00</span>
-                        <small>Tratar com Carlos.</small>
-                    </div>
-                    <div class="classified-item">
-                        <h4>BICICLETA ELÉTRICA</h4>
-                        <p>Fuja do trânsito e não polua. Bateria nova. Capacete grátis.</p>
-                        <span class="classified-price">R$ 4.500,00</span>
-                        <small>Tel: +57 310 555 1234</small>
-                    </div>
-                    <div class="classified-item" style="background: #fff8e1;">
-                        <h4>MÁSCARAS DE GÁS</h4>
-                        <p>Modelo militar vintage. Perfeito para correr na Av. Caracas às 18h.</p>
-                        <span class="classified-price">R$ 150,00</span>
-                    </div>
-                    <div class="classified-item" style="background: #e0f2f1;">
-                        <h4>VENDE-SE AR PURO</h4>
-                        <p>Garrafas de ar importado da Amazônia. Sinta a natureza.</p>
-                        <span class="classified-price">R$ 50,00 / un</span>
-                    </div>
-                    <div class="classified-item">
-                        <h4>EMPREGO</h4>
-                        <p>Analista de Dados. Necessário saber Python e não ter medo de gráficos tristes.</p>
-                        <span class="classified-price">Salário a combinar</span>
-                    </div>
-                    <div class="classified-item">
-                        <h4>DOA-SE</h4>
-                        <p>Carro velho a diesel. Motivo: Consciência pesada.</p>
-                        <span class="classified-price">GRÁTIS</span>
-                    </div>
+<div id="classificados" class="page">
+            <h2 class="headline">Classificados & Anúncios</h2>
+            <p class="subheadline">Oportunidades únicas (para quem quer respirar).</p>
+            
+            <div class="classified-grid">
+                <div class="classified-item">
+                    <h4>VENDE-SE CASA</h4>
+                    <p>Localização: Cerros Orientales (Ar Puro!). Longe da contaminação de Kennedy. Vista livre de smog.</p>
+                    <span class="classified-price">R$ 850.000,00</span>
+                    <small>Tel: +57 300 123 4567</small>
                 </div>
-            </div>
+                <div class="classified-item">
+                    <h4>ALUGA-SE APTO</h4>
+                    <p>Centro. Janelas vedadas hermeticamente. Inclui purificador de ar industrial.</p>
+                    <span class="classified-price">R$ 2.500/mês</span>
+                    <small>Tel: +55 11 99999-8888</small>
+                </div>
+                <div class="classified-item">
+                    <h4>TESLA MODEL 3</h4>
+                    <p>Zero emissões! Ajude Bogotá e seu bolso. Isento de Pico y Placa.</p>
+                    <span class="classified-price">R$ 280.000,00</span>
+                    <small>Tratar com Carlos.</small>
+                </div>
+                <div class="classified-item">
+                    <h4>BICICLETA ELÉTRICA</h4>
+                    <p>Fuja do trânsito e não polua. Bateria nova. Capacete grátis.</p>
+                    <span class="classified-price">R$ 4.500,00</span>
+                    <small>Tel: +57 310 555 1234</small>
+                </div>
 
-            <div id="opiniao" class="page">
-                <h2 class="headline">Opinião & Debate</h2>
-                <div class="grid-2">
-                    <article>
-                        <h3 class="subheadline">Cartas do Leitor</h3>
-                        <div style="background: white; padding: 1.5rem; border: 1px solid #ddd; margin-bottom: 1rem;">
-                            <h4 style="margin-bottom: 0.5rem;">Indignação em Bosa</h4>
-                            <p style="font-style: italic;">"É inaceitável que continuemos sendo o 'escapamento' da cidade. O projeto apresentado mostra claramente que a desigualdade é planejada. Precisamos das janelas limpas já!"</p>
-                            <p style="text-align: right; font-weight: bold;">— Juliana Rocha, Estudante</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border: 1px solid #ddd;">
-                            <h4 style="margin-bottom: 0.5rem;">Soluções Reais</h4>
-                            <p style="font-style: italic;">"Parabéns pela pesquisa. O modelo preditivo é uma ferramenta que a prefeitura deveria adotar ontem. Chega de improviso."</p>
-                            <p style="text-align: right; font-weight: bold;">— Roberto Silva, Engenheiro</p>
-                        </div>
-                    </article>
-                    <aside>
-                        <h3 class="subheadline">Entrevista da Semana</h3>
-                        <div class="img-placeholder" style="height: 300px; background: #000;" data-name="video_entrevista_youtube.png"></div>
-                        <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
-                            <h4>Prof. Luis F. Grajales - Doutor em Estatística (UNAL)</h4>
-                            <p style="font-size: 0.9rem;">Conversamos com o professor sobre como os números podem nos mostrar que a poluição não afeta todos por igual e outros temas interessantes!</p>
-                        </div>
-                    </aside>
+                <div class="classified-item" style="background: #fff8e1;">
+                    <h4>MÁSCARAS DE GÁS</h4>
+                    <p>Modelo militar vintage. Perfeito para correr na Av. Caracas às 18h.</p>
+                    <span class="classified-price">R$ 150,00</span>
+                </div>
+                <div class="classified-item" style="background: #e0f2f1;">
+                    <h4>VENDE-SE AR PURO</h4>
+                    <p>Garrafas de ar importado da Amazônia. Sinta a natureza.</p>
+                    <span class="classified-price">R$ 50,00 / un</span>
+                </div>
+                <div class="classified-item">
+                    <h4>EMPREGO</h4>
+                    <p>Analista de Dados. Necessário saber Python e não ter medo de gráficos tristes.</p>
+                    <span class="classified-price">Salário a combinar</span>
+                </div>
+                <div class="classified-item">
+                    <h4>DOA-SE</h4>
+                    <p>Carro velho a diesel. Motivo: Consciência pesada.</p>
+                    <span class="classified-price">GRÁTIS</span>
+                </div>
+
+                <div class="classified-item" style="background: #fdf2f8;">
+                    <h4>O2 PORTÁTIL</h4>
+                    <p>Kit de sobrevivência para executivos do Centro. "Respire como se estivesse na Suíça".</p>
+                    <span class="classified-price">R$ 200,00</span>
+                    <small>Entrega imediata via drone.</small>
+                </div>
+                
+                <div class="classified-item" style="background: #fff; color: var(--ink-black); border: 2px dashed var(--alert-red);">
+                    <h4 style="color: var(--alert-red);">QUER PUBLICAR AQUI?</h4>
+                    <p style="color: var(--ink-grey);">Venda seu carro a gasolina ou ofereça serviços ecológicos.</p>
+                    <span class="classified-price" style="color: var(--ink-black); font-size: 0.9rem;">Ligue: (1) 555-0199</span>
+                    <small><a href="mailto:classificados@oardebogota.com" style="color: var(--alert-red); font-weight: bold;">classificados@oardebogota.com</a></small>
                 </div>
             </div>
+        </div>
+
+            
 
             <div id="contraportada" class="page">
                 <h2 class="headline">Ficha Técnica & Agradecimentos</h2>
@@ -1167,7 +1398,31 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         lucide.createIcons();
+
+        // Script Lightbox
+    function openLightbox(imgElement) {
+        var modal = document.getElementById("lightboxModal");
+        var modalImg = document.getElementById("lightboxImg");
+        
+        modal.style.display = "flex"; // Usa flex para centrar
+        modal.style.alignItems = "center";
+        modal.style.justifyContent = "center";
+        
+        modalImg.src = imgElement.src;
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightboxModal").style.display = "none";
+    }
+
+    // Fechar ao clicar fora da imagem
+    document.getElementById("lightboxModal").onclick = function(e) {
+        if (e.target !== document.getElementById("lightboxImg")) {
+            closeLightbox();
+        }
+    }
     </script>
+
 
 </body>
 </html>
