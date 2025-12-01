@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Ar de Bogotá | Jornal Digital Interativo</title>
+    <link rel="icon" type="image/png" href="img/Gemini.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -367,53 +368,24 @@
 
                         <div class="index-box" style="background: white; color: var(--ink-black); border: 2px solid var(--ink-black); padding: 1.5rem; margin-top: 2rem;">
                             <h4 style="border-bottom: 2px solid var(--ink-black); margin-bottom: 1rem; font-family: 'JetBrains Mono'; text-transform: uppercase; padding-bottom: 0.5rem;">SUMÁRIO DESTA EDIÇÃO</h4>
-                            
                             <ul style="list-style: none; font-family: 'JetBrains Mono'; font-size: 0.85rem; line-height: 1.6;">
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 2:</strong> O Ar que Respiramos - A física da poluição.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 3:</strong> Lições do Brasil - O caso de São Paulo.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 4:</strong> Soluções Locais - Modelo Preditivo.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 5:</strong> Economia - O custo da saúde.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 6:</strong> Esportes - Ciclovía: Lazer ou Perigo?
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 7:</strong> Cultura - Memes e Galeria Visual.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 8:</strong> Passatempos - Cruzadinha e Humor.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 9:</strong> Classificados - Ofertas de máscaras.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 10:</strong> Opinião - Cartas e Entrevista.
-                                </li>
-                                <li style="margin-bottom: 0.5rem;">
-                                    <strong style="color: var(--alert-red);">Pág 11:</strong> Contraportada - Ficha Técnica.
-                                </li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('o-ar')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 2:</strong> O Ar que Respiramos - A física da poluição.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('brasil')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 3:</strong> Lições do Brasil - O caso de São Paulo.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('local')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 4:</strong> Soluções Locais - Modelo Preditivo.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('economia')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 5:</strong> Economia - O custo da saúde.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('esportes')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 6:</strong> Esportes - Ciclovía: Lazer ou Perigo?</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('cultura')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 7:</strong> Cultura - Memes e Galeria Visual.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('passatempos')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 8:</strong> Passatempos - Cruzadinha e Humor.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('classificados')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 9:</strong> Classificados - Ofertas de máscaras.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('opiniao')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 10:</strong> Opinião - Cartas e Entrevista.</li>
+                                <li style="margin-bottom: 0.5rem; cursor: pointer; transition: color 0.2s;" onclick="showPage('contraportada')" onmouseover="this.style.color='var(--alert-red)'" onmouseout="this.style.color='var(--ink-black)'"><strong style="color: var(--alert-red); text-decoration: underline;">Pág 11:</strong> Contraportada - Ficha Técnica.</li>
                             </ul>
                         </div>
                     </article>
                 
                     <aside>
-                        <a href="https://especiales.semana.com/contaminacion-del-aire-de-bogota-la-mayor-amenaza-para-la-salud-de-los-bogotanos/index.html" 
-                        target="_blank" 
-                        style="text-decoration: none; display: block; cursor: pointer; transition: opacity 0.3s;"
-                        onmouseover="this.style.opacity='0.8'" 
-                        onmouseout="this.style.opacity='1'">
-                            
-                            <img src="img/capa2.jpg" 
-                                alt="Contaminación en Ciudad Bolívar" 
-                                style="width: 100%; height: 300px; object-fit: cover; display: block; border: 1px solid #ccc;">
-                            
+                        <a href="https://especiales.semana.com/contaminacion-del-aire-de-bogota-la-mayor-amenaza-para-la-salud-de-los-bogotanos/index.html" target="_blank" style="text-decoration: none; display: block; cursor: pointer; transition: opacity 0.3s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                            <img src="img/capa2.jpg" alt="Contaminación en Ciudad Bolívar" style="width: 100%; height: 300px; object-fit: cover; display: block; border: 1px solid #ccc;">
                             <figcaption style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--ink-light); margin-top: 0.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem;">
                                 Vista aérea da contaminação em Bogotá. <br>
                                 <span style="color: var(--alert-red); font-weight: bold; text-decoration: underline;">Fonte: Revista Semana</span>
@@ -421,83 +393,42 @@
                         </a>
                         
                         <div style="background: white; border: 1px solid var(--ink-light); padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-top: 1.5rem;">
-    
-    <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--alert-red); font-weight: bold; border: 1px solid #ccc;">
-        CIÊNCIA EM FOCO
-    </div>
-
-    <p style="font-size: 0.9rem; margin-bottom: 0; color: var(--ink-black); line-height: 1.5; margin-top: 0.5rem;">
-        Modelos matemáticos confirmam: ventos alísios e topografia criam uma "armadilha" física de poluição que aprisiona o ar tóxico nos bairros mais pobres do sudoeste.
-    </p>
-
-</div>
+                            <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--alert-red); font-weight: bold; border: 1px solid #ccc;">CIÊNCIA EM FOCO</div>
+                            <p style="font-size: 0.9rem; margin-bottom: 0; color: var(--ink-black); line-height: 1.5; margin-top: 0.5rem;">
+                                Modelos matemáticos confirmam: ventos alísios e topografia criam uma "armadilha" física de poluição que aprisiona o ar tóxico nos bairros mais pobres do sudoeste.
+                            </p>
+                        </div>
 
                         <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="background: var(--ink-black); color: var(--paper-bg); padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s; border-left: 4px solid var(--accent-blue);" onclick="showPage('opiniao')" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                                <span style="font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--paper-bg); opacity: 0.8; letter-spacing: 1px; text-transform: uppercase;">● Em Destaque (Pág 10)</span>
+                                <h3 style="font-family: 'Playfair Display'; font-size: 1.3rem; margin: 0.5rem 0; line-height: 1.1; color: white;">"Os números não mentem, eles gritam."</h3>
+                                <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
+                                    <div style="width: 32px; height: 32px; background: var(--alert-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>
+                                    <p style="font-size: 0.75rem; margin: 0; color: #ccc; line-height: 1.3;">Entrevista exclusiva com Prof. de Estatística da UNAL sobre a injustiça ambiental.</p>
+                                </div>
+                            </div>
 
-    <div style="background: var(--ink-black); color: var(--paper-bg); padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s; border-left: 4px solid var(--accent-blue);"
-            onclick="showPage('opiniao')"
-            onmouseover="this.style.transform='translateY(-3px)'"
-            onmouseout="this.style.transform='translateY(0)'">
-        
-        <span style="font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--paper-bg); opacity: 0.8; letter-spacing: 1px; text-transform: uppercase;">
-            ● Em Destaque (Pág 10)
-        </span>
-        
-        <h3 style="font-family: 'Playfair Display'; font-size: 1.3rem; margin: 0.5rem 0; line-height: 1.1; color: white;">
-            "Os números não mentem, eles gritam."
-        </h3>
-        
-        <div style="display: flex; gap: 10px; align-items: center; margin-top: 10px;">
-            <div style="width: 32px; height: 32px; background: var(--alert-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            </div>
-            <p style="font-size: 0.75rem; margin: 0; color: #ccc; line-height: 1.3;">
-                Entrevista exclusiva com Prof. de Estatística da UNAL sobre a injustiça ambiental.
-            </p>
-        </div>
-    </div>
+                            <div style="background: white; border: 1px solid var(--ink-light); padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--ink-grey); font-weight: bold; border: 1px solid #ccc;">VOZ DO LEITOR</div>
+                                <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: var(--ink-black); margin-bottom: 0.8rem; margin-top: 0.5rem; border-left: 3px solid var(--alert-orange); padding-left: 10px;">"É inaceitável que continuemos sendo o 'escapamento' da cidade..."</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <p style="font-size: 0.75rem; color: var(--ink-light); margin: 0;">— Indignação em Bosa</p>
+                                    <button onclick="showPage('opiniao')" style="background: transparent; border: none; color: var(--ink-black); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; padding: 0; text-decoration: underline;">LER CARTAS →</button>
+                                </div>
+                            </div>
 
-    <div style="background: white; border: 1px solid var(--ink-light); padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-        <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--ink-grey); font-weight: bold; border: 1px solid #ccc;">
-            VOZ DO LEITOR
-        </div>
-        
-        <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: var(--ink-black); margin-bottom: 0.8rem; margin-top: 0.5rem; border-left: 3px solid var(--alert-orange); padding-left: 10px;">
-            "É inaceitável que continuemos sendo o 'escapamento' da cidade..."
-        </p>
-        
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <p style="font-size: 0.75rem; color: var(--ink-light); margin: 0;">
-                — Indignação em Bosa
-            </p>
-            <button onclick="showPage('opiniao')" style="background: transparent; border: none; color: var(--ink-black); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; padding: 0; text-decoration: underline;">
-                LER CARTAS →
-            </button>
-        </div>
-    </div>
-
-    <div style="background: white; border: 1px solid var(--ink-light); padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
-        <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--ink-grey); font-weight: bold; border: 1px solid #ccc;">
-            DADO DE IMPACTO
-        </div>
-        
-        <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: var(--ink-black); margin-bottom: 0.8rem; margin-top: 0.5rem; border-left: 3px solid var(--alert-red); padding-left: 10px;">
-            "O risco não é democrático."
-        </p>
-        
-        <p style="font-size: 0.85rem; text-align: justify; color: var(--ink-grey); margin-bottom: 0.5rem; line-height: 1.4;">
-            <strong style="color: var(--alert-red);">VOCÊ SABIA?</strong> Uma criança no sudoeste de Bogotá inala até <strong>10x mais</strong> poluentes que uma criança do norte.
-        </p>
-
-        <div style="display: flex; justify-content: flex-end; align-items: center;">
-            <button onclick="showPage('o-ar')" style="background: transparent; border: none; color: var(--ink-black); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; padding: 0; text-decoration: underline;">
-                LER REPORTAGEM PÁG 2 →
-            </button>
-        </div>
-    </div>
-
-</div>
-
+                            <div style="background: white; border: 1px solid var(--ink-light); padding: 1rem; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                                <div style="position: absolute; top: -10px; left: 1rem; background: var(--paper-bg); padding: 0 5px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--ink-grey); font-weight: bold; border: 1px solid #ccc;">DADO DE IMPACTO</div>
+                                <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: var(--ink-black); margin-bottom: 0.8rem; margin-top: 0.5rem; border-left: 3px solid var(--alert-red); padding-left: 10px;">"O risco não é democrático."</p>
+                                <p style="font-size: 0.85rem; text-align: justify; color: var(--ink-grey); margin-bottom: 0.5rem; line-height: 1.4;">
+                                    <strong style="color: var(--alert-red);">VOCÊ SABIA?</strong> Uma criança no sudoeste de Bogotá inala até <strong>10x mais</strong> poluentes que uma criança do norte.
+                                </p>
+                                <div style="display: flex; justify-content: flex-end; align-items: center;">
+                                    <button onclick="showPage('o-ar')" style="background: transparent; border: none; color: var(--ink-black); font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.7rem; cursor: pointer; padding: 0; text-decoration: underline;">LER REPORTAGEM PÁG 2 →</button>
+                                </div>
+                            </div>
+                        </div>
                     </aside>
                 </div>
             </div>
@@ -521,38 +452,188 @@
                 </div>
             </div>
 
-            <div id="brasil" class="page">
-                <h2 class="headline">Lições do Brasil</h2>
-                <p class="subheadline">O que ocorre no gigante vizinho e como eles solucionam problemas similares.</p>
-                <div class="grid-3">
-                    <article style="grid-column: span 2;">
-                        <p>São Paulo, a maior metrópole da América do Sul, enfrenta desafios similares. O programa <strong>PROCONVE</strong> reduziu em 90% as emissões veiculares desde 1986. Mais recentemente, a Zona de Baixa Emissão (ZBE) restringiu caminhões antigos no centro.</p>
-                        <p>A comparação é inevitável. Enquanto Bogotá aposta no "Pico y Placa", São Paulo implementou um rodízio estrutural e inspeção veicular rigorosa. O Brasil também avança com o CONAMA 491, definindo novos padrões de qualidade do ar.</p>
-                        <table style="width:100%; border-collapse: collapse; margin: 1rem 0; border: 1px solid #333;">
-                            <tr style="background: #333; color: white;">
-                                <th style="padding: 10px;">Aspecto</th>
-                                <th style="padding: 10px;">São Paulo (BR)</th>
-                                <th style="padding: 10px;">Bogotá (COL)</th>
+<div id="brasil" class="page">
+            
+            <h2 class="headline">Brasil: Lições e Desafios do Gigante Sul-Americano</h2>
+            <p class="subheadline">Entre a modernização do monitoramento e a persistente desigualdade ambiental, São Paulo oferece um espelho para o futuro de Bogotá.</p>
+
+            <div class="grid-2">
+                <article>
+                    <p class="lead">
+                        Enquanto o Ministério do Meio Ambiente (MMA) avança na digitalização com a plataforma <strong>MonitorAr</strong>, a realidade nas ruas revela um abismo: no Brasil, assim como na Colômbia, o CEP define a qualidade do ar que você respira.
+                    </p>
+
+                    <p>
+                        A qualidade do ar é tratada institucionalmente como prioridade de saúde pública. O governo federal brasileiro tem investido na gestão de dados e na atualização regulatória, exemplificada pela elaboração do <a href="https://www.gov.br/mma/pt-br/assuntos/meio-ambiente-urbano-recursos-hidricos-qualidade-ambiental/qualidade-do-ar" target="_blank" style="color: var(--alert-red); text-decoration: underline;">Guia Técnico para o Monitoramento</a>. Contudo, pesquisadores alertam que a política pública enfrenta um adversário estrutural feroz: a <strong>desigualdade urbana</strong>.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">O Direito ao Verde não é para Todos</h4>
+                    <p>
+                        Um levantamento recente do <a href="https://brasil.mongabay.com/2024/04/desigualdade-ambiental-em-sao-paulo-por-que-o-direito-ao-verde-nao-e-para-todos/" target="_blank" style="color: var(--ink-black); font-weight: bold; text-decoration: underline;">Mapa da Desigualdade (Mongabay)</a> expõe contrastes chocantes. Em bairros nobres de São Paulo, como o Morumbi, a cobertura vegetal chega a 45%, funcionando como um "pulmão" que filtra poluentes e ameniza o calor. Já na comunidade de Heliópolis, a maior favela da cidade, apenas 17% da área é verde. Essa carência não é apenas estética; ela se traduz em ilhas de calor severas e maior risco de enchentes, afetando desproporcionalmente a população de baixa renda que foi historicamente empurrada para áreas sem planejamento.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">A Injustiça Móvel: Quem paga a conta?</h4>
+                    <p>
+                        O risco não está apenas onde se mora, mas em como se move. Estudos da <a href="https://agencia.fapesp.br/exposicao-a-poluicao-e-desigual-na-cidade-de-sao-paulo/29331" target="_blank" style="color: var(--ink-black); font-weight: bold; text-decoration: underline;">Agência FAPESP</a> revelam uma "injustiça móvel": passageiros de ônibus respiram um ar significativamente mais tóxico do que motoristas de carros ou usuários do metrô. Os chamados <em>hotspots</em> de poluição concentram-se justamente nos corredores e pontos de ônibus, expondo a força de trabalho da periferia a uma carga viral e de material particulado invisível para quem transita no ar-condicionado.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">Soluções: O Exemplo Paulista</h4>
+                    <p>
+                        Apesar das desigualdades, São Paulo, a maior metrópole da América do Sul, tem implementado soluções robustas que servem de referência. O programa <strong>PROCONVE</strong> (Programa de Controle da Poluição do Ar por Veículos Automotores) é um marco histórico, tendo reduzido em 90% as emissões veiculares desde 1986 através da exigência de tecnologias mais limpas.
+                    </p>
+                    <p>
+                        Mais recentemente, a cidade implementou a <strong>Zona de Baixa Emissão (ZBE)</strong>, restringindo a circulação de caminhões antigos no centro expandido, uma medida que ataca diretamente a fonte de material particulado diesel. Além disso, o Brasil avança com a resolução <strong>CONAMA 491</strong>, que define novos padrões nacionais de qualidade do ar, aproximando-se gradualmente das diretrizes da OMS.
+                    </p>
+                    <p>
+                        A comparação com nossa realidade é inevitável. Enquanto Bogotá aposta fortemente no "Pico y Placa" (rodízio por horários), São Paulo implementou um rodízio estrutural (por placa e dia da semana em área expandida) combinado com uma inspeção veicular rigorosa. O modelo de gestão de dados da <strong>CETESB</strong>, com suas 43 estações de monitoramento integradas, serve de inspiração direta para a proposta deste projeto de integrar dados de justiça ambiental à rede de Bogotá.
+                    </p>
+
+                    <div style="margin-top: 2rem; padding: 1rem; background: var(--paper-dark); border-top: 2px solid var(--alert-red);">
+                        <h5 style="font-family: 'JetBrains Mono'; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: bold;">FONTES CONSULTADAS:</h5>
+                        <ul style="font-size: 0.8rem; list-style: square; padding-left: 1.2rem; line-height: 1.6;">
+                            <li><a href="https://www.gov.br/mma/pt-br" target="_blank" style="color: var(--ink-black); text-decoration: underline;">Gov.br - Qualidade do Ar</a></li>
+                            <li><a href="https://brasil.mongabay.com/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">Mongabay - Desigualdade Ambiental</a></li>
+                            <li><a href="https://agencia.fapesp.br/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">FAPESP - Poluição e Mobilidade</a></li>
+                            <li><a href="https://portal.sbpcnet.org.br/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">SBPC - Alerta Queimadas</a></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: auto; min-height: 250px; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/paulo.webp" alt="Cidade de São Paulo" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 1.5rem;">
+                        Vista da densidade urbana de São Paulo. <br>
+                        <a href="https://www.univision.com/noticias/citylab-vida-urbana/densidad-urbana-la-ventaja-unica-que-america-latina-no-esta-aprovechando" target="_blank" style="color: var(--alert-red); text-decoration: underline; font-size: 0.7rem;">
+                            Fonte: Univision CityLab
+                        </a>
+                    </figcaption>
+
+                    <div style="background: white; border: 2px solid var(--ink-black); padding: 1rem; margin-bottom: 2rem;">
+                        <h4 style="font-family: 'JetBrains Mono'; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px;">
+                            Comparativo: SP vs. BOG
+                        </h4>
+                        <table style="width: 100%; font-size: 0.8rem; border-collapse: collapse; font-family: sans-serif;">
+                            <tr style="background: var(--paper-dark);">
+                                <th style="text-align: left; padding: 5px;">Aspecto</th>
+                                <th style="text-align: left; padding: 5px;">São Paulo 🇧🇷</th>
+                                <th style="text-align: left; padding: 5px;">Bogotá 🇨🇴</th>
                             </tr>
                             <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Restrição</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Rodízio + ZBE</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Pico y Placa</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee; font-weight: bold;">Restrição</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee;">Rodízio + ZBE</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee;">Pico y Placa</td>
                             </tr>
                             <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Monitoramento</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">CETESB (43 estações)</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">RMCAB (19 estações)</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee; font-weight: bold;">Monitoramento</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee;">CETESB (43 estações)</td>
+                                <td style="padding: 8px 5px; border-bottom: 1px solid #eee;">RMCAB (19 estações)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 5px; font-weight: bold;">Frota</td>
+                                <td style="padding: 8px 5px;">PROCONVE (P7/P8)</td>
+                                <td style="padding: 8px 5px;">Euro V / VI (Transição)</td>
                             </tr>
                         </table>
-                    </article>
-                    <aside>
-                        <div class="img-placeholder" style="height: 300px;" data-name="saopaulo_transito.png"></div>
-                        <figcaption>Trânsito na Av. Paulista, São Paulo.</figcaption>
-                        <p style="font-size: 0.9rem;">O modelo brasileiro de gestão de dados da CETESB serve de inspiração para a integração de dados proposta para Bogotá.</p>
-                    </aside>
-                </div>
+                    </div>
+
+                    <div class="img-placeholder" style="height: auto; background: transparent; border: none; aspect-ratio: 16/9; margin-bottom: 0.5rem;">
+                        <video width="100%" height="100%" controls style="border-radius: 4px; background: #000;">
+                            <source src="img/qualidade_do_ar.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                    </div>
+                    <figcaption style="margin-bottom: 2rem;">
+                        Vídeo: Iniciativas do MMA. <br>
+                        <a href="https://youtu.be/TjGzmEkeEFI" target="_blank" style="color: var(--alert-red); text-decoration: underline; font-weight: bold; font-size: 0.7rem;">
+                            Assistir no YouTube
+                        </a>
+                    </figcaption>
+
+                    <div style="margin-bottom: 1rem; border: 1px solid var(--ink-black); background: white;">
+                        <div style="background: var(--alert-red); color: white; padding: 5px 10px; font-family: 'JetBrains Mono'; font-size: 0.75rem; display: flex; justify-content: space-between; align-items: center;">
+                            <span>🔴 EM TEMPO REAL</span>
+                            <span>SÃO PAULO</span>
+                        </div>
+                        <iframe src="https://aqicn.org/map/saopaulo/pt/" width="100%" height="400" frameborder="0" style="border:none; display: block;"></iframe>
+                        <div style="padding: 5px; text-align: center; font-family: 'JetBrains Mono'; font-size: 0.65rem; background: var(--paper-dark); border-top: 1px solid #ccc;">
+                            Fonte: <a href="https://aqicn.org/map/saopaulo/pt/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">World Air Quality Index Project</a>
+                        </div>
+                    </div>
+
+                    <div style="background: #fff1f2; border-left: 4px solid var(--alert-red); padding: 1rem; font-size: 0.85rem;">
+                        <strong>ALERTA CRÍTICO (SBPC):</strong> A <a href="https://portal.sbpcnet.org.br/noticias/sbpc-alerta-para-impactos-ambientais-e-de-saude-das-queimadas-no-brasil/" target="_blank" style="color: var(--alert-red); text-decoration: underline;">Sociedade Brasileira para o Progresso da Ciência</a> alerta que a legislação atual ainda é insuficiente frente à crise climática. Com mais de 5,5 milhões de hectares queimados em agosto de 2024, os parâmetros para definir "ar poluído" no Brasil estão defasados há 35 anos.
+                    </div>
+
+                </aside>
             </div>
+
+            <div style="margin: 3rem 0; border-top: 4px double var(--ink-black); text-align: center;">
+                <span style="background: var(--paper-bg); position: relative; top: -12px; padding: 0 15px; font-family: 'JetBrains Mono'; font-weight: bold; color: var(--ink-black);">EM DESTAQUE</span>
+            </div>
+
+            <div class="grid-2">
+                <article>
+                    <span style="font-family: 'JetBrains Mono'; color: var(--safe-green); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;">
+                        Belém (PA) — Atualização
+                    </span>
+                    <h3 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-top: 0.5rem; line-height: 1.1; margin-bottom: 1rem;">
+                        COP30: O Brasil apresenta a conta da fumaça
+                    </h3>
+                    <p style="font-style: italic; color: var(--ink-grey); font-size: 1.1rem; margin-bottom: 1.5rem; border-left: 3px solid var(--safe-green); padding-left: 1rem;">
+                        Em meio às discussões globais da conferência, Ministério da Saúde revela: poluição do ar esteve associada a <strong>95 mil mortes</strong> em 2024.
+                    </p>
+
+                    <p>
+                        No palco da <strong>30ª Conferência das Nações Unidas sobre as Mudanças Climáticas (COP30)</strong>, o Brasil não falou apenas de carbono, mas de vidas. O Ministério da Saúde apresentou dados inéditos da ferramenta <strong>VIGIAR</strong> (Vigilância em Saúde de Populações Expostas a Poluentes Atmosféricos), expondo um cenário alarmante agravado por secas extremas e queimadas.
+                    </p>
+                    <p>
+                        "Não existe adaptação em saúde sem olhar para a poluição do ar", afirmou Agnes Soares, diretora do Departamento de Vigilância em Saúde Ambiental. Os números refletem um ciclo vicioso: as mudanças climáticas intensificam incêndios florestais, que saturam o ar das cidades com material particulado fino (MP2.5), colapsando os sistemas respiratórios da população.
+                    </p>
+                    <p>
+                        A resposta brasileira apresentada em Belém é a integração tecnológica. O governo propõe alinhar os dados do VIGIAR ao <strong>AdaptaSUS</strong> e ao novo "Plano de Ação em Saúde de Belém". O objetivo é sair da reação para a prevenção: usar dados ambientais para preparar hospitais antes que o ar se torne irrespirável.
+                    </p>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: 280px; background: #eee; border: none; margin-bottom: 0.5rem; position: relative;">
+                        <div style="position: absolute; top: 10px; right: 10px; background: var(--safe-green); color: white; padding: 3px 8px; font-family: 'JetBrains Mono'; font-size: 0.7rem; font-weight: bold;">
+                            COP30
+                        </div>
+                        <img src="img/brasil2.jpeg" alt="Centro de Convenções em Belém COP30" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 1.5rem;">
+                        Movimentação durante a Conferência em Belém. <br>
+                        <a href="https://cop30.br/pt-br" target="_blank" style="color: var(--safe-green); font-weight: bold; font-size: 0.7rem; text-decoration: underline;">
+                            Fonte: COP30 Brasil
+                        </a>
+                    </figcaption>
+
+                    <div style="background: var(--paper-dark); padding: 1.5rem; border-left: 4px solid var(--safe-green); margin-bottom: 1.5rem;">
+                        <h4 style="font-family: 'JetBrains Mono'; font-size: 0.9rem; text-transform: uppercase; color: var(--safe-green); margin-bottom: 0.5rem; font-weight: bold;">
+                            O que é o VIGIAR?
+                        </h4>
+                        <p style="font-size: 0.85rem; margin: 0; line-height: 1.6;">
+                            Ferramenta estratégica do SUS que monitora níveis de poluição em todos os municípios brasileiros desde 2010. O sistema agora cruza dados de queimadas e clima para orientar planos de contingência locais.
+                        </p>
+                    </div>
+
+                    <div class="img-placeholder" style="height: 220px; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/brasil3.jpeg" alt="Logotipo e Atmosfera da COP30" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                    <figcaption>
+                        Cúpula da COP30 antecipada. <br>
+                        <a href="https://cop30.br/pt-br/noticias-da-cop30/cupula-da-cop30-sera-antecipada-e-ocorrera-em-belem-nos-dias-6-e-7-de-novembro-de-2025" target="_blank" style="color: var(--safe-green); font-weight: bold; font-size: 0.7rem; text-decoration: underline;">
+                            Leia a notícia completa
+                        </a>
+                    </figcaption>
+                </aside>
+            </div>
+
+        </div>
+
+        </div>
 
             <div id="local" class="page">
                 <h2 class="headline">Soluções para Bogotá</h2>
