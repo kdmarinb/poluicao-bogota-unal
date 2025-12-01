@@ -558,27 +558,71 @@
             <div id="local" class="page">
                 <h2 class="headline">Soluções para Bogotá</h2>
                 <p class="subheadline">Resultados do projeto e impacto na vida das pessoas.</p>
+
                 <div class="grid-3">
                     <div class="puzzle-box" style="background: #eef2ff; border-color: var(--accent-blue);">
                         <h3 style="color: var(--accent-blue);">1. Alerta Precoce</h3>
-                        <p>Uso de modelo SARIMAX para prever picos de poluição com 48h de antecedência. Isso permite que escolas suspendam atividades físicas antes que o ar fique tóxico.</p>
+                        <p>Uso de modelo SARIMAX para prever picos de poluição com 48h de antecedência.</p>
                     </div>
                     <div class="puzzle-box" style="background: #f0fdf4; border-color: var(--safe-green);">
                         <h3 style="color: var(--safe-green);">2. Janelas Limpas</h3>
-                        <p>Restrição inteligente de carga baseada na previsão do modelo. Caminhões son desviados de zonas residenciais apenas nas horas críticas.</p>
+                        <p>Restrição inteligente de carga baseada na previsão do modelo.</p>
                     </div>
                     <div class="puzzle-box" style="background: #fff7ed; border-color: var(--alert-orange);">
                         <h3 style="color: var(--alert-orange);">3. Plano Estrutural</h3>
-                        <p>Justiça ambiental no plano diretor: mais árvores e barreiras verdes onde os dados mostram maior vulnerabilidade.</p>
+                        <p>Justiça ambiental no plano diretor: mais árvores e barreiras verdes.</p>
                     </div>
                 </div>
-                <div style="margin-top: 2rem;">
-                    <p class="lead">Conclusão dos Pesquisadores:</p>
-                    <p>O modelo atingiu um erro médio (MAE) de apenas 9.0 µg/m³, suficiente para salvar vidas através da prevenção. Implementar estas soluções custaria menos do que o gasto atual com internações hospitalares por asma e doenças cardiovasculares.</p>
-                    <div class="img-placeholder" style="height: 200px;" data-name="grafico_resultados_modelo.png"></div>
-                </div>
-            </div>
 
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <div style="margin-bottom: 3rem;">
+                    <h3 class="subheadline" style="margin-bottom: 1rem;">Ranking de Queixas e Reportes</h3>
+                    <p>Análise consolidada das denúncias cidadãs por localidade.</p>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <iframe src="graficos/ranking_queixas.html" width="100%" height="500px" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subheadline" style="margin-bottom: 1rem;">Monitoramento Detalhado por Estação</h3>
+                    <p>Selecione uma estação para visualizar o comportamento histórico e predições:</p>
+                    
+                    <select id="stationSelector" onchange="cambiarGrafico()" style="padding: 10px; font-size: 1rem; width: 100%; max-width: 400px; margin-bottom: 1rem; border: 2px solid var(--paper-dark); border-radius: 5px; background-color: #fff;">
+                        <option value="1grafico_carvajal_sevillana.html">1. Carvajal - Sevillana</option>
+                        <option value="2grafico_kennedy.html">2. Kennedy</option>
+                        <option value="3grafico_bosa.html">3. Bosa</option>
+                        <option value="4grafico_móvil_fontibón.html">4. Móvil Fontibón</option>
+                        <option value="5grafico_puente_aranda.html">5. Puente Aranda</option>
+                        <option value="6grafico_fontibón.html">6. Fontibón</option>
+                        <option value="7grafico_tunal.html">7. Tunal</option>
+                        <option value="8grafico_ciudad_bolívar.html">8. Ciudad Bolívar</option>
+                        <option value="9grafico_las_ferias.html">9. Las Ferias</option>
+                        <option value="10grafico_minambiente.html">10. Min. Ambiente</option>
+                        <option value="11grafico_usme.html">11. Usme</option>
+                        <option value="12grafico_guaymaral.html">12. Guaymaral</option>
+                        <option value="13grafico_usaquén.html">13. Usaquén</option>
+                        <option value="14grafico_colina.html">14. Colina</option>
+                        <option value="15grafico_san_cristóbal.html">15. San Cristóbal</option>
+                        <option value="16grafico_centro_de_alto_rendimiento.html">16. Centro Alto Rendimiento</option>
+                        <option value="17grafico_suba.html">17. Suba</option>
+                        <option value="18grafico_el_jazmín.html">18. El Jazmín</option>
+                    </select>
+
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                        <iframe id="visorGraficos" src="graficos/1grafico_carvajal_sevillana.html" width="100%" height="600px" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <script>
+                    function cambiarGrafico() {
+                        var selector = document.getElementById("stationSelector");
+                        var visor = document.getElementById("visorGraficos");
+                        // Cambia la fuente del iframe a la carpeta 'graficos/' + el archivo seleccionado
+                        visor.src = "graficos/" + selector.value;
+                    }
+                </script>
+            </div>
             <div id="economia" class="page">
                 <h2 class="headline">Economia & Poluição</h2>
                 <p class="subheadline">Quanto custa o ar sujo para o bolso do bogotano?</p>
@@ -746,7 +790,7 @@
                         <h3 class="subheadline">Entrevista da Semana</h3>
                         <div class="img-placeholder" style="height: 300px; background: #000;" data-name="video_entrevista_youtube.png"></div>
                         <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
-                            <h4>Prof. Doutor em Estatística (UNAL)</h4>
+                            <h4>Prof. Luis F. Grajales - Doutor em Estatística (UNAL)</h4>
                             <p style="font-size: 0.9rem;">Conversamos com o professor sobre como os números podem nos mostrar que a poluição não afeta todos por igual e outros temas interessantes!</p>
                         </div>
                     </aside>
@@ -783,7 +827,7 @@
                                     <li>Python (Pandas, Statsmodels)</li>
                                     <li>Plotly.js (Visualização)</li>
                                     <li>HTML5/CSS3 Grid Layout</li>
-                                    <li>SARIMAX (Modelagem)</li>
+                                    <li>SARIMAX (Modelagem de series temporais)</li>
                                 </ul>
                             </div>
                         </div>
