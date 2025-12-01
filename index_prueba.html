@@ -523,24 +523,76 @@
                 </div>
             </div>
 
-            <div id="o-ar" class="page">
-                <h2 class="headline">O Ar que Respiramos</h2>
-                <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana.</p>
-                <div class="grid-2">
-                    <div>
-                        <p>A poluição do ar em Bogotá é a manifestação diária de uma desigualdade social que também se respira. A gestão reativa da cidade, que age somente após a crise, cobra um preço alto da saúde das comunidades vulneráveis. Nosso projeto nasce dessa urgência.</p>
-                        <p>A física da dispersão atmosférica, considerando a topografia de Bogotá (uma bacia cercada por montanhas), cria zonas de estagnação. Durante as manhãs, a inversão térmica aprisiona os poluentes emitidos pelos caminhões a diesel justamente nas áreas de Kennedy e Bosa.</p>
-                        <div class="img-placeholder" style="height: 250px;" data-name="mapa_dispersao.png"></div>
-                        <figcaption>Mapa de dispersão de poluentes mostrando a concentração no sudoeste.</figcaption>
+<div id="o-ar" class="page">
+            <h2 class="headline">O Ar que Respiramos</h2>
+            <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana de quem respira a desigualdade.</p>
+            
+            <div class="grid-2">
+                <article>
+                    <p class="lead">
+                        Em Bogotá, a poluição do ar é a manifestação diária de uma desigualdade social que também se respira. A gestão reativa da cidade, que age somente após a crise, cobra um preço alto da saúde das comunidades vulneráveis. Nosso projeto nasce dessa urgência: usar a ciência como ferramenta de equidade.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">A Física da Estagnação</h4>
+                    <p>
+                        Para entender por que o ar mata, precisamos olhar para a geografia. Bogotá funciona como uma bacia cercada por montanhas. Essa topografia particular, somada ao regime de ventos alísios, cria zonas de "sombra" onde o vento não consegue limpar a atmosfera.
+                    </p>
+                    <p>
+                        Durante as primeiras horas da manhã, ocorre o fenômeno da <strong>inversão térmica</strong>: uma camada de ar quente se sobrepõe ao ar frio da superfície, agindo como uma "tampa" invisível. Isso aprisiona os poluentes emitidos pelos caminhões a diesel e indústrias justamente nas áreas mais baixas da cidade: Kennedy, Bosa e Tunjuelito.
+                    </p>
+                    <p>
+                        As variáveis climáticas são decisivas: enquanto a chuva ajuda a "lavar" o ar (deposição úmida), dias secos e frios concentram o material particulado, criando picos tóxicos que nossos modelos buscam prever.
+                    </p>
+
+                    <div style="background: #fff7ed; border: 1px solid var(--alert-orange); padding: 1.5rem; margin-top: 2rem; border-radius: 4px;">
+                        <h5 style="font-family: 'JetBrains Mono'; color: var(--alert-orange); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+                            Ficha Técnica: O Vilão Invisível (PM2.5)
+                        </h5>
+                        <ul style="font-size: 0.85rem; line-height: 1.6; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 8px;"><strong>O que é:</strong> Partículas finas em suspensão com diâmetro menor que 2,5 micrômetros (30x menor que um fio de cabelo).</li>
+                            <li style="margin-bottom: 8px;"><strong>Origem:</strong> Principalmente combustão de diesel (caminhões, ônibus) e processos industriais.</li>
+                            <li style="margin-bottom: 8px;"><strong>Perigo:</strong> Por ser microscópico, não é filtrado pelo nariz. Penetra nos alvéolos pulmonares e entra diretamente na corrente sanguínea, causando doenças cardiovasculares e respiratórias.</li>
+                        </ul>
                     </div>
-                    <div>
-                        <p>Entrevistas realizadas com moradores revelam o impacto humano: "Não posso abrir a janela de manhã porque a fuligem cobre os móveis", relata Maria, residente de Ciudad Bolívar. As crianças são as mais afetadas, com taxas de doenças respiratórias 10x maiores nestas zonas.</p>
-                        <p>Os dados são claros: enquanto o norte desfruta de ar limpo vindo das montanhas orientais, o sudoeste recebe toda a carga de contaminantes empurrada pelos ventos. É uma "injustiça geográfica" agravada pelo planejamento urbano.</p>
-                        <div class="img-placeholder" style="height: 250px;" data-name="grafico_padroes.png"></div>
-                        <figcaption>Gráfico comparativo: Zona Norte vs. Zona Sudoeste.</figcaption>
+
+                    <div class="img-placeholder" style="height: 250px; background: #eee; border: none; margin-bottom: 0.5rem; margin-top: 2rem;">
+                        <img src="img/ar2.avif" alt="Gráfico Comparativo Norte vs Sul" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white;">
                     </div>
-                </div>
+                    <figcaption>
+                        Gráfico: Disparidade de exposição entre Zona Norte e Sudoeste.
+                    </figcaption>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: auto; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/ar1.png" alt="Mapa de dispersão vertical" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 2rem;">
+                        O "Mapa de Calor" da poluição: concentração crítica no sudoeste. <br>
+                        <a href="http://www.iboca.ambientebogota.gov.co:8080/geoserver/sda_ca/wms?service=WMS&version=1.1.0&request=GetMap&layers=sda_ca:Historico_mensual_iboca_PM25&styles=&bbox=-74.2246551513672,4.45599555969238,-74.0087127685547,4.8325252532959&width=400&height=600&srs=EPSG:4326&format=application/openlayers#toggle" target="_blank" style="color: var(--alert-red); text-decoration: underline; font-size: 0.7rem; font-weight: bold;">
+                            Ver fonte dos dados Ambiente Bogotá
+                        </a>
+                    </figcaption>
+
+                    <h4 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--ink-black); margin-bottom: 1rem; border-left: 4px solid var(--ink-black); padding-left: 10px;">
+                        "A Injustiça Geográfica"
+                    </h4>
+                    
+                    <p style="font-style: italic; font-size: 1rem; color: var(--ink-grey); margin-bottom: 1rem;">
+                        "Não posso abrir a janela de manhã porque a fuligem cobre os móveis."
+                    </p>
+                    <p style="font-size: 0.85rem; margin-bottom: 1.5rem;">
+                        O relato de Maria, residente de Ciudad Bolívar, ilustra a estatística: crianças nessas zonas enfrentam taxas de doenças respiratórias até <strong>10x maiores</strong> do que as do norte.
+                    </p>
+
+                    <div style="background: var(--paper-dark); padding: 1rem; margin-bottom: 1.5rem;">
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            <strong>O abismo é claro:</strong> enquanto o norte (Usaquén) desfruta de ar limpo vindo dos morros orientais, o sudoeste recebe toda a carga de contaminantes "empurrada" pelo vento e aprisionada pela montanha.
+                        </p>
+                    </div>
+                </aside>
             </div>
+        </div>
 
 <div id="brasil" class="page">
             
@@ -1333,50 +1385,51 @@
             
 
             <div id="contraportada" class="page">
-                <h2 class="headline">Ficha Técnica & Agradecimentos</h2>
-                <div class="grid-main">
-                    <div class="oreja">
-                        <p style="font-size: 0.8rem;">Obrigado por ler nossa edição especial.</p>
+            <h2 class="headline" style="text-align: center;">Ficha Técnica</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem; background: white; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                
+                <h3 style="margin-bottom: 2rem; border-bottom: 2px solid var(--ink-black); display: inline-block; padding-bottom: 0.5rem;">
+                    Projeto Interdisciplinar - Português
+                </h3>
+                
+                <div style="margin-bottom: 3rem;">
+                    <h4 style="color: var(--alert-red); text-transform: uppercase; margin-bottom: 1rem;">Autores</h4>
+                    <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;">Karen Daniela Marin Baez</p>
+                    <p style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;">Johann Camilo Rincon Real</p>
+                    <p style="color: var(--ink-light); font-family: 'JetBrains Mono'; margin-top: 1rem;">Universidad Nacional de Colombia</p>
+                </div>
+
+                <div class="grid-2" style="text-align: left; margin-bottom: 3rem; gap: 3rem;">
+                    <div>
+                        <h4 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px;">Fontes & Dados</h4>
+                        <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.6;">
+                            <li>RMCAB (Rede de Monitoramento de Bogotá)</li>
+                            <li>OpenAQ API</li>
+                            <li>DANE (Censo 2018)</li>
+                            <li>Literatura Científica (Jin et al., Pachón et al.)</li>
+                        </ul>
                     </div>
-                    <div style="text-align: center;">
-                        <h3 style="margin-bottom: 2rem;">Projeto Interdisciplinar - Português</h3>
-                        <div style="margin-bottom: 3rem;">
-                            <h4>Autores</h4>
-                            <p style="font-size: 1.2rem;">Karen Daniela Marin Baez</p>
-                            <p style="font-size: 1.2rem;">Johann Camilo Rincon Real</p>
-                            <p style="color: var(--ink-light);">Universidad Nacional de Colombia</p>
-                        </div>
-                        <div class="grid-2" style="text-align: left;">
-                            <div>
-                                <h4>Fontes & Dados</h4>
-                                <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem;">
-                                    <li>RMCAB (Rede de Monitoramento de Bogotá)</li>
-                                    <li>OpenAQ API</li>
-                                    <li>DANE (Censo 2018)</li>
-                                    <li>Literatura Científica (Jin et al., Pachón et al.)</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4>Ferramentas</h4>
-                                <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem;">
-                                    <li>Python (Pandas, Statsmodels)</li>
-                                    <li>Plotly.js (Visualização)</li>
-                                    <li>HTML5/CSS3 Grid Layout</li>
-                                    <li>SARIMAX (Modelagem de series temporais)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div style="margin-top: 3rem; padding: 2rem; border: 1px solid #ccc; background: white;">
-                            <h4>Agradecimentos Especiais</h4>
-                            <p>Aos professores orientadores e a todos os cidadãos que responderam ao nosso questionário de percepção ambiental. Este trabalho é dedicado a todos que lutam por um ar mais limpo em Bogotá.</p>
-                        </div>
-                    </div>
-                    <div class="oreja">
-                        <p style="font-size: 0.8rem;">Escaneie para ver o código no GitHub.</p>
-                        <div class="img-placeholder" style="height: 80px;" data-name="qr_code.png"></div>
+                    <div>
+                        <h4 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px;">Ferramentas</h4>
+                        <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.6;">
+                            <li>Python (Pandas, Statsmodels)</li>
+                            <li>Plotly.js (Visualização)</li>
+                            <li>HTML5/CSS3 Grid Layout</li>
+                            <li>SARIMAX (Modelagem)</li>
+                        </ul>
                     </div>
                 </div>
+
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px dashed var(--ink-black);">
+                    <p style="margin-bottom: 1rem; font-family: 'JetBrains Mono'; font-size: 0.8rem;">REPOSITÓRIO DO PROJETO:</p>
+                    <a href="https://github.com/kdmarinb/poluicao-bogota-unal" target="_blank" style="background: var(--ink-black); color: white; text-decoration: none; padding: 15px 25px; border-radius: 5px; font-family: 'JetBrains Mono'; transition: background 0.3s;">
+                        <i data-lucide="github" style="vertical-align: middle; margin-right: 8px;"></i> Clique para ver o código
+                    </a>
+                </div>
+
             </div>
+        </div>
 
         </main>
     </div>
