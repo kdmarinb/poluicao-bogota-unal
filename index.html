@@ -523,7 +523,7 @@
                 </div>
             </div>
 
-<div id="o-ar" class="page">
+            <div id="o-ar" class="page">
             <h2 class="headline">O Ar que Respiramos</h2>
             <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana de quem respira a desigualdade.</p>
             
@@ -1128,10 +1128,17 @@
                     <aside>
                         <h3 class="subheadline">Entrevista da Semana</h3>
                         
-                        <div class="img-placeholder" style="height: 300px; background: #1a1714; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                            <i data-lucide="video" style="width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
-                            <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">VÍDEO EM PROCESSAMENTO</p>
-                            <small style="color: #888;">Aguardando liberação de acesso</small>
+                        <div class="iframe-container" style="border: 1px solid #ddd; background: #000; overflow: hidden; height: 300px;">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/JlNwseP5ZXg" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                style="border: none;">
+                            </iframe>
                         </div>
 
                         <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
@@ -1149,11 +1156,11 @@
                     </h3>
                     
                     <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #555;">
-                        Monitoramento em tempo real da percepção cidadã sobre a qualidade do ar nas redes sociais.
+                        Monitoramento em tempo real da percepção cidadã. <i data-lucide="arrow-left-right"></i> Deslize para ver o gráfico completo.
                     </p>
 
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; margin-bottom: 2rem;">
-                        <iframe src="graficos/analise_sentimentos_final.html" width="100%" height="850px" frameborder="0" style="border: none;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; margin-bottom: 2rem;">
+                        <iframe src="graficos/analise_sentimentos_final.html" style="width: 1300px; height: 850px; border: none; display: block;"></iframe>
                     </div>
 
                     <div style="column-count: 2; column-gap: 3rem; font-size: 1rem; line-height: 1.7; text-align: justify; color: #333;">
@@ -1171,9 +1178,7 @@
                         </p>
                     </div>
                 </div>
-
             </div>
-
 <div id="cultura" class="page">
             <h2 class="headline">Cultura & Entretenimiento</h2>
             <p class="subheadline">O lado leve (e visual) da cidade.</p>
