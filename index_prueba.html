@@ -827,14 +827,26 @@
                 </article>
 
                 <aside>
-                    <div style="border: 2px solid var(--ink-black); background: white; margin-bottom: 2rem;">
+<div style="border: 2px solid var(--ink-black); background: white; margin-bottom: 2rem;">
                         <div style="background: var(--alert-red); color: white; padding: 8px; font-family: 'JetBrains Mono'; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
                             <span>🔴 MONITORAMENTO AO VIVO</span>
                             <span>RMCAB</span>
                         </div>
-                        <div style="position: relative; height: 500px; overflow: hidden;">
-                            <iframe src="http://rmcab.ambientebogota.gov.co/home/map" width="100%" height="100%" style="border:none;"></iframe>
+                        
+                        <div style="position: relative; height: 400px; overflow: hidden;">
+                            
+                            <img src="img/local5.png" alt="Mapa estático RMCAB" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                            
+                            <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(255,255,255,0.95); padding: 1.5rem; border: 1px solid var(--ink-black); text-align: center; max-width: 220px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                                <i data-lucide="map" style="width: 32px; height: 32px; color: var(--alert-red); margin-bottom: 0.5rem;"></i>
+                                <h4 style="font-family: 'JetBrains Mono'; font-size: 0.8rem; margin-bottom: 1rem; color: #1a1714;">MAPA INTERATIVO</h4>
+                                
+                                <a href="http://rmcab.ambientebogota.gov.co/home/map" target="_blank" style="background: var(--ink-black); color: white; text-decoration: none; padding: 8px 16px; font-family: 'JetBrains Mono'; font-size: 0.75rem; font-weight: bold; display: inline-block; transition: all 0.3s; border: 2px solid transparent;" onmouseover="this.style.background='white'; this.style.color='var(--ink-black)'; this.style.borderColor='var(--ink-black)';" onmouseout="this.style.background='var(--ink-black)'; this.style.color='white'; this.style.borderColor='transparent';">
+                                    Acessar ↗
+                                </a>
+                            </div>
                         </div>
+
                         <figcaption style="padding: 5px; text-align: center; font-size: 0.7rem; margin: 0; background: #eee; font-style: normal;">
                             Fonte: Rede de Monitoramento de Qualidade do Ar de Bogotá
                         </figcaption>
@@ -1327,11 +1339,13 @@
             <h2 class="headline">Cultura & Entretenimiento</h2>
             <p class="subheadline">O lado leve (e visual) da cidade.</p>
 
-            <div style="margin-bottom: 4rem;">
-                <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red); margin-bottom: 1.5rem; text-transform: uppercase; border-bottom: 2px solid var(--ink-black); display: inline-block;">
+            <div style="margin-bottom: 4rem; text-align: left;">
+                <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red); margin-bottom: 1rem; text-transform: uppercase; border-bottom: 2px solid var(--alert-red); display: inline-block;">
                     Humor: Memes da Poluição
                 </h3>
-                <p style="font-size: 0.9rem; margin-bottom: 1rem;">A internet não perdoa: rir para não tossir.</p>
+                <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--ink-grey); max-width: 900px;">
+                    A internet não perdoa: rir para não tossir. Estas imagens são patrimônio da web Paulista; todos os créditos aos autores criativos (e muitas vezes anônimos) que conseguem encontrar humor até no meio da fuligem.
+                </p>
                 
                 <div class="memes-grid">
                     <div class="meme-item"><img src="img/meme1.jpg" onclick="openLightbox(this)" alt="Meme 1"></div>
@@ -1347,12 +1361,12 @@
                 </div>
             </div>
 
-            <div>
-                <h3 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">
+            <div style="text-align: left;">
+                <h3 style="font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 1rem; color: var(--ink-black);">
                     Galeria: Bogotá com e sem Smog
                 </h3>
-                <p style="text-align: center; margin-bottom: 2rem; color: var(--ink-grey);">
-                    Um registro visual dos contrastes da cidade. Clique nas imagens para ampliar.
+                <p style="margin-bottom: 2rem; color: var(--ink-grey); font-size: 0.9rem; max-width: 900px;">
+                    Um registro visual dos contrastes da cidade. Algumas imagens foram capturadas pela equipe do projeto, enquanto outras estão disponíveis na internet (El Tiempo, Flickr), sendo utilizadas aqui estritamente para fins educativos e de conscientização ambiental, com todos os créditos aos seus respectivos autores. Clique nas imagens para ampliar.
                 </p>
 
                 <div class="uniform-grid">
@@ -1376,6 +1390,7 @@
                     <div class="gallery-item"><img src="img/galeria18.jpg" onclick="openLightbox(this)" alt="Foto 18"></div>
                     <div class="gallery-item"><img src="img/galeria19.jpeg" onclick="openLightbox(this)" alt="Foto 19"></div>
                     <div class="gallery-item"><img src="img/galeria20.avif" onclick="openLightbox(this)" alt="Foto 20"></div>
+                    <div class="gallery-item"><img src="img/galeria21.jpg" onclick="openLightbox(this)" alt="Foto 21"></div>
                 </div>
             </div>
         </div>
@@ -1752,13 +1767,13 @@
 
             
 
-            <div id="contraportada" class="page">
+ <div id="contraportada" class="page">
             <h2 class="headline" style="text-align: center;">Ficha Técnica</h2>
             
             <div style="max-width: 800px; margin: 0 auto; text-align: center; padding: 2rem; background: white; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
                 
                 <h3 style="margin-bottom: 2rem; border-bottom: 2px solid var(--ink-black); display: inline-block; padding-bottom: 0.5rem;">
-                    Projeto Interdisciplinar - Português
+                    Projeto Interdisciplinar - Português Intensivo II - Internacionalização
                 </h3>
                 
                 <div style="margin-bottom: 3rem;">
@@ -1772,10 +1787,31 @@
                     <div>
                         <h4 style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 10px;">Fontes & Dados</h4>
                         <ul style="list-style: square; margin-left: 1.5rem; font-size: 0.9rem; line-height: 1.6;">
-                            <li>RMCAB (Rede de Monitoramento de Bogotá)</li>
-                            <li>OpenAQ API</li>
-                            <li>DANE (Censo 2018)</li>
-                            <li>Literatura Científica (Jin et al., Pachón et al.)</li>
+                            <li>
+                                <a href="http://rmcab.ambientebogota.gov.co/home/map" target="_blank" style="color: var(--ink-black); text-decoration: underline;">
+                                    RMCAB (Rede de Monitoramento)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://openaq.org/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">
+                                    OpenAQ API
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://datosabiertos.bogota.gov.co/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">
+                                    Datos Abiertos Bogotá
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://iboca.ambientebogota.gov.co/publicaciones/176/consulta-de-datos/" target="_blank" style="color: var(--ink-black); text-decoration: underline;">
+                                    Dados SARIMAX (Sec. Ambiente)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="img/literatura.pdf" target="_blank" style="color: var(--ink-black); text-decoration: underline;">
+                                    Literatura Científica (PDF)
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div>
@@ -1797,6 +1833,8 @@
                 </div>
 
             </div>
+        </div>
+
         </div>
 
         </main>
