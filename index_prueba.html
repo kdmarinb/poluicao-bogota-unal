@@ -344,6 +344,71 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+/* --- ESTILOS PARA CELULARES (RESPONSIVE) --- */
+        @media (max-width: 768px) {
+            /* 1. Ajustes Generales del Cuerpo */
+            body { 
+                padding: 10px; 
+                padding-top: 60px !important; /* Más espacio para que el Ticker no tape nada */
+            }
+            .newspaper { 
+                box-shadow: none; /* Quitar sombra para ganar espacio lateral */
+                width: 100%;
+            }
+            main { padding: 1rem; }
+
+            /* 2. Títulos y Texto */
+            .headline { font-size: 2.2rem !important; line-height: 1.1; }
+            .subheadline { font-size: 1.1rem; }
+            .lead { font-size: 1rem; text-align: left; }
+            p { font-size: 0.95rem; text-align: left; } /* Lectura más fácil sin justificado forzado */
+
+            /* 3. Transformar Columnas en Filas (Todo a 1 columna) */
+            .grid-main, .grid-2, .grid-3, .grid-4 { 
+                grid-template-columns: 1fr !important; 
+                gap: 2rem;
+            }
+
+            /* 4. Orejas (Publicidad Arriba) - Ahora deslizable */
+            /* Hacemos que las orejas no se aplasten, sino que se deslicen horizontalmente */
+            #capa > div:first-child {
+                overflow-x: auto;
+                justify-content: flex-start !important;
+                padding-bottom: 10px; /* Espacio para la barra de scroll si aparece */
+            }
+            #capa > div:first-child > div {
+                min-width: 100px; /* Tamaño mínimo de cada oreja */
+                flex-shrink: 0;   /* Evita que se encojan */
+                margin-right: 10px;
+            }
+
+            /* 5. Navegación */
+            nav li { 
+                padding: 15px 10px; 
+                font-size: 0.8rem; 
+            }
+
+            /* 6. Imágenes y Gráficos */
+            .img-placeholder, img, video, iframe {
+                max-width: 100%; 
+                height: auto;
+            }
+            
+            /* Excepción para gráficos con scroll horizontal (Ranking) */
+            .iframe-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* 7. Botón GitHub (Contraportada) */
+            #contraportada a[href*="github"] {
+                display: block;
+                width: 100%;
+                padding: 20px; /* Botón más grande para el dedo */
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -422,8 +487,8 @@
 
         <main>
             <div id="capa" class="page active">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8rem; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem; height: 160px;">
-                    <div style="flex: 1.2; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #ddd; padding-right: 6px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.8rem; margin-bottom: 2rem; border-bottom: 2px solid black; padding-bottom: 1rem; height: 160px; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                        <div style="flex: 1.2; height: 100%; display: flex; align-items: center; justify-content: center; border-right: 1px solid #ddd; padding-right: 6px;">
                         <img src="img/oreja1.png" alt="Logo Principal" style="max-width: 100%; max-height: 100%; object-fit: contain; mix-blend-mode: multiply;">
                     </div>
                     <div style="flex: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; border-right: 1px solid #eee;">
