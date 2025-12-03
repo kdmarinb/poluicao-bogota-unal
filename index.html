@@ -1177,71 +1177,149 @@
         </div>
 
 <div id="opiniao" class="page">
-                <h2 class="headline">Opinião & Debate</h2>
-                
-                <div class="grid-2">
-                    <article>
-                        <h3 class="subheadline">Cartas do Leitor</h3>
-                        <div style="background: white; padding: 1.5rem; border: 1px solid #ddd; margin-bottom: 1rem;">
-                            <h4 style="margin-bottom: 0.5rem;">Indignação em Bosa</h4>
-                            <p style="font-style: italic;">"É inaceitável que continuemos sendo o 'escapamento' da cidade. O projeto apresentado mostra claramente que a desigualdade é planejada. Precisamos das janelas limpas já!"</p>
-                            <p style="text-align: right; font-weight: bold;">— Juliana Rocha, Estudante</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border: 1px solid #ddd;">
-                            <h4 style="margin-bottom: 0.5rem;">Soluções Reais</h4>
-                            <p style="font-style: italic;">"Parabéns pela pesquisa. O modelo preditivo é uma ferramenta que a prefeitura deveria adotar ontem. Chega de improviso."</p>
-                            <p style="text-align: right; font-weight: bold;">— Roberto Silva, Engenheiro</p>
-                        </div>
-                    </article>
-                    
-                    <aside>
-                        <h3 class="subheadline">Entrevista da Semana</h3>
-                        
-                        <div class="img-placeholder" style="height: 300px; background: #1a1714; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                            <i data-lucide="video" style="width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
-                            <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">VÍDEO EM PROCESSAMENTO</p>
-                            <small style="color: #888;">Aguardando liberação de acesso</small>
-                        </div>
-
-                        <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
-                            <h4>Prof. Luis F. Grajales - Doutor em Estatística (UNAL)</h4>
-                            <p style="font-size: 0.9rem;">Conversamos com o professor sobre como os números podem nos mostrar que a poluição não afeta todos por igual e outros temas interessantes!</p>
-                        </div>
-                    </aside>
-                </div>
-
-                <hr style="margin: 4rem 0; border: 0; border-top: 2px solid #eee;">
-
-                <div style="margin-bottom: 4rem;">
-                    <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem;">
-                        O Pulso da Cidade: Análise de Sentimentos
-                    </h3>
-                    
-                    <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #555;">
-                        Monitoramento em tempo real da percepção cidadã sobre a qualidade do ar nas redes sociais.
+            <h2 class="headline">Opinião & Debate</h2>
+            <p class="subheadline">Vozes acadêmicas e cidadãs sobre o futuro da cidade.</p>
+            
+            <div class="grid-2">
+                <article>
+                    <h3 class="subheadline" style="border-bottom: 1px solid var(--ink-black);">Cartas do Leitor</h3>
+                    <p style="font-size: 0.9rem; color: var(--ink-grey); margin-bottom: 1rem;">
+                        <i data-lucide="mouse-pointer-click"></i> Clique nos quadros para ler as cartas na íntegra.
                     </p>
 
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; margin-bottom: 2rem;">
-                        <iframe src="graficos/analise_sentimentos_final.html" width="100%" height="850px" frameborder="0" style="border: none;"></iframe>
+                    <div onclick="openLetter('carta1')" style="background: white; padding: 1.5rem; border: 1px solid #ddd; margin-bottom: 1rem; cursor: pointer; transition: all 0.3s; border-left: 4px solid var(--alert-red); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.05)'">
+                        <h4 style="margin-bottom: 0.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">Indignação em Bosa</h4>
+                        <p style="font-style: italic; font-family: 'Playfair Display'; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            "É inaceitável que continuemos sendo o 'escapamento' da cidade..."
+                        </p>
+                        <p style="text-align: right; font-weight: bold; font-size: 0.85rem;">— Juliana Rocha, Estudante</p>
                     </div>
 
-                    <div style="column-count: 2; column-gap: 3rem; font-size: 1rem; line-height: 1.7; text-align: justify; color: #333;">
-                        <p style="margin-bottom: 1rem;">
-                            A análise de sentimentos interativa revela uma percepção majoritariamente negativa sobre a qualidade do ar em Bogotá, com 44,2% dos sentimentos classificados como negativos e um adicional de 30,2% de sentimentos "muito negativos", o que soma uma reprovação total de 74,4%. As palavras mais frequentes neste sentimento negativo são "contaminada", "pesada", "densa", "poluída" e "arruinada", evidenciando como a cidadania vivencia a contaminação não apenas como um dado técnico, mas como uma realidade tangível que afeta a respiração e a qualidade de vida.
+                    <div onclick="openLetter('carta2')" style="background: white; padding: 1.5rem; border: 1px solid #ddd; cursor: pointer; transition: all 0.3s; border-left: 4px solid var(--accent-blue); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 5px rgba(0,0,0,0.05)'">
+                        <h4 style="margin-bottom: 0.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--accent-blue);">Soluções Reais</h4>
+                        <p style="font-style: italic; font-family: 'Playfair Display'; font-size: 1.1rem; margin-bottom: 0.5rem;">
+                            "O modelo preditivo é uma ferramenta que a prefeitura deveria adotar ontem."
                         </p>
-                        <p style="margin-bottom: 1rem;">
-                            Em contraste, apenas 9,62% dos sentimentos foram positivos e somente 1,92% "muito positivos", confirmando que a satisfação com o ar bogotano é minoritária. Apenas 24% mantêm uma posição neutra, provavelmente refletindo quem não vivenciou diretamente episódios críticos de contaminação ou vive em zonas com melhor qualidade do ar.
+                        <p style="text-align: right; font-weight: bold; font-size: 0.85rem;">— Roberto Silva, Estatístico</p>
+                    </div>
+                </article>
+                
+                <aside>
+                    <h3 class="subheadline" style="border-bottom: 1px solid var(--ink-black);">Entrevista da Semana</h3>
+                    
+                    <div class="img-placeholder" style="height: 250px; background: #1a1714; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                        <i data-lucide="video" style="width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
+                        <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">VÍDEO EM PROCESSAMENTO</p>
+                        <small style="color: #888;">Aguardando liberação de acesso</small>
+                    </div>
+
+                    <div style="background: var(--paper-dark); padding: 1.5rem; margin-top: 1rem; border-top: 3px solid var(--ink-black);">
+                        <h4 style="font-family: 'JetBrains Mono'; text-transform: uppercase; margin-bottom: 1rem;">
+                            O Especialista
+                        </h4>
+                        <p style="font-size: 0.9rem; font-weight: bold; margin-bottom: 0.5rem;">
+                            Prof. Luis Fernando Grajales
                         </p>
-                        <p style="margin-bottom: 1rem;">
-                            A polarização do sentimento é clara: enquanto os sentimentos negativos dominam o discurso com palavras como "tóxica", "irrespirável" e "industrial", os sentimentos positivos aparecem esporadicamente com termos como "aceitável", "regular" e "moderada", sugerindo que quando existe satisfação, esta é apenas tolerável ou relativa.
+                        <p style="font-size: 0.9rem; line-height: 1.6; text-align: justify; margin-bottom: 1rem;">
+                            Docente associado do Departamento de Estatística da Universidad Nacional de Colombia desde 2000. Possui doutorado em Estatística pela mesma instituição e conta com uma trajetória acadêmica de destaque internacional, tendo sido professor convidado na Universidade Federal de Pernambuco (Brasil).
                         </p>
-                        <p>
-                            A análise de polaridade reforça este achado, mostrando 46 menções muito negativas contra apenas 2 muito positivas. Isto indica que a poluição do ar em Bogotá não é percebida como um problema técnico abstrato, mas como uma injustiça ambiental imediata que gera frustração, especialmente nas localidades do sudoeste onde a exposição é maior e os sentimentos negativos se concentram mais intensamente.
+                        <p style="font-size: 0.9rem; line-height: 1.6; text-align: justify;">
+                            Sua linha de pesquisa abrange áreas fundamentais para a análise de dados complexos, como análise de sobrevivência, desenho experimental, modelos de regressão e regressão beta.
                         </p>
                     </div>
+                </aside>
+            </div>
+
+            <hr style="margin: 4rem 0; border: 0; border-top: 2px solid #eee;">
+
+            <div style="margin-bottom: 4rem;">
+                <h3 class="subheadline" style="font-weight: 800; font-size: 2rem; color: #1a1714; margin-bottom: 1rem; font-style: normal;">
+                    O Pulso da Cidade: Análise de Sentimentos
+                </h3>
+                
+                <div style="background: #f0f9ff; border-left: 4px solid var(--accent-blue); padding: 1rem; margin-bottom: 2rem;">
+                    <p style="font-size: 0.9rem; margin: 0; color: #333;">
+                        <strong>Metodologia:</strong> Os gráficos abaixo foram gerados a partir da análise de dados coletados através do 
+                        <a href="https://forms.gle/qPV7y5SKdgHrNztH7" target="_blank" style="color: var(--accent-blue); text-decoration: underline; font-weight: bold;">Formulário de Percepção Cidadã</a>, 
+                        disponibilizado na capa desta edição. As respostas refletem a vivência direta dos nossos leitores.
+                    </p>
                 </div>
 
+<div style="column-count: 2; column-gap: 3rem; margin-bottom: 2rem; text-align: justify; border-top: 1px solid #eee; padding-top: 1.5rem;">
+                    
+                    <h4 style="font-family: 'JetBrains Mono'; font-size: 1rem; text-transform: uppercase; color: var(--alert-red); margin-bottom: 1rem; break-inside: avoid;">
+                        Uma Realidade Tangível
+                    </h4>
+                    
+                    <p style="margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">
+                        A análise de sentimentos interativa revela uma percepção majoritariamente negativa sobre a qualidade do ar em Bogotá, com <strong>44,2%</strong> dos sentimentos classificados como negativos e um adicional de <strong>30,2%</strong> "muito negativos". Essa reprovação total de quase 75% não é apenas um dado estatístico; é um reflexo direto da saúde pública.
+                    </p>
+                    <p style="margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">
+                        As palavras mais frequentes — "contaminada", "pesada", "densa" e "arruinada" — evidenciam como a cidadania vivencia a contaminação não como um conceito abstrato, mas como uma barreira física que afeta a respiração diária e a qualidade de vida nos bairros.
+                    </p>
+
+                    <h4 style="font-family: 'JetBrains Mono'; font-size: 1rem; text-transform: uppercase; color: var(--accent-blue); margin-bottom: 1rem; margin-top: 1rem; break-inside: avoid;">
+                        A Polarização do Discurso
+                    </h4>
+
+                    <p style="margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7;">
+                        Em contraste, a satisfação é residual. Apenas 9,6% dos sentimentos foram positivos, geralmente associados a dias de chuva ou feriados. A polarização é clara: enquanto os sentimentos negativos dominam com termos como "tóxica" e "irrespirável", os positivos são tímidos, usando palavras como "aceitável" ou "regular".
+                    </p>
+                    <p style="font-size: 0.95rem; line-height: 1.7;">
+                        A análise de polaridade reforça este achado: 46 menções muito negativas contra apenas 2 muito positivas. Isso indica que a poluição em Bogotá é percebida como uma <strong>injustiça ambiental imediata</strong>, gerando frustração especialmente nas localidades do sudoeste, onde a exposição é maior e o sentimento de abandono é mais agudo.
+                    </p>
+                </div>
+
+                <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white;">
+                    <iframe src="graficos/analise_sentimentos_final.html" width="100%" height="850px" frameborder="0" style="border: none;"></iframe>
+                </div>
             </div>
+
+            <div id="textModal" style="display: none; position: fixed; z-index: 20000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center;">
+                <div style="background-color: #faf8f5; margin: auto; padding: 3rem; border: 1px solid #888; width: 80%; max-width: 700px; position: relative; border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+                    <span onclick="document.getElementById('textModal').style.display='none'" style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; position: absolute; top: 10px; right: 20px;">&times;</span>
+                    <div id="modalContent" style="font-family: 'Source Serif 4', serif; line-height: 1.8; font-size: 1.1rem; color: #1a1714;"></div>
+                </div>
+            </div>
+
+            <div id="carta1-content" style="display:none;">
+                <h3 style="font-family: 'JetBrains Mono'; color: var(--alert-red); text-transform: uppercase; margin-bottom: 1rem;">Indignação em Bosa</h3>
+                <p><strong>À redação do Periódico UNAL,</strong></p>
+                <p>Escrevo como moradora de Bosa e estudante de uma universidade pública, profundamente tocada pelo vídeo <a href="https://periodico.unal.edu.co/articulos/estas-son-las-particulas-que-estan-contaminando-el-aire-de-bogota" target="_blank" style="color: var(--alert-red); text-decoration: underline;">“Estas son las partículas que están contaminando el aire de Bogotá”</a>. O material deixa claro que o ar que respiramos todos os dias não é apenas “neblina” ou “poeira”, mas uma mistura perigosa de ozônio, óxidos de nitrogênio, monóxido de carbono e material particulado fino, que entra direto nos pulmões e no sangue. Para quem vive em zonas como o sudoeste da cidade, isso não é teoria: é tosse crônica, crises de asma e a sensação constante de cansaço.</p>
+                <p>Mas o que mais dói, ouvindo o professor Néstor Rojas, é perceber que essa exposição não está distribuída de forma aleatória. As mesmas áreas que têm menos parques, menos árvores e mais vias degradadas concentram também mais fontes de emissões e de poeira ressuspensa. Quem vive em Bosa, Kennedy ou Ciudad Bolívar sabe que, muitas vezes, os caminhões e a poeira passam primeiro pela nossa janela antes de chegar ao resto da cidade. É inaceitável que continuemos sendo o “escapamento” da cidade. O projeto apresentado mostra claramente que a desigualdade é planejada. Precisamos das janelas limpas já!</p>
+                <p>Se a ciência já consegue medir, mapear e prever esses picos de poluição, não podemos ficar apenas na constatação. É hora de transformar o conhecimento produzido pela UNAL em políticas públicas que cheguem à escala da UPZ: avisos prévios para escolas e hospitais, restrições inteligentes para o transporte de carga nos horários mais críticos, pavimentação prioritária e infraestrutura verde nos bairros historicamente sacrificados. Não se trata apenas de “melhorar o trânsito”, mas de proteger os pulmões de quem tem menos escolha de onde morar.</p>
+                <p>Como jovem que estuda em uma universidade pública e volta todos os dias para Bosa respirando esse ar, peço que a discussão iniciada pelo vídeo não pare na academia. Que Prefeitura, Secretaria de Ambiente e planejadores urbanos escutem essa evidência e assumam que a justiça ambiental também é uma responsabilidade política.</p>
+                <p style="margin-top: 2rem;">Atenciosamente,<br><strong>Juliana Rocha</strong><br>Estudante de universidade pública e moradora de Bosa</p>
+            </div>
+
+            <div id="carta2-content" style="display:none;">
+                <h3 style="font-family: 'JetBrains Mono'; color: var(--accent-blue); text-transform: uppercase; margin-bottom: 1rem;">Soluções Reais</h3>
+                <p><strong>À redação,</strong></p>
+                <p>Como estatístico que teve a oportunidade de ler o projeto de modelagem preditiva e justiça ambiental sobre a poluição em Bogotá, gostaria de registrar minha impressão: vocês conseguiram transformar números em direção política concreta.</p>
+                <p>O sistema de alerta precoce local, as “janelas limpas” para a logística de carga e o plano estrutural de qualidade do ar formam um conjunto raro de soluções: tecnicamente consistente, territorialmente sensível e socialmente justo. Em vez de respostas reativas e genéricas, o projeto propõe decisões guiadas por séries temporais, física da dispersão e indicadores sociais — exatamente o tipo de evidência que uma prefeitura precisa para proteger primeiro quem mais respira ar tóxico.</p>
+                <p>Parabéns pela pesquisa. O modelo preditivo é uma ferramenta que a prefeitura deveria adotar ontem. Chega de improviso. Se a ciência já mostra onde, quando e quem mais sofre com o PM2,5, não há desculpa para continuar repetindo planos tímidos. Projetos como este apontam o caminho: dados a serviço da justiça ambiental.</p>
+                <p style="margin-top: 2rem;">— <strong>Roberto Silva</strong><br>Estatístico</p>
+            </div>
+
+            <script>
+                function openLetter(id) {
+                    var content = document.getElementById(id + '-content').innerHTML;
+                    var modal = document.getElementById('textModal');
+                    var modalContent = document.getElementById('modalContent');
+                    
+                    modalContent.innerHTML = content;
+                    modal.style.display = 'flex';
+                }
+
+                // Fechar modal ao clicar fora
+                window.onclick = function(event) {
+                    var modal = document.getElementById('textModal');
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
 
 <div id="cultura" class="page">
             <h2 class="headline">Cultura & Entretenimiento</h2>
