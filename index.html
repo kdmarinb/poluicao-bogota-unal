@@ -524,23 +524,75 @@
             </div>
 
             <div id="o-ar" class="page">
-                <h2 class="headline">O Ar que Respiramos</h2>
-                <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana.</p>
-                <div class="grid-2">
-                    <div>
-                        <p>A poluição do ar em Bogotá é a manifestação diária de uma desigualdade social que também se respira. A gestão reativa da cidade, que age somente após a crise, cobra um preço alto da saúde das comunidades vulneráveis. Nosso projeto nasce dessa urgência.</p>
-                        <p>A física da dispersão atmosférica, considerando a topografia de Bogotá (uma bacia cercada por montanhas), cria zonas de estagnação. Durante as manhãs, a inversão térmica aprisiona os poluentes emitidos pelos caminhões a diesel justamente nas áreas de Kennedy e Bosa.</p>
-                        <div class="img-placeholder" style="height: 250px;" data-name="mapa_dispersao.png"></div>
-                        <figcaption>Mapa de dispersão de poluentes mostrando a concentração no sudoeste.</figcaption>
+            <h2 class="headline">O Ar que Respiramos</h2>
+            <p class="subheadline">Um storytelling sobre a física, a geografia e a vida cotidiana de quem respira a desigualdade.</p>
+            
+            <div class="grid-2">
+                <article>
+                    <p class="lead">
+                        Em Bogotá, a poluição do ar é a manifestação diária de uma desigualdade social que também se respira. A gestão reativa da cidade, que age somente após a crise, cobra um preço alto da saúde das comunidades vulneráveis. Nosso projeto nasce dessa urgência: usar a ciência como ferramenta de equidade.
+                    </p>
+
+                    <h4 style="margin-top: 1.5rem; font-family: 'JetBrains Mono'; text-transform: uppercase; color: var(--alert-red);">A Física da Estagnação</h4>
+                    <p>
+                        Para entender por que o ar mata, precisamos olhar para a geografia. Bogotá funciona como uma bacia cercada por montanhas. Essa topografia particular, somada ao regime de ventos alísios, cria zonas de "sombra" onde o vento não consegue limpar a atmosfera.
+                    </p>
+                    <p>
+                        Durante as primeiras horas da manhã, ocorre o fenômeno da <strong>inversão térmica</strong>: uma camada de ar quente se sobrepõe ao ar frio da superfície, agindo como uma "tampa" invisível. Isso aprisiona os poluentes emitidos pelos caminhões a diesel e indústrias justamente nas áreas mais baixas da cidade: Kennedy, Bosa e Tunjuelito.
+                    </p>
+                    <p>
+                        As variáveis climáticas são decisivas: enquanto a chuva ajuda a "lavar" o ar (deposição úmida), dias secos e frios concentram o material particulado, criando picos tóxicos que nossos modelos buscam prever.
+                    </p>
+
+                    <div style="background: #fff7ed; border: 1px solid var(--alert-orange); padding: 1.5rem; margin-top: 2rem; border-radius: 4px;">
+                        <h5 style="font-family: 'JetBrains Mono'; color: var(--alert-orange); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+                            Ficha Técnica: O Vilão Invisível (PM2.5)
+                        </h5>
+                        <ul style="font-size: 0.85rem; line-height: 1.6; list-style: none; padding: 0;">
+                            <li style="margin-bottom: 8px;"><strong>O que é:</strong> Partículas finas em suspensão com diâmetro menor que 2,5 micrômetros (30x menor que um fio de cabelo).</li>
+                            <li style="margin-bottom: 8px;"><strong>Origem:</strong> Principalmente combustão de diesel (caminhões, ônibus) e processos industriais.</li>
+                            <li style="margin-bottom: 8px;"><strong>Perigo:</strong> Por ser microscópico, não é filtrado pelo nariz. Penetra nos alvéolos pulmonares e entra diretamente na corrente sanguínea, causando doenças cardiovasculares e respiratórias.</li>
+                        </ul>
                     </div>
-                    <div>
-                        <p>Entrevistas realizadas com moradores revelam o impacto humano: "Não posso abrir a janela de manhã porque a fuligem cobre os móveis", relata Maria, residente de Ciudad Bolívar. As crianças são as mais afetadas, com taxas de doenças respiratórias 10x maiores nestas zonas.</p>
-                        <p>Os dados são claros: enquanto o norte desfruta de ar limpo vindo das montanhas orientais, o sudoeste recebe toda a carga de contaminantes empurrada pelos ventos. É uma "injustiça geográfica" agravada pelo planejamento urbano.</p>
-                        <div class="img-placeholder" style="height: 250px;" data-name="grafico_padroes.png"></div>
-                        <figcaption>Gráfico comparativo: Zona Norte vs. Zona Sudoeste.</figcaption>
+
+                    <div class="img-placeholder" style="height: 250px; background: #eee; border: none; margin-bottom: 0.5rem; margin-top: 2rem;">
+                        <img src="img/ar2.avif" alt="Gráfico Comparativo Norte vs Sul" style="width: 100%; height: 100%; object-fit: contain; display: block; background: white;">
                     </div>
-                </div>
+                    <figcaption>
+                        Gráfico: Disparidade de exposição entre Zona Norte e Sudoeste.
+                    </figcaption>
+                </article>
+
+                <aside>
+                    <div class="img-placeholder" style="height: auto; background: #eee; border: none; margin-bottom: 0.5rem;">
+                        <img src="img/ar1.png" alt="Mapa de dispersão vertical" style="width: 100%; height: auto; display: block;">
+                    </div>
+                    <figcaption style="margin-bottom: 2rem;">
+                        O "Mapa de Calor" da poluição: concentração crítica no sudoeste. <br>
+                        <a href="http://www.iboca.ambientebogota.gov.co:8080/geoserver/sda_ca/wms?service=WMS&version=1.1.0&request=GetMap&layers=sda_ca:Historico_mensual_iboca_PM25&styles=&bbox=-74.2246551513672,4.45599555969238,-74.0087127685547,4.8325252532959&width=400&height=600&srs=EPSG:4326&format=application/openlayers#toggle" target="_blank" style="color: var(--alert-red); text-decoration: underline; font-size: 0.7rem; font-weight: bold;">
+                            Ver fonte dos dados Ambiente Bogotá
+                        </a>
+                    </figcaption>
+
+                    <h4 style="font-family: 'JetBrains Mono'; font-size: 1rem; color: var(--ink-black); margin-bottom: 1rem; border-left: 4px solid var(--ink-black); padding-left: 10px;">
+                        "A Injustiça Geográfica"
+                    </h4>
+                    
+                    <p style="font-style: italic; font-size: 1rem; color: var(--ink-grey); margin-bottom: 1rem;">
+                        "Não posso abrir a janela de manhã porque a fuligem cobre os móveis."
+                    </p>
+                    <p style="font-size: 0.85rem; margin-bottom: 1.5rem;">
+                        O relato de Maria, residente de Ciudad Bolívar, ilustra a estatística: crianças nessas zonas enfrentam taxas de doenças respiratórias até <strong>10x maiores</strong> do que as do norte.
+                    </p>
+
+                    <div style="background: var(--paper-dark); padding: 1rem; margin-bottom: 1.5rem;">
+                        <p style="font-size: 0.85rem; margin: 0;">
+                            <strong>O abismo é claro:</strong> enquanto o norte (Usaquén) desfruta de ar limpo vindo dos morros orientais, o sudoeste recebe toda a carga de contaminantes "empurrada" pelo vento e aprisionada pela montanha.
+                        </p>
+                    </div>
+                </aside>
             </div>
+        </div>
 
 <div id="brasil" class="page">
             
@@ -1076,10 +1128,17 @@
                     <aside>
                         <h3 class="subheadline">Entrevista da Semana</h3>
                         
-                        <div class="img-placeholder" style="height: 300px; background: #1a1714; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                            <i data-lucide="video" style="width: 48px; height: 48px; margin-bottom: 10px; opacity: 0.5;"></i>
-                            <p style="font-family: 'JetBrains Mono'; font-size: 0.8rem;">VÍDEO EM PROCESSAMENTO</p>
-                            <small style="color: #888;">Aguardando liberação de acesso</small>
+                        <div class="iframe-container" style="border: 1px solid #ddd; background: #000; overflow: hidden; height: 300px;">
+                            <iframe 
+                                width="100%" 
+                                height="100%" 
+                                src="https://www.youtube.com/embed/JlNwseP5ZXg" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                style="border: none;">
+                            </iframe>
                         </div>
 
                         <div style="background: var(--paper-dark); padding: 1rem; margin-top: 1rem;">
@@ -1097,11 +1156,11 @@
                     </h3>
                     
                     <p style="margin-bottom: 2rem; font-size: 1.1rem; color: #555;">
-                        Monitoramento em tempo real da percepção cidadã sobre a qualidade do ar nas redes sociais.
+                        Monitoramento em tempo real da percepção cidadã. <i data-lucide="arrow-left-right"></i> Deslize para ver o gráfico completo.
                     </p>
 
-                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; margin-bottom: 2rem;">
-                        <iframe src="graficos/analise_sentimentos_final.html" width="100%" height="850px" frameborder="0" style="border: none;"></iframe>
+                    <div class="iframe-container" style="border: 1px solid #ddd; border-radius: 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; box-shadow: 0 10px 20px rgba(0,0,0,0.05); background: white; margin-bottom: 2rem;">
+                        <iframe src="graficos/analise_sentimentos_final.html" style="width: 1300px; height: 850px; border: none; display: block;"></iframe>
                     </div>
 
                     <div style="column-count: 2; column-gap: 3rem; font-size: 1rem; line-height: 1.7; text-align: justify; color: #333;">
@@ -1119,9 +1178,7 @@
                         </p>
                     </div>
                 </div>
-
             </div>
-
 <div id="cultura" class="page">
             <h2 class="headline">Cultura & Entretenimiento</h2>
             <p class="subheadline">O lado leve (e visual) da cidade.</p>
